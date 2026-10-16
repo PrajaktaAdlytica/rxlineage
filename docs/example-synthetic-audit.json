@@ -1,0 +1,62 @@
+{
+  "watermark": "DEMO / SYNTHETIC DATA — CONCEPT PREVIEW",
+  "scope": "Illustrative local report; no clinical guidance or system connection",
+  "episode": {
+    "id": "SYN-001",
+    "state": "completed",
+    "owner": "Pharmacist Reviewer A",
+    "intakeAt": "2026-10-12T08:00:00Z",
+    "label": "DEMO — SYNTHETIC DATA",
+    "concept": "CONCEPT PREVIEW",
+    "note": "Synthetic fixture, not a measured outcome",
+    "sourceObservedAt": [
+      "2026-10-11T16:00:00Z",
+      "2026-10-11T17:00:00Z"
+    ],
+    "reviewedAt": "2026-10-12T09:10:00Z",
+    "assignedAt": "2026-10-12T08:01:00.000Z",
+    "reason": "The displayed source fields agree in this example."
+  },
+  "sourceIds": [
+    "SRC-001A",
+    "SRC-001B"
+  ],
+  "confidence": "Not validated",
+  "history": [
+    {
+      "at": "2026-10-12T08:00:00Z",
+      "actor": "Synthetic intake",
+      "action": "Source artifacts received",
+      "reason": "Fictional artifacts only; no live feed.",
+      "version": 1
+    },
+    {
+      "at": "2026-10-12T08:01:00.000Z",
+      "actor": "Pharmacist Reviewer A",
+      "action": "Reviewer assigned",
+      "reason": "Human review ownership established in fixture.",
+      "version": 1
+    },
+    {
+      "at": "2026-10-12T09:10:00Z",
+      "actor": "Pharmacist Reviewer A",
+      "action": "Review recorded",
+      "reason": "The displayed source fields agree in this example.",
+      "version": 1
+    },
+    {
+      "at": "2026-10-12T09:30:00.000Z",
+      "actor": "Pharmacist Reviewer A",
+      "action": "Illustrative review annotation recorded",
+      "reason": "Displayed source fields agree. Fictional manual annotation only.",
+      "version": 2
+    },
+    {
+      "at": "2026-10-12T09:31:00.000Z",
+      "actor": "Pharmacist Reviewer A",
+      "action": "Prior local annotation reversed",
+      "reason": "Reversal appended; earlier version retained for inspection.",
+      "version": 3
+    }
+  ]
+}

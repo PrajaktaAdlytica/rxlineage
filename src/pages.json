@@ -1,0 +1,622 @@
+[
+  {
+    "route": "/",
+    "slug": "home",
+    "name": "Home",
+    "headline": "Let pharmacists see which medication-history discrepancies deserve review.",
+    "visual": "folio",
+    "background": "lavender-fog",
+    "sequence": "Two histories enter; dates align; one difference opens an evidence drawer.",
+    "readingPath": "Sources \u2192 difference \u2192 evidence \u2192 reviewer",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-home.svg",
+    "mobileAsset": "assets/illustrations/hero-home-mobile.svg"
+  },
+  {
+    "route": "/problem",
+    "slug": "problem",
+    "name": "Problem",
+    "headline": "One episode. Two accounts. A question to resolve.",
+    "visual": "scatter",
+    "background": "split-paper",
+    "sequence": "Scattered sources align while the unresolved gap remains visible.",
+    "readingPath": "Scattered sources \u2192 visible gap",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-problem.svg",
+    "mobileAsset": "assets/illustrations/hero-problem-mobile.svg"
+  },
+  {
+    "route": "/solutions",
+    "slug": "solutions",
+    "name": "Solutions",
+    "headline": "A review path with a source at every step.",
+    "visual": "process",
+    "background": "folio-steps",
+    "sequence": "Three workflow stages connect to the responsible reviewer.",
+    "readingPath": "Source \u2192 review \u2192 record",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-solutions.svg",
+    "mobileAsset": "assets/illustrations/hero-solutions-mobile.svg"
+  },
+  {
+    "route": "/solutions/admission",
+    "slug": "admission",
+    "name": "Admission",
+    "headline": "Start with the history behind the admission.",
+    "visual": "intake",
+    "background": "lavender-horizon",
+    "sequence": "A dated source enters the intake tray; conflict remains unresolved.",
+    "readingPath": "Intake \u2192 compare \u2192 assign",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-admission.svg",
+    "mobileAsset": "assets/illustrations/hero-admission-mobile.svg"
+  },
+  {
+    "route": "/solutions/discharge",
+    "slug": "discharge",
+    "name": "Discharge",
+    "headline": "Make the unresolved handoff visible.",
+    "visual": "handoff",
+    "background": "ledger-paper",
+    "sequence": "Source references assemble into a handoff packet; no clinical action occurs.",
+    "readingPath": "Compare \u2192 review status \u2192 handoff record",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-discharge.svg",
+    "mobileAsset": "assets/illustrations/hero-discharge-mobile.svg"
+  },
+  {
+    "route": "/solutions/transitions",
+    "slug": "transitions",
+    "name": "Transitions",
+    "headline": "Explore the next transition with permission.",
+    "visual": "map",
+    "background": "contour-lavender",
+    "sequence": "A schematic care-transition map connects admission, review and discharge.",
+    "readingPath": "Admission \u2192 review \u2192 discharge; future scope labeled",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-transitions.svg",
+    "mobileAsset": "assets/illustrations/hero-transitions-mobile.svg"
+  },
+  {
+    "route": "/products",
+    "slug": "products",
+    "name": "Proposed modules",
+    "headline": "Five proposed modules. One attributable workflow.",
+    "visual": "fan",
+    "background": "lavender-fog",
+    "sequence": "Five named folios fan into a visible index.",
+    "readingPath": "All five offers \u2192 individual responsibility",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-products.svg",
+    "mobileAsset": "assets/illustrations/hero-products-mobile.svg"
+  },
+  {
+    "route": "/products/source-comparison",
+    "slug": "source-comparison",
+    "name": "Source Comparison",
+    "headline": "Keep both accounts in view.",
+    "visual": "comparison",
+    "background": "split-paper",
+    "sequence": "Two dated source columns align without selecting a true source.",
+    "readingPath": "Source A \u2192 source B \u2192 conflicting field",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-source-comparison.svg",
+    "mobileAsset": "assets/illustrations/hero-source-comparison-mobile.svg"
+  },
+  {
+    "route": "/products/review-queue",
+    "slug": "review-queue",
+    "name": "Review Queue",
+    "headline": "Every exception has an owner.",
+    "visual": "queue",
+    "background": "ledger-paper",
+    "sequence": "Nine fixture rows reveal status, owner and next review time.",
+    "readingPath": "Intake \u2192 queue \u2192 evidence detail",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-review-queue.svg",
+    "mobileAsset": "assets/illustrations/hero-review-queue-mobile.svg"
+  },
+  {
+    "route": "/products/issue-review",
+    "slug": "issue-review",
+    "name": "Issue Review",
+    "headline": "Prioritize issues for pharmacist adjudication.",
+    "visual": "flags",
+    "background": "lavender-horizon",
+    "sequence": "Issue labels enter a review lane; a rejected flag remains visible.",
+    "readingPath": "Concern \u2192 reason \u2192 reviewer disposition",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-issue-review.svg",
+    "mobileAsset": "assets/illustrations/hero-issue-review-mobile.svg"
+  },
+  {
+    "route": "/products/clarification-drafts",
+    "slug": "clarification-drafts",
+    "name": "Clarification Drafts",
+    "headline": "Turn an unknown into a question to review.",
+    "visual": "draft",
+    "background": "paper-margin",
+    "sequence": "A source-linked question reveals in a draft-only pane; never sends.",
+    "readingPath": "Unknown \u2192 evidence \u2192 unsent draft",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-clarification-drafts.svg",
+    "mobileAsset": "assets/illustrations/hero-clarification-drafts-mobile.svg"
+  },
+  {
+    "route": "/products/audit-reports",
+    "slug": "audit-reports",
+    "name": "Audit Reports",
+    "headline": "Keep the review record inspectable.",
+    "visual": "timeline",
+    "background": "deep-archive",
+    "sequence": "Source, reviewer, disposition and override versions reveal in order.",
+    "readingPath": "Source \u2192 attributed review \u2192 retained version",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-audit-reports.svg",
+    "mobileAsset": "assets/illustrations/hero-audit-reports-mobile.svg"
+  },
+  {
+    "route": "/platform",
+    "slug": "platform",
+    "name": "Proposed platform",
+    "headline": "An evidence chain, with human responsibility.",
+    "visual": "network",
+    "background": "contour-lavender",
+    "sequence": "Source nodes connect to episode, reviewer and audit ports.",
+    "readingPath": "Sources \u2192 episode \u2192 reviewer \u2192 audit",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-platform.svg",
+    "mobileAsset": "assets/illustrations/hero-platform-mobile.svg"
+  },
+  {
+    "route": "/evidence",
+    "slug": "evidence",
+    "name": "Evidence",
+    "headline": "Separate published context from results still to test.",
+    "visual": "evidence",
+    "background": "paper-margin",
+    "sequence": "A source note aligns with an unmeasured evaluation field.",
+    "readingPath": "Published context / not yet measured",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-evidence.svg",
+    "mobileAsset": "assets/illustrations/hero-evidence-mobile.svg"
+  },
+  {
+    "route": "/evaluation",
+    "slug": "evaluation",
+    "name": "Evaluation",
+    "headline": "Agree what would make a pilot worth continuing.",
+    "visual": "gates",
+    "background": "folio-steps",
+    "sequence": "Numbered prerequisites appear, all pending; stop rule remains visible.",
+    "readingPath": "Interviews \u2192 blinded replay \u2192 approved funded scope",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-evaluation.svg",
+    "mobileAsset": "assets/illustrations/hero-evaluation-mobile.svg"
+  },
+  {
+    "route": "/pricing",
+    "slug": "pricing",
+    "name": "Hypothetical pricing",
+    "headline": "A price hypothesis for a bounded evaluation.",
+    "visual": "pricing",
+    "background": "lavender-horizon",
+    "sequence": "Two clear price components enter together without a sales counter.",
+    "readingPath": "$3,000/site/month + $8,000 setup; hypothetical",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-pricing.svg",
+    "mobileAsset": "assets/illustrations/hero-pricing-mobile.svg"
+  },
+  {
+    "route": "/request-demo",
+    "slug": "request-demo",
+    "name": "Guided demo request",
+    "headline": "See the source. Inspect the review.",
+    "visual": "invitation",
+    "background": "paper-margin",
+    "sequence": "An invitation folio opens to the guided walkthrough agenda.",
+    "readingPath": "Choose proposed module \u2192 discuss workflow",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-request-demo.svg",
+    "mobileAsset": "assets/illustrations/hero-request-demo-mobile.svg"
+  },
+  {
+    "route": "/request-pilot",
+    "slug": "request-pilot",
+    "name": "Scoped pilot inquiry",
+    "headline": "Define the evaluation together.",
+    "visual": "scope",
+    "background": "lavender-fog",
+    "sequence": "Owner, scope and approval tabs reveal above a stationary inquiry form.",
+    "readingPath": "Role \u2192 scope \u2192 approvals",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-request-pilot.svg",
+    "mobileAsset": "assets/illustrations/hero-request-pilot-mobile.svg"
+  },
+  {
+    "route": "/demo",
+    "slug": "demo",
+    "name": "Synthetic demo",
+    "headline": "Three cases. Three honest states.",
+    "visual": "cases",
+    "background": "split-paper",
+    "sequence": "Manual case selection moves the chosen folio forward.",
+    "readingPath": "Clean / ambiguous / blocked; manual selection",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-demo.svg",
+    "mobileAsset": "assets/illustrations/hero-demo-mobile.svg"
+  },
+  {
+    "route": "/trust",
+    "slug": "trust",
+    "name": "Governance",
+    "headline": "Make boundaries as visible as evidence.",
+    "visual": "boundary",
+    "background": "deep-archive",
+    "sequence": "A permission boundary highlights source access and human review.",
+    "readingPath": "Synthetic only \u2192 access review \u2192 human ownership",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-trust.svg",
+    "mobileAsset": "assets/illustrations/hero-trust-mobile.svg"
+  },
+  {
+    "route": "/resources",
+    "slug": "resources",
+    "name": "Resources",
+    "headline": "Read the workflow behind the concept.",
+    "visual": "index",
+    "background": "ledger-paper",
+    "sequence": "Topic index tabs settle into a stable reading order.",
+    "readingPath": "Workflow / uncertainty / evaluation",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-resources.svg",
+    "mobileAsset": "assets/illustrations/hero-resources-mobile.svg"
+  },
+  {
+    "route": "/resources/reconciliation",
+    "slug": "resource-reconciliation",
+    "name": "Reconciliation guide",
+    "headline": "Understand the reconciliation workflow.",
+    "visual": "article",
+    "background": "paper-margin",
+    "sequence": "A margin rule draws once beside a stable article heading.",
+    "readingPath": "Read \u2192 source \u2192 related workflow",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-resource-reconciliation.svg",
+    "mobileAsset": "assets/illustrations/hero-resource-reconciliation-mobile.svg"
+  },
+  {
+    "route": "/resources/uncertainty",
+    "slug": "resource-uncertainty",
+    "name": "Uncertainty guide",
+    "headline": "Missing is different from conflicting.",
+    "visual": "uncertainty",
+    "background": "split-paper",
+    "sequence": "Unknown and conflicting labels separate into distinct examples.",
+    "readingPath": "Unknown / conflicting / abstained",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-resource-uncertainty.svg",
+    "mobileAsset": "assets/illustrations/hero-resource-uncertainty-mobile.svg"
+  },
+  {
+    "route": "/resources/evaluation-method",
+    "slug": "resource-evaluation",
+    "name": "Evaluation method",
+    "headline": "Define the denominator before the result.",
+    "visual": "rubric",
+    "background": "folio-steps",
+    "sequence": "Empty metric slots reveal with no fabricated results.",
+    "readingPath": "Queue size \u2192 adjudication \u2192 guardrails",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-resource-evaluation.svg",
+    "mobileAsset": "assets/illustrations/hero-resource-evaluation-mobile.svg"
+  },
+  {
+    "route": "/about",
+    "slug": "about",
+    "name": "About",
+    "headline": "Make the source and the owner traceable.",
+    "visual": "principles",
+    "background": "lavender-horizon",
+    "sequence": "Three principle rules align to the Offset Folios rhythm.",
+    "readingPath": "Provenance \u2192 human ownership \u2192 measured evaluation",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-about.svg",
+    "mobileAsset": "assets/illustrations/hero-about-mobile.svg"
+  },
+  {
+    "route": "/contact",
+    "slug": "contact",
+    "name": "Contact",
+    "headline": "Bring the workflow. Keep patient data out.",
+    "visual": "contact",
+    "background": "paper-margin",
+    "sequence": "A short context tab settles while the inquiry area stays still.",
+    "readingPath": "Organizational inquiry \u2192 relevant next step",
+    "motion": {
+      "durationMs": 180,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-contact.svg",
+    "mobileAsset": "assets/illustrations/hero-contact-mobile.svg"
+  },
+  {
+    "route": "/sign-in",
+    "slug": "sign-in",
+    "name": "Concept access",
+    "headline": "Explore a labeled concept preview.",
+    "visual": "access",
+    "background": "lavender-fog",
+    "sequence": "An access boundary line draws once; no credential form moves.",
+    "readingPath": "Synthetic demo / request evaluation access",
+    "motion": {
+      "durationMs": 180,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-sign-in.svg",
+    "mobileAsset": "assets/illustrations/hero-sign-in-mobile.svg"
+  },
+  {
+    "route": "/legal/privacy",
+    "slug": "privacy",
+    "name": "Privacy",
+    "headline": "Make the collection boundary clear.",
+    "visual": "legal",
+    "background": "ledger-paper",
+    "sequence": "A thin folio rule enters once; all notice text is already visible.",
+    "readingPath": "Business context only; notice draft for review",
+    "motion": {
+      "durationMs": 180,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-privacy.svg",
+    "mobileAsset": "assets/illustrations/hero-privacy-mobile.svg"
+  },
+  {
+    "route": "/legal/terms",
+    "slug": "terms",
+    "name": "Terms",
+    "headline": "Define the scope of this concept preview.",
+    "visual": "terms",
+    "background": "paper-margin",
+    "sequence": "A small chapter marker fades in once; document remains stable.",
+    "readingPath": "Scope / limitations / contact",
+    "motion": {
+      "durationMs": 180,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-terms.svg",
+    "mobileAsset": "assets/illustrations/hero-terms-mobile.svg"
+  },
+  {
+    "route": "/accessibility",
+    "slug": "accessibility",
+    "name": "Accessibility",
+    "headline": "Keep evidence readable and controls usable.",
+    "visual": "accessibility",
+    "background": "lavender-horizon",
+    "sequence": "A focus outline appears on a sample control once; body stays still.",
+    "readingPath": "Keyboard / motion choice / readable states",
+    "motion": {
+      "durationMs": 180,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-accessibility.svg",
+    "mobileAsset": "assets/illustrations/hero-accessibility-mobile.svg"
+  },
+  {
+    "route": "/404",
+    "slug": "404",
+    "name": "Page not found",
+    "headline": "Find the next useful page.",
+    "visual": "recovery",
+    "background": "folio-steps",
+    "sequence": "A misfiled folio returns to its index; recovery links stay visible.",
+    "readingPath": "Products / demo / contact",
+    "motion": {
+      "durationMs": 3200,
+      "trigger": "One-time scene entrance or explicit Replay in kit; native scroll in website",
+      "reverse": "Source geometry retraces; no reviewer action changes on scroll",
+      "mobile": "Stacked full-size evidence or focused neighborhood; text stays readable",
+      "reduced": "Complete final still; no hidden content or moving labels"
+    },
+    "status": "Design-system hero specimen, not a complete website route",
+    "asset": "assets/illustrations/hero-404.svg",
+    "mobileAsset": "assets/illustrations/hero-404-mobile.svg"
+  }
+]

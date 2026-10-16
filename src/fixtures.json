@@ -1,0 +1,120 @@
+{
+  "seed": "rxlineage-concept23-v1",
+  "episodes": [
+    {
+      "id": "SYN-001",
+      "state": "completed",
+      "owner": "Pharmacist Reviewer A",
+      "intakeAt": "2026-10-12T08:00:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome",
+      "sourceObservedAt": [
+        "2026-10-11T16:00:00Z",
+        "2026-10-11T17:00:00Z"
+      ],
+      "reviewedAt": "2026-10-12T09:10:00Z"
+    },
+    {
+      "id": "SYN-002",
+      "state": "in-review",
+      "owner": "Pharmacist Reviewer B",
+      "intakeAt": "2026-10-12T08:25:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome",
+      "sourceObservedAt": [
+        "2026-10-12T08:20:00Z",
+        "2026-10-05T12:00:00Z"
+      ],
+      "nextReviewAt": "2026-10-12T10:30:00Z",
+      "sources": [
+        "SRC-002A",
+        "SRC-002B"
+      ],
+      "uncertainty": "Conflicting",
+      "confidence": "Not validated"
+    },
+    {
+      "id": "SYN-003",
+      "state": "blocked-abstained",
+      "owner": "Pharmacist Reviewer C",
+      "intakeAt": "2026-10-12T08:40:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Insufficient evidence, abstaining.",
+      "sourceObservedAt": [
+        "2026-10-12T08:30:00Z",
+        "2026-10-12T08:35:00Z"
+      ],
+      "nextReviewAt": "2026-10-12T11:00:00Z",
+      "sources": [
+        "SRC-003A",
+        "SRC-003B"
+      ],
+      "uncertainty": "Unknown",
+      "confidence": "Not validated"
+    },
+    {
+      "id": "SYN-004",
+      "state": "pending",
+      "owner": "Pharmacist Reviewer A",
+      "intakeAt": "2026-10-12T08:15:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome"
+    },
+    {
+      "id": "SYN-005",
+      "state": "pending",
+      "owner": "Pharmacist Reviewer B",
+      "intakeAt": "2026-10-12T08:20:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome"
+    },
+    {
+      "id": "SYN-006",
+      "state": "completed",
+      "owner": "Pharmacist Reviewer C",
+      "intakeAt": "2026-10-12T08:25:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome"
+    },
+    {
+      "id": "SYN-007",
+      "state": "rejected-flag",
+      "owner": "Pharmacist Reviewer A",
+      "intakeAt": "2026-10-12T08:30:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome"
+    },
+    {
+      "id": "SYN-008",
+      "state": "pending",
+      "owner": "Pharmacist Reviewer B",
+      "intakeAt": "2026-10-12T08:35:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome"
+    },
+    {
+      "id": "SYN-009",
+      "state": "blocked-abstained",
+      "owner": "Pharmacist Reviewer C",
+      "intakeAt": "2026-10-12T08:40:00Z",
+      "label": "DEMO \u2014 SYNTHETIC DATA",
+      "concept": "CONCEPT PREVIEW",
+      "note": "Synthetic fixture, not a measured outcome"
+    }
+  ],
+  "counts": {
+    "in-review": 1,
+    "rejected-flag": 1,
+    "completed": 2,
+    "pending": 3,
+    "blocked-abstained": 2
+  }
+}

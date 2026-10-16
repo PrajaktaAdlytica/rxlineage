@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "source-comparison",
+    "name": "Source Comparison",
+    "offer": "Source-attributed home-med/history comparison",
+    "status": "Proposed module"
+  },
+  {
+    "slug": "review-queue",
+    "name": "Review Queue",
+    "offer": "admission/discharge discrepancy review queue",
+    "status": "Proposed module"
+  },
+  {
+    "slug": "issue-review",
+    "name": "Issue Review",
+    "offer": "duplicate/allergy/dose issue prioritization for pharmacist adjudication",
+    "status": "Proposed module"
+  },
+  {
+    "slug": "clarification-drafts",
+    "name": "Clarification Drafts",
+    "offer": "clarifying-question drafts to prescriber/patient",
+    "status": "Proposed module"
+  },
+  {
+    "slug": "audit-reports",
+    "name": "Audit Reports",
+    "offer": "reconciliation completion and override audit reports",
+    "status": "Proposed module"
+  }
+]

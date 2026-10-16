@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-16T19:00:07.351Z",
+  "routes": 31,
+  "internalReferences": 1069,
+  "assetReferences": 1190,
+  "fixtureCounts": {
+    "completed": 2,
+    "in-review": 1,
+    "blocked-abstained": 2,
+    "pending": 3,
+    "rejected-flag": 1
+  },
+  "failures": []
+}

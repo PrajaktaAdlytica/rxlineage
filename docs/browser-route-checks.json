@@ -1,0 +1,314 @@
+[
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "Keep both accounts in view.",
+    "route": "/products/source-comparison/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "Every exception has an owner.",
+    "route": "/products/review-queue/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "Prioritize issues for pharmacist adjudication.",
+    "route": "/products/issue-review/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "Turn an unknown into a question to review.",
+    "route": "/products/clarification-drafts/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "Keep the review record inspectable.",
+    "route": "/products/audit-reports/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "An evidence chain, with human responsibility.",
+    "route": "/platform/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "A price hypothesis for a bounded evaluation.",
+    "route": "/pricing/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 1440,
+    "h1": "Agree what would make a pilot worth continuing.",
+    "route": "/evaluation/",
+    "wideSurfaces": [],
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Let pharmacists see which medication-history discrepancies deserve review.",
+    "route": "/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "One episode. Two accounts. A question to resolve.",
+    "route": "/problem/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Five proposed modules. One attributable workflow.",
+    "route": "/products/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Every exception has an owner.",
+    "route": "/products/review-queue/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Turn an unknown into a question to review.",
+    "route": "/products/clarification-drafts/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Start with the history behind the admission.",
+    "route": "/solutions/admission/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Make the unresolved handoff visible.",
+    "route": "/solutions/discharge/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Explore the next transition with permission.",
+    "route": "/solutions/transitions/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "A price hypothesis for a bounded evaluation.",
+    "route": "/pricing/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Agree what would make a pilot worth continuing.",
+    "route": "/evaluation/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Make boundaries as visible as evidence.",
+    "route": "/trust/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Read the workflow behind the concept.",
+    "route": "/resources/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Missing is different from conflicting.",
+    "route": "/resources/uncertainty/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Make the source and the owner traceable.",
+    "route": "/about/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "See the source. Inspect the review.",
+    "route": "/request-demo/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Define the evaluation together.",
+    "route": "/request-pilot/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Bring the workflow. Keep patient data out.",
+    "route": "/contact/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "A clear view.No account required.",
+    "route": "/sign-in/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Make the collection boundary clear.",
+    "route": "/legal/privacy/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Define the scope of this concept preview.",
+    "route": "/legal/terms/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Keep evidence readable and controls usable.",
+    "route": "/accessibility/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Find the next useful page.",
+    "route": "/404/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Keep both accounts in view.",
+    "route": "/products/source-comparison/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Prioritize issues for pharmacist adjudication.",
+    "route": "/products/issue-review/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Keep the review record inspectable.",
+    "route": "/products/audit-reports/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "An evidence chain, with human responsibility.",
+    "route": "/platform/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "A review path with a source at every step.",
+    "route": "/solutions/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Separate published context from results still to test.",
+    "route": "/evidence/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Understand the reconciliation workflow.",
+    "route": "/resources/reconciliation/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Define the denominator before the result.",
+    "route": "/resources/evaluation-method/",
+    "wideSurfaces": [],
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "documentWidth": 390,
+    "h1": "Three cases. Three honest states.",
+    "route": "/demo/",
+    "wideSurfaces": [],
+    "width": 390
+  }
+]
