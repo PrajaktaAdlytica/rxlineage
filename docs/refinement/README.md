@@ -12,4 +12,4 @@ Background revision: cleaner lavender and ivory fields replace the overlapping p
 
 QA: production build, TypeScript, prerender and automated reference checks passed. All 31 routes checked at 390px for headings, overflow and broken images; no failures. Homepage visually reviewed at 1440px, 775px and 390px. Verified pause/enable motion and complete static hero content. Checked computed rotation and removal of marked rings. Actual physical devices and full assistive-technology testing were not performed.
 
-Screenshots: hero-desktop.jpg, hero-tablet.jpg, hero-mobile.jpg, board-mobile.jpg, use-cases.jpg, closing.jpg. The closing capture preceded the final change from a section background to the continuous canvas.
+Screenshots: hero-desktop.jpg, hero-tablet.jpg, hero-mobile.jpg, board-mobile.jpg, use-cases.jpg, closing.jpg.
