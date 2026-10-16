@@ -23,7 +23,8 @@ import {
   sources,
   gateItems,
 } from "./content";
-import { Comparison } from "./Home";
+import { Comparison, SourceFolios } from "./Home";
+import { QueueScene, IssueScene, DraftScene, AuditScene } from "./HeroScenes";
 const productDetail = [
   {
     desc: "See the source behind each displayed field. Keep reported history and dated pharmacy history side by side, without treating either as complete or authoritative.",
@@ -132,6 +133,15 @@ function ProductPage({ index }: { index: number }) {
     <>
       <PageHero
         slug={moduleSlugs[index]}
+        visual={
+          [
+            <SourceFolios />,
+            <QueueScene />,
+            <IssueScene />,
+            <DraftScene />,
+            <AuditScene />,
+          ][index]
+        }
         tag={
           "Proposed module 0" +
           (index + 1) +

@@ -432,6 +432,7 @@ export function HeroArt({
     heroArt.home;
   const prepare = (s: string, variant: string) =>
     s
+      .replace(/<rect width="(?:800|400)" height="(?:480|700)"[^>]*\/>/, "")
       .replace(/id="([^"]+)"/g, (_, n) => `id="${uid}-${variant}-${n}"`)
       .replace(
         /aria-labelledby="([^"]+)"/g,
@@ -461,12 +462,14 @@ export function PageHero({
   tag = "Research-stage concept",
   cta = true,
   jump,
+  visual,
 }: {
   slug: string;
   description: string;
   tag?: string;
   cta?: boolean;
   jump?: [string, string];
+  visual?: React.ReactNode;
 }) {
   const p = pages.find((x) => x.slug === slug) || pages[0];
   return (
@@ -497,7 +500,10 @@ export function PageHero({
           </p>
         </div>
         <div className="hero-visual">
-          <HeroArt slug={slug} />
+          <div className="hero-scene-orbit" aria-hidden="true" />
+          <div className="hero-scene-contents">
+            {visual || <HeroArt slug={slug} />}
+          </div>
           <p className="visual-caption">
             {p.readingPath} <span>Illustrative workflow</span>
           </p>

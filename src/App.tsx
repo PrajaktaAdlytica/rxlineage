@@ -7,7 +7,8 @@ import { MotionContext } from "./motion-context";
 import { ContentPage, NotFound } from "./Pages";
 import { InquiryPage, SignIn } from "./Forms";
 import { Demo } from "./Demo";
-import { pages, palette } from "./content";
+import { pages } from "./content";
+import { Atmosphere, atmosphereFamily } from "./Atmosphere";
 export function App({ initialPath = "/" }: { initialPath?: string }) {
   const path = initialPath.replace(/\/$/, "") || "/";
   const [paused, setPaused] = useState(false);
@@ -22,52 +23,9 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
     return () => q.removeEventListener("change", cb);
   }, []);
   useEffect(() => {
-    const root = main.current;
-    if (!root) return;
-    const canvas = root.querySelector<HTMLElement>(".site-atmosphere")!;
-    const update = () => {
-      const children = Array.from(
-        root.querySelectorAll<HTMLElement>(":scope > section[data-tone]"),
-      );
-      const stops: string[] = [];
-      children.forEach((el) => {
-        const color =
-          palette[el.dataset.tone as keyof typeof palette] || palette.paper;
-        const top = el.offsetTop,
-          end = top + el.offsetHeight;
-        const inset = Math.min(100, el.offsetHeight * 0.1);
-        stops.push(
-          `${color} ${Math.round(top + inset)}px`,
-          `${color} ${Math.round(end - inset)}px`,
-        );
-      });
-      canvas.style.backgroundImage = `linear-gradient(to bottom,${stops.join(",")})`;
-      ScrollTrigger.refresh();
-    };
-    const obs = new ResizeObserver(update);
-    obs.observe(root);
-    document.fonts.ready.then(() => {
-      update();
-      if (location.hash) {
-        let targetId = location.hash.slice(1);
-        try {
-          targetId = decodeURIComponent(targetId);
-        } catch {
-          /* Keep a literal invalid hash harmless. */
-        }
-        const target = document.getElementById(targetId);
-        if (target)
-          requestAnimationFrame(() =>
-            target.scrollIntoView({ behavior: "instant", block: "start" }),
-          );
-      }
-    });
-    update();
-    return () => obs.disconnect();
-  }, [path]);
-  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (motionPaused) return;
+    const media = gsap.matchMedia();
     const context = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) =>
         gsap.from(el, {
@@ -121,7 +79,7 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
             scrub: 1,
           },
         });
-      } else {
+      } else if (main.current?.querySelector(".hero-visual")) {
         gsap.from(".hero-visual", {
           y: 30,
           opacity: 0,
@@ -131,6 +89,112 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           ease: "power3.out",
         });
       }
+      media.add("(min-width: 901px) and (min-height: 650px)", () => {
+        gsap.utils.toArray<HTMLElement>(".hero-scene-contents").forEach((el) =>
+          gsap.to(el, {
+            yPercent: -7,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el.closest("section"),
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          }),
+        );
+        gsap.utils.toArray<HTMLElement>(".hero-scene-orbit").forEach((el) =>
+          gsap.to(el, {
+            rotation: "+=32",
+            scale: 1.12,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el.closest("section"),
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          }),
+        );
+        gsap.utils.toArray<HTMLElement>(".chapter-orbit").forEach((el) =>
+          gsap.fromTo(
+            el,
+            { scale: 0.68, rotation: -20 },
+            {
+              scale: 1.18,
+              rotation: 35,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el.closest("section"),
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.8,
+              },
+            },
+          ),
+        );
+      });
+      gsap.utils
+        .toArray<HTMLElement>(".lineage-chapter .chapter-copy > *")
+        .forEach((el, i) =>
+          gsap.from(el, {
+            y: 26,
+            opacity: 0,
+            duration: 1,
+            delay: i * 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".lineage-chapter",
+              start: "top 65%",
+              once: true,
+            },
+          }),
+        );
+      gsap.utils.toArray<HTMLElement>(".scene-piece").forEach((el, i) =>
+        gsap.from(el, {
+          y: 25,
+          opacity: 0,
+          duration: 0.9,
+          delay: 0.2 + (i % 4) * 0.14,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 95%", once: true },
+        }),
+      );
+      gsap.utils
+        .toArray<HTMLElement>(".draft-typed,.review-note blockquote")
+        .forEach((el) =>
+          gsap.from(el, {
+            clipPath: "inset(0 100% 0 0)",
+            duration: 1.1,
+            ease: "power2.inOut",
+            scrollTrigger: { trigger: el, start: "top 88%", once: true },
+          }),
+        );
+      gsap.utils.toArray<HTMLElement>(".walk-mobile-visual").forEach((el) =>
+        gsap.from(el, {
+          y: 25,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 92%", once: true },
+        }),
+      );
+      gsap.utils.toArray<HTMLElement>(".closing-orbit").forEach((el) =>
+        gsap.fromTo(
+          el,
+          { scale: 0.82, rotation: -22 },
+          {
+            scale: 1.05,
+            rotation: 7,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el.closest("section"),
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          },
+        ),
+      );
       const pathEl =
         main.current?.querySelector<SVGPathElement>(".lineage-progress");
       if (pathEl) {
@@ -148,7 +212,10 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
         });
       }
     }, main);
-    return () => context.revert();
+    return () => {
+      media.revert();
+      context.revert();
+    };
   }, [path, motionPaused]);
   useEffect(() => {
     const visibility = () =>
@@ -186,9 +253,14 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
             setPaused(!motionPaused);
           }}
         />
-        <main id="main" ref={main} tabIndex={-1}>
-          <div className="site-atmosphere" aria-hidden="true" />
-          <div className="atmosphere-texture" aria-hidden="true" />
+        <main
+          id="main"
+          ref={main}
+          tabIndex={-1}
+          data-family={atmosphereFamily(path)}
+          data-page={path}
+        >
+          <Atmosphere root={main} path={path} />
           <svg
             className="global-thread"
             viewBox="0 0 1440 7000"

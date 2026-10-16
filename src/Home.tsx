@@ -230,6 +230,9 @@ function StorySequence() {
             >
               Workflow context: AHRQ MATCH toolkit <Icon name="external-link" />
             </a>
+            <div className="walk-mobile-visual">
+              <Comparison stage={1} />
+            </div>
           </article>
           <article className="walk-step">
             <Eyebrow>02 / The difference</Eyebrow>
@@ -246,6 +249,9 @@ function StorySequence() {
             <p className="marginal-note">
               A newer source is not automatically authoritative.
             </p>
+            <div className="walk-mobile-visual">
+              <Comparison stage={2} />
+            </div>
           </article>
           <article className="walk-step">
             <Eyebrow>03 / The evidence</Eyebrow>
@@ -262,6 +268,9 @@ function StorySequence() {
             <TextLink href="/products/source-comparison">
               Explore Source Comparison
             </TextLink>
+            <div className="walk-mobile-visual">
+              <Comparison stage={3} />
+            </div>
           </article>
         </div>
         <div className="walk-demo">
@@ -460,6 +469,47 @@ export function Home() {
           Skip to modules <Icon name="skip-forward" />
         </a>
       </div>
+      <section
+        className="lineage-chapter dark-section section"
+        data-tone="dark"
+      >
+        <div className="chapter-orbit" aria-hidden="true">
+          <span />
+          <span />
+        </div>
+        <div className="container chapter-copy">
+          <Eyebrow>One evidence chain / An accountable reader</Eyebrow>
+          <h2>
+            Two histories.
+            <br />
+            <em>One accountable review.</em>
+          </h2>
+          <p>
+            In the proposed workflow, sources remain distinct. Their dates,
+            differences and uncertainty stay attached—all the way to the
+            pharmacist.
+          </p>
+          <div
+            className="lineage-tokens"
+            aria-label="Proposed evidence sequence"
+          >
+            <span>
+              <b>01</b>Reported history
+            </span>
+            <i aria-hidden="true" />
+            <span>
+              <b>02</b>Dated source
+            </span>
+            <i aria-hidden="true" />
+            <span>
+              <b>03</b>Human review
+            </span>
+          </div>
+          <p className="chapter-disclosure">
+            Concept preview · No automatic adjudication
+          </p>
+        </div>
+      </section>
       <StorySequence />
       <section
         id="uncertainty"

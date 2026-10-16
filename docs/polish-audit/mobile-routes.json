@@ -1,0 +1,250 @@
+[
+  {
+    "brokenImages": 0,
+    "fields": 14,
+    "h1": "Let pharmacists see which medication-history discrepancies deserve review.",
+    "overflow": 0,
+    "route": "/",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "One episode. Two accounts. A question to resolve.",
+    "overflow": 0,
+    "route": "/problem",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 6,
+    "h1": "A review path with a source at every step.",
+    "overflow": 0,
+    "route": "/solutions",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "Start with the history behind the admission.",
+    "overflow": 0,
+    "route": "/solutions/admission",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "Make the unresolved handoff visible.",
+    "overflow": 0,
+    "route": "/solutions/discharge",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "Explore the next transition with permission.",
+    "overflow": 0,
+    "route": "/solutions/transitions",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 4,
+    "h1": "Five proposed modules. One attributable workflow.",
+    "overflow": 0,
+    "route": "/products",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 7,
+    "h1": "Keep both accounts in view.",
+    "overflow": 0,
+    "route": "/products/source-comparison",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 7,
+    "h1": "Every exception has an owner.",
+    "overflow": 0,
+    "route": "/products/review-queue",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 7,
+    "h1": "Prioritize issues for pharmacist adjudication.",
+    "overflow": 0,
+    "route": "/products/issue-review",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 7,
+    "h1": "Turn an unknown into a question to review.",
+    "overflow": 0,
+    "route": "/products/clarification-drafts",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 7,
+    "h1": "Keep the review record inspectable.",
+    "overflow": 0,
+    "route": "/products/audit-reports",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "An evidence chain, with human responsibility.",
+    "overflow": 0,
+    "route": "/platform",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "Separate published context from results still to test.",
+    "overflow": 0,
+    "route": "/evidence",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 6,
+    "h1": "Agree what would make a pilot worth continuing.",
+    "overflow": 0,
+    "route": "/evaluation",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "A price hypothesis for a bounded evaluation.",
+    "overflow": 0,
+    "route": "/pricing",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "See the source. Inspect the review.",
+    "overflow": 0,
+    "route": "/request-demo",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "Define the evaluation together.",
+    "overflow": 0,
+    "route": "/request-pilot",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "Three cases. Three honest states.",
+    "overflow": 0,
+    "route": "/demo",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 6,
+    "h1": "Make boundaries as visible as evidence.",
+    "overflow": 0,
+    "route": "/trust",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 4,
+    "h1": "Read the workflow behind the concept.",
+    "overflow": 0,
+    "route": "/resources",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 3,
+    "h1": "Understand the reconciliation workflow.",
+    "overflow": 0,
+    "route": "/resources/reconciliation",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 3,
+    "h1": "Missing is different from conflicting.",
+    "overflow": 0,
+    "route": "/resources/uncertainty",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 3,
+    "h1": "Define the denominator before the result.",
+    "overflow": 0,
+    "route": "/resources/evaluation-method",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 5,
+    "h1": "Make the source and the owner traceable.",
+    "overflow": 0,
+    "route": "/about",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "Bring the workflow. Keep patient data out.",
+    "overflow": 0,
+    "route": "/contact",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 1,
+    "h1": "A clear view.No account required.",
+    "overflow": 0,
+    "route": "/sign-in",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "Make the collection boundary clear.",
+    "overflow": 0,
+    "route": "/legal/privacy",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "Define the scope of this concept preview.",
+    "overflow": 0,
+    "route": "/legal/terms",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "Keep evidence readable and controls usable.",
+    "overflow": 0,
+    "route": "/accessibility",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "fields": 2,
+    "h1": "Find the next useful page.",
+    "overflow": 0,
+    "route": "/404",
+    "width": 390
+  }
+]
