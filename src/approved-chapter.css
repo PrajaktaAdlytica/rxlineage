@@ -1,0 +1,70 @@
+/* Frozen section appearance from approved version 596d8d6. */
+.lineage-chapter {
+  background: transparent !important;
+}
+.approved-chapter-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+  isolation: isolate;
+}
+.approved-chapter-canvas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #281d34;
+  z-index: -4;
+}
+.approved-chapter-lights {
+  position: absolute;
+  inset: 0;
+  mask-image: linear-gradient(transparent, #000 16%, #000 84%, transparent);
+  z-index: -3;
+}
+.approved-chapter-light-one,
+.approved-chapter-light-two {
+  position: absolute;
+  inset: -20% -10%;
+}
+.approved-chapter-light-one {
+  background: radial-gradient(ellipse at 12% 45%, #8f5ba966, transparent 62%);
+}
+.approved-chapter-light-two {
+  background: radial-gradient(ellipse at 85% 60%, #b68b6844, transparent 50%);
+}
+.approved-chapter-grain {
+  position: absolute;
+  inset: 0;
+  background: url("/texture-grain.svg") 0 0/180px 180px;
+  opacity: 0.065;
+  mix-blend-mode: multiply;
+  z-index: -2;
+}
+.approved-chapter-trace {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  fill: none;
+  z-index: -1;
+}
+.approved-chapter-trace path {
+  stroke: #a67559;
+  stroke-width: 1.15;
+  opacity: 0.25;
+  vector-effect: non-scaling-stroke;
+}
+.approved-chapter-trace .approved-chapter-progress {
+  stroke: #b99069;
+  stroke-width: 1.5;
+  opacity: 0.7;
+}
+.motion-paused .approved-chapter-progress {
+  stroke-dashoffset: 0 !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .approved-chapter-progress {
+    stroke-dashoffset: 0 !important;
+  }
+}

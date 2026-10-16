@@ -15,6 +15,7 @@ import {
   FAQ,
 } from "./components";
 import { stopRule, sources } from "./content";
+import { ApprovedChapterBackdrop } from "./ApprovedChapterBackdrop";
 import { EntranceWorkbench } from "./EntranceWorkbench";
 import { MotionContext } from "./motion-context";
 export function SourceFolios() {
@@ -471,6 +472,7 @@ export function Home() {
         className="lineage-chapter dark-section section"
         data-tone="dark"
       >
+        <ApprovedChapterBackdrop />
         <div className="chapter-orbit" aria-hidden="true">
           <span />
           <span />
