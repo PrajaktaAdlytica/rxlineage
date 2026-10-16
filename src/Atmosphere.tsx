@@ -2,7 +2,11 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionContext } from "./motion-context";
-type Scene = { top: number; height: number; kind: "hero" | "night" };
+type Scene = {
+  top: number;
+  height: number;
+  kind: "hero" | "night" | "reading";
+};
 export function atmosphereFamily(path: string) {
   if (path === "/") return "evidence";
   if (path.startsWith("/products")) return "folio";
@@ -47,6 +51,7 @@ export function Atmosphere({
           else next.push({ top, height, kind: "night" });
         } else if (section.matches(".home-hero,.page-hero,.access-hero"))
           next.push({ top, height, kind: "hero" });
+        else next.push({ top, height, kind: "reading" });
       }
       el.classList.add("has-atmosphere");
       setScenes((old) =>
@@ -106,6 +111,26 @@ export function Atmosphere({
           },
         ),
       );
+      gsap.utils
+        .toArray<HTMLElement>(".daylight-bloom,.reading-bloom")
+        .forEach((el) =>
+          gsap.fromTo(
+            el,
+            { scale: 0.88, yPercent: -3, opacity: 0.55 },
+            {
+              scale: 1.18,
+              yPercent: 4,
+              opacity: 0.95,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el.parentElement,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.8,
+              },
+            },
+          ),
+        );
     }, layer);
     return () => context.revert();
   }, [paused, scenes]);
@@ -120,6 +145,7 @@ export function Atmosphere({
               className="daylight-scene"
               style={{ top: scene.top, height: scene.height }}
             >
+              <div className="daylight-bloom" />
               <svg
                 className="daylight-planes"
                 viewBox="0 0 1440 850"
@@ -127,17 +153,25 @@ export function Atmosphere({
               >
                 <path
                   d="M0 700C450 860 950 560 1440 680V850H0Z"
-                  fill="#E5D8F0"
+                  fill="#D0ACE5"
                 />
                 <path
                   d="M0 800C440 920 1100 640 1440 760V850H0Z"
-                  fill="#D2BEE3"
+                  fill="#BE97D8"
                 />
                 <path
                   d="M650 850C1100 690 1300 710 1440 750V850Z"
-                  fill="#BDA1D1"
+                  fill="#B18BCF"
                 />
               </svg>
+            </div>
+          ) : scene.kind === "reading" ? (
+            <div
+              key={i}
+              className="reading-scene"
+              style={{ top: scene.top, height: scene.height }}
+            >
+              <div className="reading-bloom" />
             </div>
           ) : (
             <div

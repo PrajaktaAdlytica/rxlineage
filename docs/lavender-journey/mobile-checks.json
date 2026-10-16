@@ -1,0 +1,219 @@
+[
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/problem"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/solutions"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/solutions/admission"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/solutions/discharge"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/solutions/transitions"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/products"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/products/source-comparison"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/products/review-queue"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/products/issue-review"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/products/clarification-drafts"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/products/audit-reports"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/platform"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/evidence"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/evaluation"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/pricing"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/request-demo"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/request-pilot"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/demo"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/trust"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/resources"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/resources/reconciliation"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/resources/uncertainty"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/resources/evaluation-method"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/about"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/contact"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/sign-in"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/legal/privacy"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/legal/terms"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/accessibility"
+  },
+  {
+    "broken": 0,
+    "canvas": "rgb(207, 178, 224)",
+    "overflow": 0,
+    "paths": 0,
+    "route": "/404"
+  }
+]

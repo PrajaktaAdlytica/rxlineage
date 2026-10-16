@@ -1,6 +1,7 @@
-/* Broad, filled colour planes. No interpolation between ivory and plum. */
+/* A sustained lavender field: pale paper is reserved for evidence surfaces.
+   The approved chapter is independently scoped in approved-chapter.css. */
 .site-atmosphere {
-  background: #faf6ef !important;
+  background: #cfb2e0 !important;
   background-image: none !important;
 }
 .daylight-canvas {
@@ -11,6 +12,7 @@
   pointer-events: none;
 }
 .daylight-scene,
+.reading-scene,
 .night-scene {
   position: absolute;
   left: 0;
@@ -18,14 +20,37 @@
 }
 .daylight-scene {
   overflow: hidden;
-  background: #faf6ef;
+  background: linear-gradient(115deg, #dfc7ed 5%, #c59cdd 56%, #b78dd0 100%);
 }
 .daylight-planes {
   position: absolute;
   width: 100%;
   height: 100%;
   inset: 0;
-  opacity: 0.75;
+  opacity: 0.65;
+  z-index: 1;
+}
+.daylight-bloom {
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(
+    ellipse at 65% 45%,
+    #eedaf4 0,
+    #d8aee188 35%,
+    transparent 66%
+  );
+  transform-origin: 70% 50%;
+}
+.reading-scene {
+  overflow: hidden;
+  mask-image: linear-gradient(transparent, #000 25%, #000 75%, transparent);
+}
+.reading-bloom {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 78% 45%, #a976c066, transparent 65%),
+    radial-gradient(ellipse at 12% 70%, #edd0ed88, transparent 58%);
 }
 .night-scene {
   --night: #281d34;
@@ -48,16 +73,13 @@
 .night-edge-bottom {
   bottom: 0;
 }
-.home-hero {
-  background: transparent !important;
-}
+.home-hero,
 .page-hero {
   background: transparent !important;
 }
 .has-atmosphere .dark-section {
   background: transparent;
 }
-/* Keep the approved chapter's local light and expanding aperture. */
 .dark-section:not(.lineage-chapter)::after {
   display: none;
 }
@@ -66,65 +88,80 @@
   padding-bottom: max(140px, 9vw);
 }
 .reader-rail {
-  background: #faf6ef;
-  border-color: #c6b8cf;
-}
-.closing {
-  background: transparent !important;
+  background: #cfb2e0;
+  border-color: #a380b9;
 }
 .site-header {
-  background: #faf6efed;
+  background: #e4d0eeed;
+}
+.mega-menu {
+  background: #eadcf2;
+}
+.menu-intro {
+  background: #c6a7dc;
 }
 .module-preview::before,
 .case-section::before,
-.uncertainty-card,
-.uncertainty-card + article,
 .before-after > div + div {
   background: none;
 }
 .uncertainty-card,
 .uncertainty-card + article {
-  background: #f0e8f5;
+  background: #e3cfee;
+  border-color: #9b78b6;
 }
 .case-card {
-  background: #efe4f5;
+  background: #c3a2d7;
 }
 .case-card.selected {
   background: #fcfaf7;
 }
-/* Ivory reading runs feel continuous. Lavender deepens in the product scenes. */
-.platform-section {
-  background: #f3ebf8;
-  border-radius: 0 0 48% 5% / 0 0 5% 1%;
-}
-.usecase-section {
-  background: transparent;
-}
-.price-section {
-  background: #eee3f6;
-}
+.platform-section,
+.usecase-section,
+.price-section,
 .section.paper-section,
-.section.mist-section {
+.section.mist-section,
+.faq-section {
   background: transparent;
+  border-radius: 0;
+}
+.closing {
+  background: linear-gradient(180deg, #cfb2e0, #b68aca) !important;
 }
 .page-hero .hero-visual::before,
 .page-hero::after {
   display: none !important;
 }
-[data-family="quiet"] .daylight-planes {
-  opacity: 0.25;
+/* Page-family colour variations remain within the selected lavender identity. */
+[data-family="lineage"] .daylight-scene {
+  background: linear-gradient(115deg, #cfb9e6, #b08dcc);
 }
-[data-family="editorial"] .daylight-planes {
+[data-family="transition"] .daylight-scene {
+  background: linear-gradient(120deg, #ddbee5, #bf99d5);
+}
+[data-family="copper"] .daylight-scene {
+  background: linear-gradient(120deg, #e5c9e7, #c097d6);
+}
+[data-family="editorial"] .daylight-scene {
+  background: linear-gradient(120deg, #dfccec, #c1a0d9);
+}
+[data-family="quiet"] .daylight-scene {
+  background: linear-gradient(120deg, #e6d8ef, #d1b8e1);
+}
+[data-family="quiet"] .reading-bloom {
   opacity: 0.45;
 }
-[data-family="copper"] .daylight-planes {
-  opacity: 0.6;
+.module-row {
+  border-color: #a381b7;
 }
 @media (max-width: 760px) {
   .daylight-planes {
     width: 180%;
     left: -65%;
-    opacity: 0.65;
+    opacity: 0.6;
+  }
+  .daylight-bloom {
+    inset: 0 -30%;
   }
   .night-edge {
     height: 70px;
@@ -135,13 +172,37 @@
   .dark-section:not(.lineage-chapter) {
     padding-block: 100px;
   }
-  .platform-section {
-    border-radius: 0;
+  .reading-bloom {
+    background: radial-gradient(ellipse at 80% 50%, #aa77c266, transparent 70%);
   }
 }
-.daylight-scene {
-  background: linear-gradient(110deg, #faf6ef 28%, #f0e7f5 67%, #e3d4ed 100%);
+
+main > section:not(.dark-section),
+.menu-intro {
+  --secondary: #50375f;
 }
-.lineage-chapter {
-  background: #281d34 !important;
+main > section:not(.dark-section) .eyebrow,
+main > section:not(.dark-section) .concept-note,
+main > section:not(.dark-section) .visual-caption {
+  color: #50375f;
+}
+/* A warmer dusk passage before the final amethyst invitation. */
+.case-section {
+  background: linear-gradient(180deg, transparent, #d7b7d5 48%, transparent);
+}
+.price-section {
+  background: linear-gradient(180deg, transparent, #d8b7d2);
+}
+.faq-section {
+  background: linear-gradient(180deg, #cfb2e0, #d8b7d2);
+}
+main[data-page="/"] .faq-section {
+  background: #d8b7d2;
+}
+.closing {
+  background: linear-gradient(180deg, #d8b7d2, #b68aca) !important;
+}
+main > section.page-hero .visual-caption,
+.closing .small {
+  color: #352c40;
 }
