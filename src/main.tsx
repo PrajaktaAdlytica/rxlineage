@@ -7,3 +7,5 @@ const root = document.getElementById("root")!;
 const app = <App initialPath={location.pathname} />;
 if (root.hasChildNodes()) hydrateRoot(root, app);
 else createRoot(root).render(app);
+
+import "./refinement.css";

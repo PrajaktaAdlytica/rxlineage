@@ -1,0 +1,219 @@
+[
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/problem",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/solutions",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/solutions/admission",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/solutions/discharge",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/solutions/transitions",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/products",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/products/source-comparison",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/products/review-queue",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/products/issue-review",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/products/clarification-drafts",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/products/audit-reports",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/platform",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/evidence",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/evaluation",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/pricing",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/request-demo",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/request-pilot",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/demo",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/trust",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/resources",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/resources/reconciliation",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/resources/uncertainty",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/resources/evaluation-method",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/about",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/contact",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/sign-in",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/legal/privacy",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/legal/terms",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/accessibility",
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heading": true,
+    "overflow": 0,
+    "route": "/404",
+    "width": 390
+  }
+]

@@ -15,6 +15,7 @@ import {
   FAQ,
 } from "./components";
 import { stopRule, sources } from "./content";
+import { EntranceWorkbench } from "./EntranceWorkbench";
 import { MotionContext } from "./motion-context";
 export function SourceFolios() {
   return (
@@ -440,8 +441,8 @@ export function Home() {
               guidance.
             </p>
           </div>
-          <div className="hero-visual">
-            <SourceFolios />
+          <div className="hero-visual entrance-visual">
+            <EntranceWorkbench />
           </div>
         </div>
         <a href="#story" className="scroll-invitation">

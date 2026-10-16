@@ -10,10 +10,10 @@ type Field = {
   kind: string;
 };
 const canvas: Record<string, string> = {
-  paper: "#F7F0E7",
-  mist: "#E4D4EE",
-  lavender: "#CBB2DE",
-  white: "#FBF6EF",
+  paper: "#F8F5EF",
+  mist: "#EAE2F2",
+  lavender: "#DDD1EE",
+  white: "#FBF9F5",
   dark: "#281D34",
 };
 export function atmosphereFamily(path: string) {
@@ -63,10 +63,11 @@ export function Atmosphere({
           height: Math.round(height),
           dark: tone === "dark",
           side: i % 3 === 0 ? "right" : i % 3 === 1 ? "left" : "center",
-          kind:
-            section.classList.contains("page-hero") ||
-            section.classList.contains("home-hero") ||
-            section.classList.contains("access-hero")
+          kind: section.classList.contains("lineage-chapter")
+            ? "chapter-preserved"
+            : section.classList.contains("page-hero") ||
+                section.classList.contains("home-hero") ||
+                section.classList.contains("access-hero")
               ? "hero"
               : tone === "dark"
                 ? "archive"
@@ -76,6 +77,13 @@ export function Atmosphere({
       const bg = el.querySelector<HTMLElement>(".site-atmosphere");
       if (bg)
         bg.style.backgroundImage = `linear-gradient(to bottom,${stops.join(",")})`;
+      const chapter = el.querySelector<HTMLElement>(".lineage-chapter");
+      const thread = el.querySelector<SVGElement>(".global-thread");
+      if (thread) {
+        if (chapter) {
+          thread.style.clipPath = `inset(${chapter.offsetTop}px 0 ${Math.max(0, el.offsetHeight - chapter.offsetTop - chapter.offsetHeight)}px 0)`;
+        } else thread.style.display = "none";
+      }
       el.classList.add("has-atmosphere");
       setFields((old) =>
         JSON.stringify(old) === JSON.stringify(next) ? old : next,

@@ -44,40 +44,26 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           stagger: 0.1,
           ease: "power3.out",
         });
-        gsap.from(".source-a", {
-          x: -36,
+        gsap.from(".entrance-workbench", {
           y: 35,
-          rotation: -4,
           opacity: 0,
-          duration: 1.3,
-          delay: 0.2,
+          duration: 1.1,
+          delay: 0.25,
           ease: "power3.out",
         });
-        gsap.from(".source-b", {
-          x: 42,
-          y: 50,
-          rotation: 5,
+        gsap.from(".entrance-source", {
+          y: 20,
           opacity: 0,
-          duration: 1.3,
-          delay: 0.45,
+          duration: 0.8,
+          stagger: 0.16,
+          delay: 0.6,
           ease: "power3.out",
         });
-        gsap.from(".orbit-conflict", {
-          scale: 0.85,
+        gsap.from(".entrance-finding", {
+          y: 10,
           opacity: 0,
           duration: 0.6,
-          delay: 1.3,
-        });
-        gsap.to(".source-loop", {
-          rotation: 15,
-          y: 45,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".home-hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
+          delay: 1.05,
         });
       } else if (main.current?.querySelector(".hero-visual")) {
         gsap.from(".hero-visual", {

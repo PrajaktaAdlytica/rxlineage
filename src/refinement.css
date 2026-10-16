@@ -1,0 +1,381 @@
+/* Art-directed revision: clear lavender fields and an aligned evidence ledger. */
+/* The approved chapter retains its own colour, composition and ring motion. */
+.light-field:not(.field-chapter-preserved) .ambient-light {
+  background: none;
+}
+.light-field.field-hero:not(.field-chapter-preserved) .light-one {
+  background: linear-gradient(
+    115deg,
+    transparent 24%,
+    #dbcaed80 62%,
+    #c1aadccc 100%
+  );
+  inset: 0;
+  transform: none !important;
+}
+.light-field.field-hero:not(.field-chapter-preserved) .light-two {
+  background: none;
+}
+.atmosphere-texture {
+  opacity: 0.022;
+}
+.home-hero {
+  padding-block: 70px 90px;
+  min-height: 820px;
+}
+.home-hero .hero-grid {
+  grid-template-columns: 1.02fr 1fr;
+  gap: 65px;
+  align-items: center;
+}
+.home-hero .hero-copy h1 {
+  font-size: clamp(48px, 4.5vw, 69px);
+  max-width: 15ch;
+}
+.home-hero .entrance-visual {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+}
+.entrance-workbench {
+  background: #fcfaf7;
+  color: #352c40;
+  border: 1px solid #ab98bd80;
+  border-radius: 12px;
+  box-shadow:
+    0 28px 65px #4a305b1a,
+    0 2px 6px #352c4006;
+  padding: 26px 29px 15px;
+  position: relative;
+}
+.entrance-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c8bdce;
+  padding-bottom: 17px;
+  margin-bottom: 17px;
+  gap: 15px;
+}
+.entrance-mark {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+.entrance-mark .icon {
+  width: 20px;
+  height: 20px;
+}
+.entrance-top > .mono {
+  font-size: 10px;
+  color: #6e5c7b;
+}
+.entrance-workbench > .demo-badges {
+  position: static;
+  justify-content: flex-start;
+  gap: 6px;
+  margin-bottom: 27px;
+}
+.entrance-workbench > .demo-badges > span {
+  font-size: 8px;
+  padding: 5px 8px;
+  background: transparent;
+}
+.entrance-heading > span {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: #70617d;
+}
+.entrance-heading h2 {
+  font-size: clamp(38px, 3.4vw, 51px);
+  line-height: 1;
+  font-weight: 400;
+  margin: 12px 0 26px;
+  letter-spacing: -0.035em;
+}
+.entrance-heading h2 em {
+  color: #79618f;
+  font-weight: 400;
+}
+.entrance-sources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid #bfb1c9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.entrance-source {
+  padding: 17px;
+  background: #f4edf8;
+}
+.entrance-source + .entrance-source {
+  border-left: 1px solid #bfb1c9;
+  background: #eee5f4;
+}
+.entrance-source-index {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  color: #6b587c;
+}
+.entrance-source-index .icon {
+  width: 15px;
+  height: 15px;
+}
+.entrance-source h3 {
+  font-size: 28px;
+  line-height: 1.05;
+  margin: 20px 0 14px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+.entrance-source-date {
+  font:
+    9px/1.7 "IBM Plex Mono",
+    monospace;
+  color: #6b587c;
+  margin: 0 0 21px;
+}
+.entrance-value {
+  border-top: 1px solid #c9bcd3;
+  padding-top: 13px;
+}
+.entrance-value > span {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 8px;
+}
+.entrance-value strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #783947;
+  background: #ead9df;
+  padding: 9px 10px;
+  min-height: 50px;
+}
+.entrance-finding {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 0;
+  border-bottom: 1px solid #c8bdce;
+  gap: 12px;
+}
+.entrance-finding > span {
+  font-size: 11px;
+  line-height: 1.35;
+  color: #6c5b79;
+}
+.entrance-finding .chip {
+  font-size: 11px;
+}
+.entrance-owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 17px;
+}
+.entrance-avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #d6c6e5;
+  font-size: 10px;
+}
+.entrance-owner > div {
+  flex: 1;
+}
+.entrance-owner strong {
+  display: block;
+  font-size: 12px;
+}
+.entrance-owner div > span {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: #6c5b79;
+}
+.entrance-owner > .icon {
+  width: 16px;
+  height: 16px;
+  color: #766481;
+}
+.entrance-foot {
+  font:
+    8px/1.5 "IBM Plex Mono",
+    monospace;
+  color: #766481;
+  margin: 14px 0 0;
+}
+.signed-strip,
+.review-note {
+  transform: none !important;
+  rotate: none !important;
+}
+.institution > span,
+.closing-orbit,
+.hero-scene-orbit {
+  display: none;
+}
+.institution {
+  place-items: start;
+  align-items: center;
+  height: 112px;
+}
+.institution > .icon {
+  width: 51px;
+  height: 51px;
+}
+.closing {
+  background: linear-gradient(120deg, #e6dcf0, #d7c7e9) !important;
+}
+.closing::before,
+.closing::after {
+  display: none;
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .home-hero .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .home-hero .hero-copy {
+    max-width: 680px;
+  }
+  .home-hero .hero-copy h1 {
+    font-size: 66px;
+    max-width: 17ch;
+  }
+  .home-hero .entrance-visual {
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .entrance-heading h2 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 760px) {
+  .home-hero {
+    padding-block: 38px 74px;
+  }
+  .home-hero .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 37px;
+  }
+  .home-hero .hero-copy h1 {
+    font-size: 42px;
+    max-width: 16ch;
+  }
+  .entrance-workbench {
+    padding: 19px 17px 14px;
+    border-radius: 9px;
+  }
+  .entrance-top {
+    margin-bottom: 15px;
+    padding-bottom: 14px;
+  }
+  .entrance-mark {
+    font-size: 12px;
+  }
+  .entrance-top > .mono {
+    font-size: 8px;
+  }
+  .entrance-workbench > .demo-badges {
+    margin-bottom: 22px;
+  }
+  .entrance-workbench > .demo-badges > span {
+    font-size: 7px;
+    padding: 4px 6px;
+  }
+  .entrance-heading h2 {
+    font-size: 39px;
+    margin-bottom: 22px;
+  }
+  .entrance-heading > span {
+    font-size: 8px;
+    letter-spacing: 0.02em;
+  }
+  .entrance-source {
+    padding: 13px 11px;
+  }
+  .entrance-source h3 {
+    font-size: 25px;
+    margin: 16px 0 13px;
+  }
+  .entrance-source-index {
+    font-size: 7px;
+  }
+  .entrance-source-date {
+    font-size: 8px;
+  }
+  .entrance-value strong {
+    font-size: 11px;
+    min-height: 56px;
+    padding: 8px;
+  }
+  .entrance-finding > span {
+    font-size: 10px;
+  }
+  .entrance-owner strong {
+    font-size: 11px;
+  }
+  .entrance-owner div > span {
+    font-size: 9px;
+  }
+  .entrance-foot {
+    font-size: 7px;
+  }
+  .institution {
+    height: 90px;
+  }
+}
+.home-hero {
+  background: linear-gradient(115deg, #faf7f0 8%, #eee4f5 54%, #cbb6e1 100%);
+}
+.entrance-heading h2 {
+  font-size: clamp(36px, 3.1vw, 46px);
+  margin-bottom: 22px;
+}
+.entrance-source h3 {
+  margin-block: 14px 10px;
+}
+.entrance-source-date {
+  margin-bottom: 15px;
+}
+.entrance-workbench > .demo-badges {
+  margin-bottom: 22px;
+}
+@media (min-width: 1101px) {
+  .home-hero {
+    padding-block: 48px 65px;
+    min-height: 790px;
+  }
+  .entrance-workbench {
+    padding-top: 22px;
+  }
+  .entrance-finding {
+    padding-block: 14px;
+  }
+}
+@media (max-width: 760px) {
+  .home-hero {
+    background: linear-gradient(150deg, #faf7f0 3%, #ece0f5 45%, #cbb6e1 100%);
+  }
+  .entrance-heading h2 {
+    font-size: 39px;
+  }
+}
+/* Let the shared canvas carry the CTA colour through its section boundary. */
+.closing { background: transparent !important; }
