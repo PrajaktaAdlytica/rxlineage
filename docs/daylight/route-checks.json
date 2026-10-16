@@ -1,0 +1,219 @@
+[
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/problem"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/solutions"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/solutions/admission"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/solutions/discharge"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/solutions/transitions"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/products"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/products/source-comparison"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/products/review-queue"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/products/issue-review"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/products/clarification-drafts"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/products/audit-reports"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/platform"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/evidence"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/evaluation"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/pricing"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/request-demo"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/request-pilot"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/demo"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/trust"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/resources"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/resources/reconciliation"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/resources/uncertainty"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/resources/evaluation-method"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/about"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/contact"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/sign-in"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/legal/privacy"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/legal/terms"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/accessibility"
+  },
+  {
+    "background": "none",
+    "brokenImages": 0,
+    "decorativeLines": 0,
+    "overflow": 0,
+    "route": "/404"
+  }
+]

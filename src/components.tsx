@@ -473,15 +473,7 @@ export function PageHero({
 }) {
   const p = pages.find((x) => x.slug === slug) || pages[0];
   return (
-    <section
-      className={"page-hero section hero-" + slug}
-      data-tone="paper"
-      style={
-        {
-          "--hero-pattern": `url(${asset("backgrounds/" + p.background + ".svg")})`,
-        } as React.CSSProperties
-      }
-    >
+    <section className={"page-hero section hero-" + slug} data-tone="paper">
       <div className="container hero-grid">
         <div className="hero-copy" data-reveal>
           <Eyebrow>{tag}</Eyebrow>
@@ -500,7 +492,6 @@ export function PageHero({
           </p>
         </div>
         <div className="hero-visual">
-          <div className="hero-scene-orbit" aria-hidden="true" />
           <div className="hero-scene-contents">
             {visual || <HeroArt slug={slug} />}
           </div>
@@ -646,7 +637,6 @@ export function Closing({
 }) {
   return (
     <section className="closing section" data-tone="mist">
-      <div className="closing-orbit" aria-hidden="true" />
       <div className="container" data-reveal>
         <Eyebrow>A pharmacist-led next step</Eyebrow>
         <h2>

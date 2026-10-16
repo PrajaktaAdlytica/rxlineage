@@ -378,4 +378,52 @@
   }
 }
 /* Let the shared canvas carry the CTA colour through its section boundary. */
-.closing { background: transparent !important; }
+.closing {
+  background: transparent !important;
+}
+/* No ornamental paths behind content. Connections within product diagrams
+   continue to identify real relationships between synthetic sources. */
+.page-hero::after,
+.page-hero .hero-visual::before,
+.source-loop,
+.source-orbit::before,
+.global-thread,
+.institution > span {
+  display: none !important;
+  background-image: none !important;
+}
+.page-hero .hero-visual:has(.entrance-workbench) {
+  padding-block: 0;
+}
+.page-hero .entrance-workbench {
+  max-width: 620px;
+  margin-inline: auto;
+}
+.page-hero .hero-visual:has(.entrance-workbench) .visual-caption {
+  margin-top: 20px;
+}
+/* Colour provides the environment; evidence provides the motion. */
+[data-family="folio"] .field-hero .light-one {
+  background: linear-gradient(
+    115deg,
+    transparent 22%,
+    #e2d6ef88 55%,
+    #c6adddb3 100%
+  ) !important;
+}
+[data-family="transition"] .field-hero .light-one {
+  background: linear-gradient(
+    120deg,
+    transparent 24%,
+    #e9dcf088 64%,
+    #d4bfdeaa 100%
+  ) !important;
+}
+[data-family="lineage"] .field-hero .light-one {
+  background: linear-gradient(
+    125deg,
+    transparent 15%,
+    #d9c9eb88 64%,
+    #bfa8d2aa 100%
+  ) !important;
+}

@@ -23,7 +23,8 @@ import {
   sources,
   gateItems,
 } from "./content";
-import { Comparison, SourceFolios } from "./Home";
+import { Comparison } from "./Home";
+import { EntranceWorkbench } from "./EntranceWorkbench";
 import { QueueScene, IssueScene, DraftScene, AuditScene } from "./HeroScenes";
 const productDetail = [
   {
@@ -135,7 +136,7 @@ function ProductPage({ index }: { index: number }) {
         slug={moduleSlugs[index]}
         visual={
           [
-            <SourceFolios />,
+            <EntranceWorkbench />,
             <QueueScene />,
             <IssueScene />,
             <DraftScene />,

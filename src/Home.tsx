@@ -24,9 +24,6 @@ export function SourceFolios() {
       aria-label="Two dated synthetic source records disagree on the status of Medication X."
     >
       <DemoBadges />
-      <svg className="source-loop" viewBox="0 0 600 560" aria-hidden="true">
-        <path d="M120 150C100 25 510 20 510 180S-65 430 130 490 620 410 460 295" />
-      </svg>
       <div className="orbit-index">
         SYN–002
         <br />

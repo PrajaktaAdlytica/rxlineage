@@ -1,21 +1,8 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { MotionContext } from "./motion-context";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-type Field = {
-  top: number;
-  height: number;
-  dark: boolean;
-  side: string;
-  kind: string;
-};
-const canvas: Record<string, string> = {
-  paper: "#F8F5EF",
-  mist: "#EAE2F2",
-  lavender: "#DDD1EE",
-  white: "#FBF9F5",
-  dark: "#281D34",
-};
+import { MotionContext } from "./motion-context";
+type Scene = { top: number; height: number; kind: "hero" | "night" };
 export function atmosphereFamily(path: string) {
   if (path === "/") return "evidence";
   if (path.startsWith("/products")) return "folio";
@@ -34,9 +21,9 @@ export function Atmosphere({
   root: React.RefObject<HTMLElement | null>;
   path: string;
 }) {
-  const [fields, setFields] = useState<Field[]>([]);
-  const motionPaused = useContext(MotionContext);
-  const lights = useRef<HTMLDivElement>(null);
+  const [scenes, setScenes] = useState<Scene[]>([]);
+  const layer = useRef<HTMLDivElement>(null);
+  const paused = useContext(MotionContext);
   useEffect(() => {
     const el = root.current;
     if (!el) return;
@@ -46,46 +33,23 @@ export function Atmosphere({
       const sections = [
         ...el.querySelectorAll<HTMLElement>(":scope > section[data-tone]"),
       ];
-      const stops: string[] = [];
-      const next: Field[] = [];
-      sections.forEach((section, i) => {
-        const tone = section.dataset.tone || "paper";
-        const top = section.offsetTop,
-          height = section.offsetHeight;
-        const blend = Math.min(140, height * 0.15);
-        const c = canvas[tone] || canvas.paper;
-        stops.push(
-          `${c} ${Math.round(top + blend)}px`,
-          `${c} ${Math.round(top + height - blend)}px`,
-        );
-        next.push({
-          top: Math.round(top),
-          height: Math.round(height),
-          dark: tone === "dark",
-          side: i % 3 === 0 ? "right" : i % 3 === 1 ? "left" : "center",
-          kind: section.classList.contains("lineage-chapter")
-            ? "chapter-preserved"
-            : section.classList.contains("page-hero") ||
-                section.classList.contains("home-hero") ||
-                section.classList.contains("access-hero")
-              ? "hero"
-              : tone === "dark"
-                ? "archive"
-                : "paper",
-        });
-      });
-      const bg = el.querySelector<HTMLElement>(".site-atmosphere");
-      if (bg)
-        bg.style.backgroundImage = `linear-gradient(to bottom,${stops.join(",")})`;
-      const chapter = el.querySelector<HTMLElement>(".lineage-chapter");
-      const thread = el.querySelector<SVGElement>(".global-thread");
-      if (thread) {
-        if (chapter) {
-          thread.style.clipPath = `inset(${chapter.offsetTop}px 0 ${Math.max(0, el.offsetHeight - chapter.offsetTop - chapter.offsetHeight)}px 0)`;
-        } else thread.style.display = "none";
+      const next: Scene[] = [];
+      for (const section of sections) {
+        const top = Math.round(section.offsetTop),
+          height = Math.round(section.offsetHeight);
+        if (section.dataset.tone === "dark") {
+          const previous = next.at(-1);
+          if (
+            previous?.kind === "night" &&
+            Math.abs(previous.top + previous.height - top) < 3
+          )
+            previous.height = top + height - previous.top;
+          else next.push({ top, height, kind: "night" });
+        } else if (section.matches(".home-hero,.page-hero,.access-hero"))
+          next.push({ top, height, kind: "hero" });
       }
       el.classList.add("has-atmosphere");
-      setFields((old) =>
+      setScenes((old) =>
         JSON.stringify(old) === JSON.stringify(next) ? old : next,
       );
       ScrollTrigger.refresh();
@@ -117,57 +81,89 @@ export function Atmosphere({
       cancelAnimationFrame(frame);
       observer.disconnect();
     };
-  }, [root, path]);
+  }, [path, root]);
   useEffect(() => {
     if (
-      motionPaused ||
-      !fields.length ||
+      paused ||
+      !scenes.length ||
       matchMedia("(prefers-reduced-motion: reduce)").matches
     )
       return;
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 901px)", () => {
-      const context = gsap.context(() => {
-        gsap.utils
-          .toArray<HTMLElement>(".field-hero,.field-dark")
-          .forEach((field) => {
-            gsap.fromTo(
-              field.querySelector(".light-one"),
-              { yPercent: 9, scale: 0.95 },
-              {
-                yPercent: -7,
-                scale: 1.1,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: field,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: 1,
-                },
-              },
-            );
-          });
-      }, lights);
-      return () => context.revert();
-    });
-    return () => mm.revert();
-  }, [fields, motionPaused]);
+    const context = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>(".daylight-planes").forEach((el) =>
+        gsap.fromTo(
+          el,
+          { y: 0 },
+          {
+            y: 35,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el.closest(".daylight-scene"),
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          },
+        ),
+      );
+    }, layer);
+    return () => context.revert();
+  }, [paused, scenes]);
   return (
     <>
       <div className="site-atmosphere" aria-hidden="true" />
-      <div ref={lights} className="scene-lights" aria-hidden="true">
-        {fields.map((f, i) => (
-          <div
-            key={i}
-            className={`light-field field-${f.kind} field-${f.side} ${f.dark ? "field-dark" : ""}`}
-            style={{ top: f.top, height: f.height }}
-          >
-            <div className="ambient-light light-one" />
-            <div className="ambient-light light-two" />
-          </div>
-        ))}
+      <div ref={layer} className="daylight-canvas" aria-hidden="true">
+        {scenes.map((scene, i) =>
+          scene.kind === "hero" ? (
+            <div
+              key={i}
+              className="daylight-scene"
+              style={{ top: scene.top, height: scene.height }}
+            >
+              <svg
+                className="daylight-planes"
+                viewBox="0 0 1440 850"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0 700C450 860 950 560 1440 680V850H0Z"
+                  fill="#E5D8F0"
+                />
+                <path
+                  d="M0 800C440 920 1100 640 1440 760V850H0Z"
+                  fill="#D2BEE3"
+                />
+                <path
+                  d="M650 850C1100 690 1300 710 1440 750V850Z"
+                  fill="#BDA1D1"
+                />
+              </svg>
+            </div>
+          ) : (
+            <div
+              key={i}
+              className="night-scene"
+              style={{ top: scene.top, height: scene.height }}
+            >
+              <svg
+                className="night-edge night-edge-top"
+                viewBox="0 0 1440 100"
+                preserveAspectRatio="none"
+              >
+                <path d="M0 30C360 100 1080 -30 1440 30V100H0Z" />
+              </svg>
+              <div className="night-core" />
+              <svg
+                className="night-edge night-edge-bottom"
+                viewBox="0 0 1440 100"
+                preserveAspectRatio="none"
+              >
+                <path d="M0 0H1440V70C1080 0 360 130 0 70Z" />
+              </svg>
+            </div>
+          ),
+        )}
       </div>
-      <div className="atmosphere-texture" aria-hidden="true" />
     </>
   );
 }

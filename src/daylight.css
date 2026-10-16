@@ -1,0 +1,147 @@
+/* Broad, filled colour planes. No interpolation between ivory and plum. */
+.site-atmosphere {
+  background: #faf6ef !important;
+  background-image: none !important;
+}
+.daylight-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+  overflow: hidden;
+  pointer-events: none;
+}
+.daylight-scene,
+.night-scene {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.daylight-scene {
+  overflow: hidden;
+  background: #faf6ef;
+}
+.daylight-planes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  opacity: 0.75;
+}
+.night-scene {
+  --night: #281d34;
+}
+.night-core {
+  position: absolute;
+  inset: 99px 0;
+  background: var(--night);
+}
+.night-edge {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  fill: var(--night);
+}
+.night-edge-top {
+  top: 0;
+}
+.night-edge-bottom {
+  bottom: 0;
+}
+.home-hero {
+  background: transparent !important;
+}
+.page-hero {
+  background: transparent !important;
+}
+.has-atmosphere .dark-section {
+  background: transparent;
+}
+/* Keep the approved chapter's local light and expanding aperture. */
+.dark-section:not(.lineage-chapter)::after {
+  display: none;
+}
+.dark-section:not(.lineage-chapter) {
+  padding-top: max(140px, 9vw);
+  padding-bottom: max(140px, 9vw);
+}
+.reader-rail {
+  background: #faf6ef;
+  border-color: #c6b8cf;
+}
+.closing {
+  background: transparent !important;
+}
+.site-header {
+  background: #faf6efed;
+}
+.module-preview::before,
+.case-section::before,
+.uncertainty-card,
+.uncertainty-card + article,
+.before-after > div + div {
+  background: none;
+}
+.uncertainty-card,
+.uncertainty-card + article {
+  background: #f0e8f5;
+}
+.case-card {
+  background: #efe4f5;
+}
+.case-card.selected {
+  background: #fcfaf7;
+}
+/* Ivory reading runs feel continuous. Lavender deepens in the product scenes. */
+.platform-section {
+  background: #f3ebf8;
+  border-radius: 0 0 48% 5% / 0 0 5% 1%;
+}
+.usecase-section {
+  background: transparent;
+}
+.price-section {
+  background: #eee3f6;
+}
+.section.paper-section,
+.section.mist-section {
+  background: transparent;
+}
+.page-hero .hero-visual::before,
+.page-hero::after {
+  display: none !important;
+}
+[data-family="quiet"] .daylight-planes {
+  opacity: 0.25;
+}
+[data-family="editorial"] .daylight-planes {
+  opacity: 0.45;
+}
+[data-family="copper"] .daylight-planes {
+  opacity: 0.6;
+}
+@media (max-width: 760px) {
+  .daylight-planes {
+    width: 180%;
+    left: -65%;
+    opacity: 0.65;
+  }
+  .night-edge {
+    height: 70px;
+  }
+  .night-core {
+    inset: 69px 0;
+  }
+  .dark-section:not(.lineage-chapter) {
+    padding-block: 100px;
+  }
+  .platform-section {
+    border-radius: 0;
+  }
+}
+.daylight-scene {
+  background: linear-gradient(110deg, #faf6ef 28%, #f0e7f5 67%, #e3d4ed 100%);
+}
+.lineage-chapter {
+  background: #281d34 !important;
+}
