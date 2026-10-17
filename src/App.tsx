@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Header, Footer } from "./components";
 import { Home } from "./Home";
 import { MotionContext } from "./motion-context";
+import { createHeroEntrance } from "./intro/hero-entrance";
 import { ContentPage, NotFound } from "./Pages";
 import { InquiryPage, SignIn } from "./Forms";
 import { Demo } from "./Demo";
@@ -37,18 +38,18 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
         }),
       );
       if (path === "/") {
-        gsap.from(".hero-copy > *", {
-          y: 24,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".home-hero",
-            start: "top 75%",
-            once: true,
+        media.add(
+          "(min-width: 761px) and (prefers-reduced-motion: no-preference)",
+          () => {
+            if (main.current) return createHeroEntrance(main.current, false);
           },
-        });
+        );
+        media.add(
+          "(max-width: 760px) and (prefers-reduced-motion: no-preference)",
+          () => {
+            if (main.current) return createHeroEntrance(main.current, true);
+          },
+        );
       } else if (main.current?.querySelector(".hero-visual")) {
         gsap.from(".hero-visual", {
           y: 30,

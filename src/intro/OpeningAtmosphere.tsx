@@ -43,7 +43,7 @@ export function OpeningAtmosphere({
       );
       main.style.setProperty(
         "--opening-hero-opacity",
-        String(smooth(0.2, 0.92)),
+        String(smooth(0.12, 0.72)),
       );
       // The navigation is already docked at the top. Reveal it only as the
       // hero arrives, instead of carrying a horizontal bar across the ink.

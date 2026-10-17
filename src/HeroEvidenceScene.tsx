@@ -12,23 +12,6 @@ export function HeroEvidenceScene() {
     if (paused || !root.current) return;
     gsap.registerPlugin(ScrollTrigger);
     const context = gsap.context(() => {
-      gsap.from(".opening-document", {
-        y: 30,
-        opacity: 0,
-        stagger: 0.18,
-        duration: 1.1,
-        delay: 0.25,
-        ease: "power3.out",
-        scrollTrigger: { trigger: root.current, start: "top 85%", once: true },
-      });
-      gsap.from(".opening-receipt", {
-        y: 18,
-        opacity: 0,
-        duration: 1,
-        delay: 0.8,
-        ease: "power3.out",
-        scrollTrigger: { trigger: root.current, start: "top 85%", once: true },
-      });
       const story = gsap.timeline({
         scrollTrigger: {
           trigger: root.current,
