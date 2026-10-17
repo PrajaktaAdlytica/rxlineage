@@ -8,6 +8,7 @@ import { ContentPage, NotFound } from "./Pages";
 import { InquiryPage, SignIn } from "./Forms";
 import { Demo } from "./Demo";
 import { pages } from "./content";
+import { ScrollAperture } from "./ScrollAperture";
 import { Atmosphere, atmosphereFamily } from "./Atmosphere";
 export function App({ initialPath = "/" }: { initialPath?: string }) {
   const path = initialPath.replace(/\/$/, "") || "/";
@@ -219,6 +220,7 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           data-page={path}
         >
           <Atmosphere root={main} path={path} />
+          <ScrollAperture main={main} path={path} />
           {content}
         </main>
         <Footer />

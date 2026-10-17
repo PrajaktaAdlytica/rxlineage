@@ -1,0 +1,250 @@
+[
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/problem",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/solutions",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/solutions/admission",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/solutions/discharge",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/solutions/transitions",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/products",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/products/source-comparison",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/products/review-queue",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/products/issue-review",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/products/clarification-drafts",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/products/audit-reports",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/platform",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/evidence",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/evaluation",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/pricing",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/request-demo",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/request-pilot",
+    "tilts": 0
+  },
+  {
+    "aperture": 0,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/demo",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/trust",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/resources",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/resources/reconciliation",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/resources/uncertainty",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/resources/evaluation-method",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/about",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/contact",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/sign-in",
+    "tilts": 0
+  },
+  {
+    "aperture": 0,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/legal/privacy",
+    "tilts": 0
+  },
+  {
+    "aperture": 0,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/legal/terms",
+    "tilts": 0
+  },
+  {
+    "aperture": 0,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/accessibility",
+    "tilts": 0
+  },
+  {
+    "aperture": 1,
+    "broken": 0,
+    "gradientSections": 0,
+    "overflow": 0,
+    "route": "/404",
+    "tilts": 0
+  }
+]

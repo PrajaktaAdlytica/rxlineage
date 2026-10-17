@@ -13,3 +13,5 @@ import "./refinement.css";
 import "./daylight.css";
 
 import "./approved-chapter.css";
+
+import "./straight-story.css";

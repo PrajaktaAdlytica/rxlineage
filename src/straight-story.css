@@ -1,0 +1,121 @@
+/* User-requested flat fields: no fades or shading between sections. */
+.site-atmosphere {
+  background: #cfb2e0 !important;
+  background-image: none !important;
+}
+.daylight-scene {
+  background: #c9a8df !important;
+}
+.reading-scene {
+  mask-image: none !important;
+  background: transparent;
+}
+.daylight-bloom,
+.reading-bloom,
+.daylight-planes {
+  display: none !important;
+}
+.case-section,
+.platform-section,
+.usecase-section {
+  background: transparent !important;
+}
+.price-section,
+.faq-section {
+  background: transparent !important;
+}
+.closing {
+  background: transparent !important;
+}
+/* Straight content surfaces. Directional icons and the approved aperture keep
+   their intrinsic geometry; cards and evidence panels never rotate. */
+.source-a,
+.source-b,
+.source-folio,
+.orbit-conflict,
+.orbit-caption,
+.review-note,
+.signed-strip,
+.scene-floating-note,
+.queue-scene,
+.audit-scene,
+.issue-scene .scene-workspace,
+.draft-scene .scene-workspace,
+.case-card,
+.case-card[data-position],
+.case-card.selected {
+  transform: none !important;
+  rotate: none !important;
+}
+.case-fan {
+  align-items: stretch;
+}
+.case-card {
+  transition:
+    background 0.35s,
+    box-shadow 0.35s,
+    border-color 0.35s;
+}
+.case-card.selected {
+  border-color: #755088;
+}
+.scene-workspace,
+.case-card,
+.pricing-card,
+.pilot-card {
+  background-image: none;
+}
+/* One aperture travels with native scroll, rather than repeating a ring
+   ornament in each section. The original chapter receives the hand-off. */
+.aperture-viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -3;
+  pointer-events: none;
+  opacity: 0.48;
+}
+.journey-aperture {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1000px;
+  height: 1000px;
+  border: 1px solid #946b50;
+  border-radius: 50%;
+  color: #946b50;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+.journey-aperture > span {
+  position: absolute;
+  inset: 26px;
+  border: 1px solid currentColor;
+  opacity: 0.2;
+  border-radius: 50%;
+}
+.journey-aperture > span + span {
+  inset: -70px;
+  opacity: 0.1;
+}
+.journey-aperture > i {
+  position: absolute;
+  top: -4px;
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+@media (max-width: 760px) {
+  .aperture-viewport {
+    opacity: 0.3;
+  }
+}
+main > section:not(.lineage-chapter) {
+  background-image: none !important;
+}
+.site-footer {
+  background: #261c31 !important;
+  background-image: none !important;
+}
