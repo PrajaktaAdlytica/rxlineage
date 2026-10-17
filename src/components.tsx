@@ -1,4 +1,7 @@
-import React, { useState, useEffect, useRef, useId } from "react";
+import React, { useState, useEffect, useRef, useId, useContext } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MotionContext } from "./motion-context";
 import heroArt from "./hero-art.json";
 import {
   moduleNames,
@@ -49,9 +52,11 @@ export function Button({
       className={`button ${secondary ? "secondary flip" : "shutter"} ${light ? "light" : ""} ${className}`}
       {...rest}
     >
-      <span className={secondary ? "label-window" : "button-label"}>
+      <span
+        className={secondary ? "label-window" : "button-label label-window"}
+      >
         <span>{children}</span>
-        {secondary && <span aria-hidden="true">{children}</span>}
+        <span aria-hidden="true">{children}</span>
       </span>
       <span className="arrow-slot">
         <Icon />
@@ -414,6 +419,7 @@ export function HeroArt({
 }) {
   const uid = useId().replace(/:/g, "");
   const artRef = useRef<HTMLDivElement>(null);
+  const paused = useContext(MotionContext);
   useEffect(() => {
     const el = artRef.current;
     if (!el) return;
@@ -427,6 +433,68 @@ export function HeroArt({
     observer.observe(el);
     return () => observer.disconnect();
   }, [slug]);
+  useEffect(() => {
+    if (paused || !artRef.current) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
+    const animate = (selector: string) => {
+      const context = gsap.context(() => {
+        const svg = artRef.current?.querySelector<SVGSVGElement>(selector);
+        if (!svg) return;
+        const hero = artRef.current?.closest(".page-hero");
+        const modulePreview = artRef.current?.closest(".module-preview");
+        const stages = Array.from(svg.querySelectorAll(".stage"));
+        const timeline = gsap.timeline({
+          scrollTrigger: modulePreview
+            ? {
+                trigger: artRef.current,
+                start: "top 88%",
+                once: true,
+              }
+            : {
+                trigger: hero || artRef.current,
+                start: hero ? "top top" : "top 88%",
+                end: hero ? "bottom 35%" : "bottom 68%",
+                scrub: 0.65,
+                invalidateOnRefresh: true,
+              },
+        });
+        const animatedStages = hero ? stages.slice(1) : stages;
+        if (animatedStages.length)
+          timeline.fromTo(
+            animatedStages,
+            { y: 22, opacity: 0.16 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              stagger: 0.23,
+              ease: "power2.out",
+            },
+            0,
+          );
+        svg.querySelectorAll<SVGGeometryElement>(".draw").forEach((path) => {
+          const length = path.getTotalLength();
+          timeline.fromTo(
+            path,
+            { strokeDasharray: length, strokeDashoffset: length },
+            { strokeDashoffset: 0, duration: 1.4, ease: "none" },
+            0.1,
+          );
+        });
+      }, artRef);
+      return () => context.revert();
+    };
+    mm.add(
+      "(min-width: 761px) and (prefers-reduced-motion: no-preference)",
+      () => animate(".art-desktop svg"),
+    );
+    mm.add(
+      "(max-width: 760px) and (prefers-reduced-motion: no-preference)",
+      () => animate(".art-mobile svg"),
+    );
+    return () => mm.revert();
+  }, [slug, paused]);
   const item =
     (heroArt as Record<string, { desktop: string; mobile: string }>)[slug] ||
     heroArt.home;
@@ -637,7 +705,18 @@ export function Closing({
 }) {
   return (
     <section className="closing section" data-tone="mist">
-      <div className="container" data-reveal>
+      <div className="closing-scene" aria-hidden="true">
+        <img
+          className="closing-image"
+          src="/brand/assets/backgrounds/archival-light.webp"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width="1672"
+          height="941"
+        />
+      </div>
+      <div className="container closing-copy">
         <Eyebrow>A pharmacist-led next step</Eyebrow>
         <h2>
           {title.split("\n").map((t, i) => (

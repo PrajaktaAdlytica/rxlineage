@@ -3,44 +3,22 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionContext } from "./motion-context";
 
-// This is the chapter's approved 596d8d6 atmosphere, clipped to this section.
-// The site's newer daylight backgrounds must not restyle this component.
-const approvedColours: Record<string, string> = {
-  paper: "#F7F0E7",
-  mist: "#E4D4EE",
-  lavender: "#CBB2DE",
-  white: "#FBF6EF",
-  dark: "#281D34",
-};
+// Preserve the approved central light and circle; section edges are solid plum.
 const trace =
   "M1000 0C1500 200 200 440 1050 800S1500 1430 1000 1640 700 2000 1290 2360 950 2910 1250 3400 620 4000 1180 4400 1500 5100 900 5500 200 6400 1100 7000";
 export function ApprovedChapterBackdrop() {
   const root = useRef<HTMLDivElement>(null);
   const paused = useContext(MotionContext);
-  const [canvas, setCanvas] = useState({ top: 0, height: 1, gradient: "" });
+  const [canvas, setCanvas] = useState({ top: 0, height: 1 });
   useEffect(() => {
     const chapter = root.current?.closest<HTMLElement>(".lineage-chapter");
     const main = chapter?.closest("main");
     if (!chapter || !main) return;
     let frame = 0;
     const update = () => {
-      const stops: string[] = [];
-      main
-        .querySelectorAll<HTMLElement>(":scope > section[data-tone]")
-        .forEach((section) => {
-          const blend = Math.min(140, section.offsetHeight * 0.15);
-          const colour =
-            approvedColours[section.dataset.tone || "paper"] ||
-            approvedColours.paper;
-          stops.push(
-            `${colour} ${Math.round(section.offsetTop + blend)}px`,
-            `${colour} ${Math.round(section.offsetTop + section.offsetHeight - blend)}px`,
-          );
-        });
       const next = {
         top: chapter.offsetTop,
         height: main.offsetHeight,
-        gradient: `linear-gradient(to bottom,${stops.join(",")})`,
       };
       setCanvas((old) =>
         JSON.stringify(old) === JSON.stringify(next) ? old : next,
@@ -60,7 +38,7 @@ export function ApprovedChapterBackdrop() {
   useEffect(() => {
     if (
       paused ||
-      !canvas.gradient ||
+      canvas.height <= 1 ||
       matchMedia("(prefers-reduced-motion: reduce)").matches
     )
       return;
@@ -118,15 +96,9 @@ export function ApprovedChapterBackdrop() {
       className="approved-chapter-backdrop"
       aria-hidden="true"
       data-approved-version="596d8d6"
+      data-edge-treatment="solid-plum"
     >
-      <div
-        className="approved-chapter-canvas"
-        style={{
-          top: -canvas.top,
-          height: canvas.height,
-          backgroundImage: canvas.gradient,
-        }}
-      />
+      <div className="approved-chapter-canvas" />
       <div className="approved-chapter-lights">
         <div className="approved-chapter-light-one" />
         <div className="approved-chapter-light-two" />

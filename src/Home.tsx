@@ -17,6 +17,7 @@ import {
 import { stopRule, sources } from "./content";
 import { ApprovedChapterBackdrop } from "./ApprovedChapterBackdrop";
 import { HeroEvidenceScene } from "./HeroEvidenceScene";
+import { DraftReveal } from "./DraftReveal";
 import { MotionContext } from "./motion-context";
 export function SourceFolios() {
   return (
@@ -88,8 +89,33 @@ export function SourceFolios() {
   );
 }
 export function Comparison({ stage = 2 }: { stage?: number }) {
+  const root = useRef<HTMLDivElement>(null);
+  const paused = useContext(MotionContext);
+  useEffect(() => {
+    if (paused || !root.current) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        ".comparison-columns article",
+        { y: 16, opacity: 0.4 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top 92%",
+            end: "center 70%",
+            scrub: 0.55,
+          },
+        },
+      );
+    }, root);
+    return () => context.revert();
+  }, [paused]);
   return (
-    <div className={"comparison-surface story-stage-" + stage}>
+    <div ref={root} className={"comparison-surface story-stage-" + stage}>
       <div className="product-toolbar">
         <span>
           <Icon name="git-compare" />
@@ -138,20 +164,22 @@ export function Comparison({ stage = 2 }: { stage?: number }) {
         <Chip type="conflict">Conflicting</Chip>
         <span>Neither source is promoted to truth.</span>
       </div>
-      {stage === 3 && (
-        <div className="inline-evidence">
-          <Icon name="panel-right-open" />
-          <div>
-            <strong>Evidence remains attached.</strong>
-            <p>
-              Both received 12 Oct · 08:25 UTC
-              <br />
-              Version 1 · Pharmacist Reviewer B<br />
-              Confidence: not validated · Review unresolved
-            </p>
+      <div className="evidence-reveal-grid" aria-hidden={stage !== 3}>
+        <div className="evidence-reveal-clip">
+          <div className="inline-evidence">
+            <Icon name="panel-right-open" />
+            <div>
+              <strong>Evidence remains attached.</strong>
+              <p>
+                Both received 12 Oct · 08:25 UTC
+                <br />
+                Version 1 · Pharmacist Reviewer B<br />
+                Confidence: not validated · Review unresolved
+              </p>
+            </div>
           </div>
         </div>
-      )}
+      </div>
       <div className="product-bottom">
         <span>For pharmacist adjudication</span>
         <span>Next review · 10:30 UTC</span>
@@ -597,7 +625,7 @@ export function Home() {
               </div>
               <p className="draft-label">Draft only · not sent</p>
               <blockquote>
-                Which source needs clarification before this review can close?
+                <DraftReveal text="Which source needs clarification before this review can close?" />
               </blockquote>
               <div className="note-boundary">
                 <Icon name="lock-keyhole" />

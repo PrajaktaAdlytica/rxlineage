@@ -1,5 +1,6 @@
 import React from "react";
 import { DemoBadges, Chip, Icon, TextLink, Eyebrow } from "./components";
+import { DraftReveal } from "./DraftReveal";
 export function QueueScene() {
   const rows = [
     ["SYN-002", "Conflicting", "conflict", "B", "10:30"],
@@ -133,9 +134,7 @@ export function DraftScene() {
           </div>
         </div>
         <div className="scene-draft-text">
-          <span className="draft-typed">
-            Which source needs clarification before this review can close?
-          </span>
+          <DraftReveal text="Which source needs clarification before this review can close?" />
         </div>
         <div className="draft-boundary">
           <Icon name="lock-keyhole" />

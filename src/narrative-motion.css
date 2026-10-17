@@ -1,0 +1,228 @@
+/* Native-scroll illustrations replace autonomous SVG entrance keyframes. */
+.hero-art svg .stage,
+.hero-art svg .draw {
+  animation: none !important;
+}
+
+/* The evidence drawer opens and closes without replacing the comparison. */
+.evidence-reveal-grid {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.65s var(--ease),
+    opacity 0.45s;
+}
+.evidence-reveal-clip {
+  min-height: 0;
+  overflow: hidden;
+}
+.story-stage-3 .evidence-reveal-grid {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.draft-reveal {
+  display: block;
+  position: relative;
+}
+.draft-measure {
+  display: block;
+  visibility: hidden;
+}
+.draft-live {
+  position: absolute;
+  inset: 0;
+}
+.draft-reveal > .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.draft-caret {
+  display: inline-block;
+  height: 0.85em;
+  width: 1px;
+  margin-left: 3px;
+  background: currentColor;
+  vertical-align: -0.05em;
+  animation: draft-caret 0.75s steps(1) infinite;
+}
+@keyframes draft-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* An original archival-paper photograph follows native scroll, like a
+   continuous scene. No sectional fade or background path is added. */
+.closing {
+  overflow: hidden;
+  isolation: isolate;
+}
+.closing-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #d6ab71;
+  pointer-events: none;
+  overflow: hidden;
+}
+.closing-image {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+.closing-copy {
+  position: relative;
+  z-index: 1;
+}
+.closing .button {
+  margin-bottom: 20px;
+}
+
+/* Tactile pill CTAs: a single fill sweep, rolling label, and travelling arrow.
+   Keyboard focus receives the same visual response as pointer hover. */
+.button {
+  border-radius: 999px;
+  min-height: 54px;
+  padding: 10px 13px 10px 24px;
+  gap: 24px;
+  transition:
+    color 0.3s,
+    border-color 0.3s,
+    transform 0.4s var(--ease),
+    box-shadow 0.4s;
+}
+.button::before {
+  inset: 0;
+  background: #e5c18b;
+  transform: translateX(-101%);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease);
+}
+.button::after {
+  display: none;
+}
+.button .label-window {
+  height: 1.2em;
+}
+.button .label-window > span {
+  transition: transform 0.45s var(--ease);
+}
+.button .arrow-slot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff18;
+  transition: background 0.35s;
+}
+.button .arrow-slot .icon {
+  inset: 8px;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.45s var(--ease);
+}
+.button .arrow-slot .icon + .icon {
+  transform: translateX(-170%);
+}
+.home-hero .hero-copy .button .arrow-slot,
+.page-hero .hero-copy .button .arrow-slot {
+  background: #352c4012;
+}
+.button:focus-visible {
+  color: #302438;
+  border-color: #e5c18b;
+}
+.button:focus-visible::before {
+  transform: translateX(0);
+}
+.button:focus-visible .label-window > span {
+  transform: translateY(-100%);
+}
+.button:focus-visible .arrow-slot {
+  background: #352c4012;
+}
+.button:focus-visible .arrow-slot .icon:first-child {
+  transform: translateX(170%);
+}
+.button:focus-visible .arrow-slot .icon + .icon {
+  transform: translateX(0);
+}
+.button.secondary:focus-visible {
+  background: #e4ddeb;
+}
+.nav-pilot {
+  min-height: 44px;
+  padding: 8px 12px 8px 20px;
+}
+.nav-pilot .arrow-slot {
+  width: 26px;
+  height: 26px;
+}
+.nav-pilot .arrow-slot .icon {
+  inset: 5px;
+}
+.text-link > span:first-child {
+  border: 0;
+  background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px
+    no-repeat;
+  transition: background-size 0.35s var(--ease);
+}
+.text-link:focus-visible > span:first-child {
+  background-size: 35% 1px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    color: #302438;
+    border-color: #e5c18b;
+    transform: translateY(-2px);
+  }
+  .button.shutter:hover::before {
+    transform: translateX(0);
+  }
+  .button:hover .label-window > span {
+    transform: translateY(-100%);
+  }
+  .button:hover .arrow-slot {
+    background: #352c4012;
+  }
+  .button:hover .arrow-slot .icon:first-child {
+    transform: translateX(170%);
+  }
+  .button:hover .arrow-slot .icon + .icon {
+    transform: translateX(0);
+  }
+  .text-link:hover > span:first-child {
+    background-size: 35% 1px;
+  }
+}
+@media (max-width: 760px) {
+  .button {
+    gap: 18px;
+  }
+  .nav-pilot {
+    min-height: 42px;
+    padding: 8px 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button:hover {
+    transform: none;
+  }
+  .draft-caret {
+    display: none;
+  }
+}
+.motion-paused .button:hover {
+  transform: none;
+}

@@ -1,0 +1,219 @@
+[
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/problem"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions/admission"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions/discharge"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions/transitions"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/source-comparison"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/review-queue"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/issue-review"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/clarification-drafts"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/audit-reports"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/platform"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/evidence"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/evaluation"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/pricing"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/request-demo"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/request-pilot"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/demo"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/trust"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources/reconciliation"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources/uncertainty"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources/evaluation-method"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/about"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/contact"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/sign-in"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/legal/privacy"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/legal/terms"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/accessibility"
+  },
+  {
+    "brokenImages": 0,
+    "clippedLabels": [],
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/404"
+  }
+]

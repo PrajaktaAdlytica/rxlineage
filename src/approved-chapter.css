@@ -1,6 +1,9 @@
-/* Frozen section appearance from approved version 596d8d6. */
+/* Approved central composition; user-requested solid edges replace the fades. */
 .lineage-chapter {
   background: transparent !important;
+}
+.lineage-chapter::before {
+  background: radial-gradient(ellipse at 50% 45%, #76538b77, transparent 60%);
 }
 .approved-chapter-backdrop {
   position: absolute;
@@ -12,8 +15,7 @@
 }
 .approved-chapter-canvas {
   position: absolute;
-  left: 0;
-  right: 0;
+  inset: 0;
   background-color: #281d34;
   z-index: -4;
 }

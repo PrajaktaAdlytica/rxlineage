@@ -85,6 +85,60 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           ),
         );
       });
+      media.add("(max-width: 900px), (max-height: 649px)", () => {
+        gsap.utils.toArray<HTMLElement>(".chapter-orbit").forEach((el) =>
+          gsap.fromTo(
+            el,
+            { scale: 0.9 },
+            {
+              scale: 1.1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el.closest("section"),
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.7,
+              },
+            },
+          ),
+        );
+      });
+      gsap.utils.toArray<HTMLElement>(".closing").forEach((section) => {
+        gsap.from(section.querySelectorAll(".closing-copy > *"), {
+          y: 24,
+          opacity: 0,
+          stagger: 0.12,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: { trigger: section, start: "top 75%", once: true },
+        });
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8,
+          },
+        });
+        timeline.fromTo(
+          section.querySelector(".closing-image"),
+          { scale: 1.08, yPercent: 2 },
+          { scale: 1, yPercent: -2, ease: "none" },
+          0,
+        );
+      });
+      gsap.utils
+        .toArray<HTMLElement>(".before-after > div")
+        .forEach((column, i) => {
+          gsap.from(column.querySelectorAll("li"), {
+            x: i ? 22 : -22,
+            opacity: 0,
+            stagger: 0.14,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: { trigger: column, start: "top 78%", once: true },
+          });
+        });
       gsap.utils
         .toArray<HTMLElement>(".page-hero .entrance-value strong")
         .forEach((el) => {
@@ -129,16 +183,6 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           scrollTrigger: { trigger: el, start: "top 95%", once: true },
         }),
       );
-      gsap.utils
-        .toArray<HTMLElement>(".draft-typed,.review-note blockquote")
-        .forEach((el) =>
-          gsap.from(el, {
-            clipPath: "inset(0 100% 0 0)",
-            duration: 1.1,
-            ease: "power2.inOut",
-            scrollTrigger: { trigger: el, start: "top 88%", once: true },
-          }),
-        );
       gsap.utils.toArray<HTMLElement>(".walk-mobile-visual").forEach((el) =>
         gsap.from(el, {
           y: 25,
