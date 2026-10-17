@@ -1,0 +1,281 @@
+[
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/problem",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions/admission",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions/discharge",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/solutions/transitions",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/source-comparison",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/review-queue",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/issue-review",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/clarification-drafts",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/products/audit-reports",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/platform",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/evidence",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/evaluation",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/pricing",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/request-demo",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/request-pilot",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/demo",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/trust",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources/reconciliation",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources/uncertainty",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/resources/evaluation-method",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/about",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/contact",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": null,
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/sign-in",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/legal/privacy",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/legal/terms",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/accessibility",
+    "travellingCircle": false,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "heroText": "rgb(250, 244, 232)",
+    "overflow": false,
+    "rotatedPanels": 0,
+    "route": "/404",
+    "travellingCircle": false,
+    "width": 390
+  }
+]

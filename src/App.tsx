@@ -8,7 +8,6 @@ import { ContentPage, NotFound } from "./Pages";
 import { InquiryPage, SignIn } from "./Forms";
 import { Demo } from "./Demo";
 import { pages } from "./content";
-import { ScrollAperture } from "./ScrollAperture";
 import { Atmosphere, atmosphereFamily } from "./Atmosphere";
 export function App({ initialPath = "/" }: { initialPath?: string }) {
   const path = initialPath.replace(/\/$/, "") || "/";
@@ -44,27 +43,6 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           duration: 1,
           stagger: 0.1,
           ease: "power3.out",
-        });
-        gsap.from(".entrance-workbench", {
-          y: 35,
-          opacity: 0,
-          duration: 1.1,
-          delay: 0.25,
-          ease: "power3.out",
-        });
-        gsap.from(".entrance-source", {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.16,
-          delay: 0.6,
-          ease: "power3.out",
-        });
-        gsap.from(".entrance-finding", {
-          y: 10,
-          opacity: 0,
-          duration: 0.6,
-          delay: 1.05,
         });
       } else if (main.current?.querySelector(".hero-visual")) {
         gsap.from(".hero-visual", {
@@ -220,7 +198,6 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           data-page={path}
         >
           <Atmosphere root={main} path={path} />
-          <ScrollAperture main={main} path={path} />
           {content}
         </main>
         <Footer />

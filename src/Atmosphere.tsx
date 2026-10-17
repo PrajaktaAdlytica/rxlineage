@@ -55,10 +55,12 @@ export function Atmosphere({
             height,
             kind: "reading",
             fill: section.matches(".closing")
-              ? "#c49ed5"
+              ? "#b8845f"
               : section.matches(".price-section,.faq-section")
-                ? "#d8b7d2"
-                : undefined,
+                ? "#e4d5c3"
+                : section.matches(".case-section")
+                  ? "#dbbd9e"
+                  : undefined,
           });
       }
       el.classList.add("has-atmosphere");
