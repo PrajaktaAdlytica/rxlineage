@@ -275,8 +275,9 @@ void main() {
   fragColor = vec4(clamp(outv, vec2(0.0), vec2(1.05, 1.0)), 0.0, 1.0);
 }`;
 
-// Advect a bounded displacement field, so a stroke keeps carrying the ink after
-// the pointer passes. Relaxation protects the accepted photographic composition.
+// Two staggered material-coordinate fields transport the accepted ink art.
+// Each field renews only while its contribution is zero, avoiding clamped
+// displacement, standing sine waves, or the rubber-sheet motion they create.
 const FLOW_SRC = `#version 300 es
 precision highp float;
 in vec2 v_uv; out vec4 fragColor;
@@ -284,47 +285,43 @@ uniform sampler2D u_flow;
 uniform sampler2D u_vel;
 uniform vec2 u_texel;
 uniform float u_dt;
+uniform float u_reset;
 void main(){
- vec2 v=texture(u_vel,v_uv).xy*u_texel;
+ vec2 raw=texture(u_vel,v_uv).xy*u_texel;
+ vec2 v=raw*.45/(1.+length(raw)*18.);
  vec2 previous=texture(u_flow,clamp(v_uv-v*u_dt,vec2(.001),vec2(.999))).xy;
- vec2 displacement=previous*exp(-u_dt*.32)+v*u_dt*.7;
- fragColor=vec4(clamp(displacement,vec2(-.075),vec2(.075)),0.,1.);
+ vec2 displacement=mix(previous,vec2(0.),u_reset)+v*u_dt;
+ fragColor=vec4(displacement,0.,1.);
 }`;
 
-// Display-resolution pass. The only thing that runs per screen pixel.
-// The supplied fluid simulation now transports a photographed/rendered ink
-// plate. Its volume and translucency survive instead of becoming a flat ramp.
 const RENDER_SRC = `#version 300 es
 precision highp float;
 in vec2 v_uv; out vec4 fragColor;
-uniform sampler2D u_dye;
-uniform sampler2D u_vel;
 uniform sampler2D u_plate;
 uniform sampler2D u_flow;
-uniform vec2 u_simTexel;
+uniform sampler2D u_flowB;
 uniform float u_aspect;
 uniform float u_plateAspect;
 uniform float u_frame;
+uniform float u_flowTime;
+vec3 sampleInk(vec2 uv){
+ if(u_aspect>u_plateAspect) uv.y=(uv.y-.5)*u_plateAspect/u_aspect+.5;
+ else uv.x=(uv.x-.5)*u_aspect/u_plateAspect+.5;
+ return texture(u_plate,clamp(uv,vec2(.001),vec2(.999))).rgb;
+}
 void main(){
  float t=u_frame/30.;
  vec2 uv=v_uv;
- float side=smoothstep(.10,.42,abs(uv.x-.5));
- // Distinct edge plumes open toward the original central identity lane.
- float entry=(1.-smoothstep(0.,2.2,t))*.045;
+ float side=smoothstep(.12,.42,abs(uv.x-.5));
+ float entry=(1.-smoothstep(0.,2.2,t))*.025;
  float left=1.-smoothstep(.25,.48,uv.x);
  float right=smoothstep(.52,.75,uv.x);
  uv.x+=(left-right)*(.035+entry);
- // Real projected fluid velocity from DyeWhorl advects the delicate ink.
- vec2 flow=texture(u_vel,v_uv).xy*u_simTexel;
- uv-=texture(u_flow,v_uv).xy*(.32+.68*side);
- uv-=clamp(flow,vec2(-.08),vec2(.08))*.16*side;
- // Slow secondary curl gives wisps local depth without moving the identity.
- uv.x+=sin(v_uv.y*9.+t*.64)*.014*side;
- uv.y+=sin(v_uv.x*11.-t*.52)*.018*side;
- if(u_aspect>u_plateAspect) uv.y=(uv.y-.5)*u_plateAspect/u_aspect+.5;
- else uv.x=(uv.x-.5)*u_aspect/u_plateAspect+.5;
- vec3 col=texture(u_plate,clamp(uv,vec2(.001),vec2(.999))).rgb;
- fragColor=vec4(col,1.);
+ vec2 a=texture(u_flow,v_uv).xy*(.25+.75*side);
+ vec2 b=texture(u_flowB,v_uv).xy*(.25+.75*side);
+ float phase=mod(u_flowTime,10.)/10.;
+ float weight=pow(sin(phase*3.14159265),2.);
+ fragColor=vec4(mix(sampleInk(uv-b),sampleInk(uv-a),weight),1.);
 }`;
 
 type RGB = [number, number, number];
@@ -627,7 +624,8 @@ export function createInkTank(
   let velocity: Double | null = null,
     dye: Double | null = null,
     pressure: Double | null = null,
-    flow: Double | null = null;
+    flow: Double | null = null,
+    flowB: Double | null = null;
   let divergence: FBO | null = null,
     dyeTmpA: FBO | null = null,
     dyeTmpB: FBO | null = null;
@@ -636,6 +634,8 @@ export function createInkTank(
   let pointer: {
     x: number;
     y: number;
+    px: number;
+    py: number;
     lastX: number;
     lastY: number;
     vx: number;
@@ -657,8 +657,8 @@ export function createInkTank(
         sp.set([x, y, 0.12 + 0.025 * Math.sin(t * 0.3 + phase), amount], i * 4);
         sf.set(
           [
-            (side ? -1 : 1) * (90 + 30 * Math.sin(t * 0.7 + phase)),
-            65 * Math.cos(t * 0.63 + phase),
+            (side ? -1 : 1) * (52 + 16 * Math.sin(t * 0.27 + phase)),
+            25 * Math.cos(t * 0.31 + phase),
             side ? amount : 0,
             0,
           ],
@@ -669,7 +669,7 @@ export function createInkTank(
   const step = (dt: number) => {
     if (!velocity || !dye || !pressure || !divergence || !dyeTmpA || !dyeTmpB)
       return;
-    const t = { jacobi: 8, correct: 1 };
+    const t = { jacobi: portrait ? 8 : 12, correct: 1 };
     const simTexel = velocity.read.texel;
     const aspect = cssW / Math.max(1, cssH);
 
@@ -689,9 +689,9 @@ export function createInkTank(
     solver.v2("u_texel", simTexel[0], simTexel[1]);
     solver.f("u_dt", dt);
     solver.f("u_time", simTime);
-    solver.f("u_curlAmt", 24);
-    solver.f("u_buoy", 28);
-    solver.f("u_ambient", 12);
+    solver.f("u_curlAmt", 16);
+    solver.f("u_buoy", 20);
+    solver.f("u_ambient", 6.5);
     solver.f("u_aspect", aspect);
     solver.v4a("u_sp", sp);
     solver.v4a("u_sf", sf);
@@ -767,6 +767,7 @@ export function createInkTank(
     );
     pressure = solver.makeDouble(simW, simH, gl.R16F, gl.RED);
     flow = solver.makeDouble(simW, simH, gl.RG16F, gl.RG);
+    flowB = solver.makeDouble(simW, simH, gl.RG16F, gl.RG);
     divergence = solver.makeFBO(simW, simH, gl.R16F, gl.RED);
     dyeTmpA = solver.makeFBO(
       dyeW,
@@ -789,37 +790,50 @@ export function createInkTank(
     // Pointer velocity enters the projected fluid; it is not a cursor overlay.
     if (pointer) {
       const p = pointer;
-      const dx = p.x - p.lastX,
-        dy = p.y - p.lastY;
+      const smoothing = 1 - Math.exp(-dt / 0.012);
+      p.px += (p.x - p.px) * smoothing;
+      p.py += (p.y - p.py) * smoothing;
+      const dx = p.px - p.lastX,
+        dy = p.py - p.lastY;
       const k = 1 - Math.exp(-dt / 0.06);
-      p.vx += (((dx * simW) / dt) * 4 - p.vx) * k;
-      p.vy += (((dy * simH) / dt) * 4 - p.vy) * k;
+      p.vx += (((dx * simW) / dt) * 1.8 - p.vx) * k;
+      p.vy += (((dy * simH) / dt) * 1.8 - p.vy) * k;
       const speed = Math.hypot(p.vx, p.vy);
       if (speed > 1) {
         const n = Math.min(
           6,
           Math.max(1, Math.ceil(Math.hypot(dx * cssW, dy * cssH) / 11)),
         );
-        const limit = Math.min(1, 1800 / Math.max(1, speed));
+        const limit = Math.min(1, 900 / Math.max(1, speed));
         for (let i = 0; i < n; i++) {
           const f = (i + 1) / n,
             slot = (6 + i) * 4;
-          sp.set([p.lastX + dx * f, p.lastY + dy * f, 0.075, 0.12 / n], slot);
+          sp.set([p.lastX + dx * f, p.lastY + dy * f, 0.055, 0.08 / n], slot);
           sf.set([(p.vx * limit) / n, (p.vy * limit) / n, 0.04 / n, 0], slot);
         }
       }
-      p.lastX = p.x;
-      p.lastY = p.y;
+      p.lastX = p.px;
+      p.lastY = p.py;
     }
     step(dt);
-    if (flow && velocity) {
-      solver.use(pFlow);
-      solver.tex("u_flow", 0, flow.read.tex);
-      solver.tex("u_vel", 1, velocity.read.tex);
-      solver.v2("u_texel", 1 / simW, 1 / simH);
-      solver.f("u_dt", dt);
-      solver.blit(flow.write);
-      flow.swap();
+    if (velocity) {
+      for (const [field, offset] of [
+        [flow, 0],
+        [flowB, 5],
+      ] as const) {
+        if (!field) continue;
+        const renew =
+          Math.floor((simTime + offset) / 10) !==
+          Math.floor((simTime - dt + offset) / 10);
+        solver.use(pFlow);
+        solver.tex("u_flow", 0, field.read.tex);
+        solver.tex("u_vel", 1, velocity.read.tex);
+        solver.v2("u_texel", 1 / simW, 1 / simH);
+        solver.f("u_dt", dt);
+        solver.f("u_reset", renew ? 1 : 0);
+        solver.blit(field.write);
+        field.swap();
+      }
     }
   };
   const plateTexture = gl.createTexture();
@@ -844,6 +858,8 @@ export function createInkTank(
     solver.tex("u_vel", 1, velocity.read.tex);
     solver.tex("u_plate", 2, plateTexture);
     if (flow) solver.tex("u_flow", 3, flow.read.tex);
+    if (flowB) solver.tex("u_flowB", 4, flowB.read.tex);
+    solver.f("u_flowTime", simTime);
     solver.v2("u_simTexel", 1 / simW, 1 / simH);
     solver.f("u_aspect", width / height);
     solver.f("u_plateAspect", plate.naturalWidth / plate.naturalHeight);
@@ -852,7 +868,8 @@ export function createInkTank(
   };
   canvas.width = Math.min(width, portrait ? 720 : 1440);
   canvas.height = Math.round((canvas.width * height) / width);
-  let current = -1;
+  let current = -1,
+    accumulator = 0;
   allocate();
   return {
     draw(frame: number) {
@@ -869,15 +886,18 @@ export function createInkTank(
       render(frame);
     },
     tick(dt: number) {
-      const steps = Math.min(3, Math.max(1, Math.round(dt * 60)));
-      for (let i = 0; i < steps; i++) advance();
+      accumulator += Math.min(0.05, dt);
+      while (accumulator >= 1 / 60) {
+        advance();
+        accumulator -= 1 / 60;
+      }
       render(simTime * 30);
     },
     pointer(x: number, y: number) {
       const px = Math.max(0, Math.min(1, x)),
         py = 1 - Math.max(0, Math.min(1, y));
       if (!pointer)
-        pointer = { x: px, y: py, lastX: px, lastY: py, vx: 0, vy: 0 };
+        pointer = { x: px, y: py, px, py, lastX: px, lastY: py, vx: 0, vy: 0 };
       else {
         pointer.x = px;
         pointer.y = py;

@@ -8,6 +8,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { createPortal } from "react-dom";
 import { loadFont } from "@remotion/fonts";
 import { createInkTank } from "./ink-tank";
 if (typeof window !== "undefined")
@@ -91,7 +92,7 @@ function FluidInk({
     const tick = (now: number) => {
       if (!last) last = now;
       const dt = (now - last) / 1000;
-      if (dt >= 1 / 30) {
+      if (dt >= 1 / 60 - 0.001) {
         tank.current?.tick(Math.min(0.05, dt));
         last = now;
       }
@@ -103,7 +104,9 @@ function FluidInk({
   useLayoutEffect(() => {
     if (!realtime) return;
     const el = canvas.current,
-      stage = el?.closest<HTMLElement>(".rx-intro");
+      stage =
+        el?.closest<HTMLElement>(".opening-atmosphere")?.parentElement ||
+        el?.closest<HTMLElement>(".rx-intro");
     if (!el || !stage) return;
     const move = (e: PointerEvent) => {
       // Native touch scrolling takes priority; mouse and pen need no click.
@@ -112,7 +115,7 @@ function FluidInk({
         tank.current?.leave();
         return;
       }
-      const box = stage.getBoundingClientRect();
+      const box = el.getBoundingClientRect();
       tank.current?.pointer(
         (e.clientX - box.left) / box.width,
         (e.clientY - box.top) / box.height,
@@ -155,11 +158,13 @@ export type IntroProps = {
   mobile: boolean;
   realtime?: boolean;
   active?: boolean;
+  backdropTarget?: HTMLElement | null;
 };
 export function InkToFolio({
   mobile = false,
   realtime = false,
   active = true,
+  backdropTarget,
 }: IntroProps) {
   const frame = useCurrentFrame();
   const { width, height, fps } = useVideoConfig();
@@ -179,11 +184,24 @@ export function InkToFolio({
   });
   return (
     <AbsoluteFill
-      style={{ background: "#211a29", color: "#f4f1ea", overflow: "hidden" }}
+      style={{
+        background: backdropTarget ? "transparent" : "#211a29",
+        color: "#f4f1ea",
+        overflow: "hidden",
+      }}
     >
-      <FluidInk realtime={realtime} active={active} />
+      {backdropTarget ? (
+        createPortal(
+          <FluidInk realtime={realtime} active={active} />,
+          backdropTarget,
+        )
+      ) : (
+        <FluidInk realtime={realtime} active={active} />
+      )}
       <AbsoluteFill
+        className="intro-identity"
         style={{
+          opacity: realtime ? "var(--intro-copy-opacity, 1)" : 1,
           justifyContent: "center",
           alignItems: "center",
           boxSizing: "border-box",

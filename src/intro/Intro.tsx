@@ -20,7 +20,13 @@ class IntroBoundary extends React.Component<
     return this.state.failed ? null : this.props.children;
   }
 }
-export function Intro({ onResumeMotion }: { onResumeMotion?: () => void }) {
+export function Intro({
+  onResumeMotion,
+  backdropTarget,
+}: {
+  onResumeMotion?: () => void;
+  backdropTarget?: HTMLElement | null;
+}) {
   const paused = useContext(MotionContext);
   const stage = useRef<HTMLElement>(null);
   const [ready, setReady] = useState(false);
@@ -100,7 +106,11 @@ export function Intro({ onResumeMotion }: { onResumeMotion?: () => void }) {
         {ready && !reduced && !paused && (
           <IntroBoundary>
             <Suspense fallback={null}>
-              <IntroPlayer mobile={mobile} paused={paused} />
+              <IntroPlayer
+                mobile={mobile}
+                paused={paused}
+                backdropTarget={backdropTarget}
+              />
             </Suspense>
           </IntroBoundary>
         )}

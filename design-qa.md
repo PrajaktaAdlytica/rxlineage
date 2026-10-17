@@ -1,21 +1,29 @@
-# RxLineage — interactive Ink to Folio revision
+# RxLineage — fluid motion and continuous opening
 
-The user accepted Option 1's artwork and full-screen composition, then requested visible continuous ink movement, cursor interaction from their DyeWhorl component, and logo appearing before text. The accepted landscape/portrait artwork, logo geometry, brand colors, navigation placement and rest of the site are preserved.
+Request: make the ink more natural like the supplied DyeWhorl component and remove the abrupt intro-to-hero background change. Accepted Option 1 artwork, palette, logo-first entrance, full-height intro and approved chapter remain intact.
 
-## Motion and interaction
+## Motion changes
 
-- Logo is hidden at frame zero. It reveals from 0.25–1.4 seconds; headline follows at 1.65–2.85; research-stage note follows at 3.05–3.8. Actual Studio captures: `qa/intro-v3/timeline-{0,30,70,120}.jpg`. Studio has no error overlay.
-- The six-second identity timeline ends without looping the words. Website fluid continues independently at a capped 30 updates/second, with fixed simulation steps. Persistent side emitters, projected velocity, and an advected bounded displacement field transport the accepted ink artwork. This is 2D fluid-driven artwork, not a volumetric 3D simulation or MP4.
-- Real native cursor drag through the left ink registered nine pointer samples. Mouse/pen movement needs no click; velocity-smoothed and spatially subsampled strokes inject momentum into the fluid. No cursor-following decorative ring is used. `moving-a.jpg` / `moving-b.jpg` capture different settled-timeline ink states.
-- Pause/Play remains available after the timeline ends; Replay separately restarts the identity entrance. Paused fluid simulation time stayed exactly 11.067 across separate reads. Matching mobile paused captures are retained. Offscreen time stayed exactly 16.317 across separate reads, with motion inactive.
-- Pointer listeners are passive, never capture the pointer, and ignore touch to preserve native mobile scrolling. Physical touch hardware and pen input were not exercised.
+Removed the display shader's standing sine waves, hard displacement clamp and instantaneous velocity distortion. Two staggered material-coordinate fields now transport the detailed artwork under the projected fluid velocity. Each field renews at zero visual weight, with a smooth blend between them. Softer source forces, lower vorticity/buoyancy, more desktop pressure iterations and smoothed pointer position/velocity reduce pinching and elastic-looking movement. A fixed-step accumulator handles frame timing; browser drawing targets 60 Hz, rather than assuming a measured device frame rate.
 
-## Responsive and visual checks
+This is 2D fluid-driven transport of the accepted illustrated artwork, not volumetric simulation or an MP4. Studio remains deterministic and frame-driven. Original source illustrations and prompts remain in `docs/intro-v2/`.
 
-Browser viewports: 1440×1000, 775×804 and 390×844. Intro remains one full viewport; phone stage measured 844px, header begins at 844px, document width equals 390px. Current tablet/phone captures are in `qa/intro-v3/`. Small concept-note text has a dark backing on portrait layouts so moving ivory ink cannot reduce its contrast. The interaction hint is hidden on portrait/coarse-pointer layouts to avoid overlap with continuation controls.
+## One scene across intro and hero
 
-Native mobile Skip moves focus to `home-hero`, with header at Y=0 and hero at Y=75 after the smooth scroll settles. Offscreen ink pauses. No navigation was reintroduced over the intro. No new decorative lines, section shading, tilted elements, clinical actions or product claims were added. Reference/artwork provenance remains in `docs/intro-v2/artwork.md`; the previous full-screen assessment is retained in `docs/intro-v3/previous-fullscreen-qa.md`.
+`OpeningAtmosphere.tsx` supplies one sticky viewport surface spanning the intro, navigation and hero. The same WebGL canvas is portaled into it; it is not replaced at the section boundary. Scroll gradually quiets the ink behind the reading content and fades the intro identity. The hero is transparent over the same #211A29 plum base. Home navigation now has a translucent plum surface and the existing reverse brand SVG, removing the cream interruption. Other pages keep their established header.
 
-## Checks and limits
+No section-edge gradients, decorative lines, tilted elements, forced scrolling or clinical state changes were introduced. The scene ends with the hero and does not extend across the approved chapter.
 
-Root production build and video TypeScript pass. Existing checks cover 31 routes, 1,077 internal references, 1,254 asset references, all five modules and nine synthetic fixtures without failures. Local browser error log: empty. Studio error overlay: none. Reduced-motion/global-pause still selection and no-GPU fallback from the prior revision are retained. OS preference emulation, screen-reader behavior, physical-device performance and forced GPU loss are not tested in this revision.
+## Browser evidence
+
+Actual screenshots: `qa/intro-v4/desktop.jpg`, `transition.jpg`, `hero.jpg`, `mobile.jpg`, `mobile-transition.jpg`, `mobile-still-hero.jpg`, `tablet.jpg`. Desktop 1440×1000, tablet 775×804, phone 390×844.
+
+- Desktop: exactly one canvas, ten native cursor samples; observed ink motion past 30 seconds. At scroll Y=500 the same canvas remains at viewport Y=0 with artwork opacity 0.42976. At Y=1000 hero begins at Y=89, same fluid remains active with opacity 0.12. The hero has no opaque section background.
+- Phone: 390px document width, 844px stage and canvas. At Y=422 the same canvas stays at Y=0. At Y=844 hero begins at Y=75, ink still active. No horizontal overflow. Header starts below the intro.
+- Native phone menu click preserved scroll Y=834 and header Y=10; menu contents remain readable. Desktop product dropdown checked. Automation locator clicks can center a below-fold header, so native coordinates were used to verify the actual menu behavior.
+- Manual Pause froze fluid simulation time at 15.750 across separate reads. After the shared scene left the viewport, motion was inactive at time 15.783. Global Pause removed both Player and canvas while retaining the portrait artwork, plum base and correct scroll opacity. Native scrolling remains available.
+- Studio error overlay: none. Local browser error log: empty. Root/video TypeScript and production build pass. Existing checks pass across 31 routes, 1,077 internal references, 1,253 asset references and nine synthetic fixtures.
+
+## Limits
+
+Physical-device frame rate, pen/touch hardware, screen-reader operation, OS reduced-motion emulation and forced GPU loss were not exercised. Existing reduced-motion and error fallbacks are retained. Final source is rebuilt and packaged before publication. Remaining product copy, five offers, synthetic evidence states and research-stage boundaries are unchanged.

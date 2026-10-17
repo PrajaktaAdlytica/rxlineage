@@ -19,6 +19,7 @@ import { ApprovedChapterBackdrop } from "./ApprovedChapterBackdrop";
 import { HeroEvidenceScene } from "./HeroEvidenceScene";
 import { DraftReveal } from "./DraftReveal";
 import { Intro } from "./intro/Intro";
+import { OpeningAtmosphere } from "./intro/OpeningAtmosphere";
 import { MotionContext } from "./motion-context";
 export function SourceFolios() {
   return (
@@ -449,9 +450,13 @@ export function Home({
   navigation?: React.ReactNode;
   onResumeMotion?: () => void;
 }) {
+  const [backdropTarget, setBackdropTarget] = useState<HTMLDivElement | null>(
+    null,
+  );
   return (
     <>
-      <Intro onResumeMotion={onResumeMotion} />
+      <OpeningAtmosphere onTarget={setBackdropTarget} />
+      <Intro onResumeMotion={onResumeMotion} backdropTarget={backdropTarget} />
       {navigation}
       <section
         id="home-hero"

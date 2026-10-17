@@ -281,7 +281,11 @@ export function Header({
         <div className="nav-shell">
           <a className="brand" href="/" aria-label="RxLineage home">
             <img
-              src={asset("logo/rxlineage-horizontal-primary.svg")}
+              src={asset(
+                path === "/"
+                  ? "logo/rxlineage-horizontal-reverse-accent.svg"
+                  : "logo/rxlineage-horizontal-primary.svg",
+              )}
               width="194"
               height="60"
               alt="RxLineage"

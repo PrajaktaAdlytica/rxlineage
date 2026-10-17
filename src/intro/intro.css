@@ -325,3 +325,87 @@ main .rx-intro {
     display: none;
   }
 }
+
+/* A single physical background through the intro and the first product scene. */
+.opening-atmosphere {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 220svh;
+  z-index: 0;
+  pointer-events: none;
+  background: #211a29;
+}
+.opening-atmosphere-viewport {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 480px;
+  overflow: hidden;
+  background: #211a29;
+}
+.opening-ink-art {
+  position: absolute;
+  inset: 0;
+  opacity: var(--opening-ink-opacity, 1);
+  background: #211a29 url("/media/ink-to-folio-landscape-v2.webp") center/cover
+    no-repeat;
+}
+.site[data-has-intro="true"] main .rx-intro {
+  background: transparent;
+}
+.site[data-has-intro="true"] .intro-still {
+  background: none;
+}
+.site[data-has-intro="true"] #home-hero {
+  background: transparent !important;
+}
+.site[data-has-intro="true"] .site-header {
+  background: #211a29d9;
+  color: #f4f1ea;
+  border-bottom-color: #f4f1ea24;
+  backdrop-filter: none;
+}
+.site[data-has-intro="true"] .site-header .nav-group > button,
+.site[data-has-intro="true"] .site-header .nav-direct,
+.site[data-has-intro="true"] .site-header .signin-link,
+.site[data-has-intro="true"] .site-header .menu-toggle {
+  color: #f4f1ea;
+}
+.site[data-has-intro="true"] .site-header .menu-toggle {
+  border-color: #b9aaca80;
+  background: transparent;
+}
+.site[data-has-intro="true"] .site-header .nav-pilot {
+  background: #e4c394;
+  color: #211a29;
+  border-color: #e4c394;
+}
+.site[data-has-intro="true"] .site-header .mega-menu,
+.site[data-has-intro="true"] .site-header .mobile-nav {
+  color: #352c40;
+}
+.site[data-has-intro="true"] .site-header :focus-visible {
+  outline-color: #c4a28c;
+}
+@media (max-aspect-ratio: 20/27) {
+  .opening-ink-art {
+    background-image: url("/media/ink-to-folio-portrait-v2.webp");
+  }
+}
+@media (max-aspect-ratio: 1/1) {
+  .opening-atmosphere-viewport {
+    min-height: 600px;
+  }
+}
+.rx-intro:has(.intro-runtime) .intro-backup {
+  visibility: hidden;
+}
+.intro-backup {
+  opacity: var(--intro-copy-opacity, 1);
+}
+.rx-intro {
+  user-select: none;
+  -webkit-user-select: none;
+}

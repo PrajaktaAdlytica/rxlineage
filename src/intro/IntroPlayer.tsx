@@ -4,9 +4,11 @@ import { InkToFolio } from "./InkToFolio";
 export default function IntroPlayer({
   mobile,
   paused,
+  backdropTarget,
 }: {
   mobile: boolean;
   paused: boolean;
+  backdropTarget?: HTMLElement | null;
 }) {
   const ref = useRef<PlayerRef>(null);
   const root = useRef<HTMLDivElement>(null);
@@ -45,27 +47,27 @@ export default function IntroPlayer({
   useEffect(() => {
     const el = root.current;
     if (!el) return;
+    const observed = backdropTarget?.closest(".opening-atmosphere") || el;
     const observer = new IntersectionObserver(
       ([entry]) =>
         setVisible(
-          entry.intersectionRatio >= 0.15 &&
-            document.visibilityState === "visible",
+          entry.isIntersecting && document.visibilityState === "visible",
         ),
-      { threshold: 0.15, rootMargin: "-90px 0px 0px 0px" },
+      { threshold: 0, rootMargin: "-90px 0px 0px 0px" },
     );
-    observer.observe(el);
+    observer.observe(observed);
     const visibility = () =>
       setVisible(
         document.visibilityState === "visible" &&
-          el.getBoundingClientRect().bottom > 90 &&
-          el.getBoundingClientRect().top < innerHeight,
+          observed.getBoundingClientRect().bottom > 90 &&
+          observed.getBoundingClientRect().top < innerHeight,
       );
     document.addEventListener("visibilitychange", visibility);
     return () => {
       observer.disconnect();
       document.removeEventListener("visibilitychange", visibility);
     };
-  }, []);
+  }, [backdropTarget]);
   useEffect(() => {
     const player = ref.current;
     if (!player) return;
@@ -103,7 +105,12 @@ export default function IntroPlayer({
           key={mobile ? "mobile" : "desktop"}
           ref={ref}
           component={InkToFolio}
-          inputProps={{ mobile, realtime: true, active: ambientActive }}
+          inputProps={{
+            mobile,
+            realtime: true,
+            active: ambientActive,
+            backdropTarget,
+          }}
           durationInFrames={180}
           fps={30}
           compositionWidth={dimensions.width}
