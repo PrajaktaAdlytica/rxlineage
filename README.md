@@ -38,14 +38,16 @@ The application has no analytics, cookies, localStorage or sessionStorage. Conse
 
 ## Motion and design
 
-One continuous canvas blends limestone, lavender and aubergine between the actual section positions. A copper lineage thread tracks reading progress. The source story uses a sticky evidence panel on sufficiently wide/tall screens, with reversible scroll stages; manual selection stops auto-follow. Narrow/short screens use stacked copy and touch controls. The case fan recenters the selected card on mobile. Forms remain still.
+The full-screen Source Reveal uses the original vector logo over fluid ink that responds to mouse/pen movement. One ink canvas continues into the hero. A 400 ms hold leads into a 3.2-second interruptible scroll, while the top-anchored navigation fades in. Hero copy, CTA, dated source cards and pharmacist review state enter in sequence. Phone evidence waits until its panel enters the reading area.
 
-Pause motion stops scroll choreography and shows the complete evidence state. OS reduced-motion CSS/JS fallbacks are included; offscreen SVG motion pauses and hidden-tab CSS animation pauses. Native navigation, anchors, keyboard focus and direct route entry work independently of the story. Read docs/motion-and-coverage.md for page/section responsibilities.
+Pause and reduced-motion states expose the full content. Skip, native scrolling, keyboard focus, responsive menus and direct route entry remain available. The original approved evidence chapter and five modules are retained. No clinical decision is inferred by an animation.
 
-## Publication and next business decisions
+## GitHub and Vercel
 
-.openai/hosting.json binds this project to its private Sites project. Publication preserves owner-private access. This is a concept-preview website, not a clinical product launch. The build metadata origin is the literal origin returned at registration in scripts/prerender.tsx; update it and rebuild when a verified custom domain is actually connected.
+Source repository: https://github.com/PrajaktaAdlytica/rxlineage
 
-A custom domain and a user-selected GitHub/Vercel project have not been connected. Real lead delivery, real authentication, external analytics and any live/data-bearing pilot require a separately specified implementation. Brand/legal review, regulatory intended-use review, data rights and the original pilot prerequisites are not implied by website completion.
+Import this repository into Vercel with root directory `./`, Vite preset, `npm ci`, `npm run build`, output `dist`, and Node.js `24.x`. `vercel.json`, `.nvmrc` and the package engine declaration contain these settings. See [the complete deployment guide](docs/DEPLOYMENT.md).
 
-For a different verified hosting origin, set `SITE_ORIGIN` when running the build. A vercel.json static-build configuration is included for a later Vercel import; no Vercel deployment or custom DNS change has been performed.
+No secrets or environment variables are needed for the demonstration. Vercel's production-domain environment variable generates canonical/social/sitemap URLs; set `SITE_ORIGIN=https://your-verified-domain.example` when using a custom domain. The Sites origin remains the fallback for the existing publication.
+
+`.openai/hosting.json` retains the existing owner-private Sites project binding; it is not a credential. GitHub source publication does not change the Sites audience. Vercel deployment and custom DNS connection are separate steps and have not been performed by this handoff. Inquiry forms remain local drafts; authentication and live integrations are not connected.

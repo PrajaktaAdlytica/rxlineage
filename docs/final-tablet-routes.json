@@ -1,0 +1,20 @@
+[
+  {
+    "broken": 0,
+    "overflow": false,
+    "path": "/products/source-comparison",
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "overflow": false,
+    "path": "/pricing",
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "overflow": false,
+    "path": "/",
+    "width": 1024
+  }
+]

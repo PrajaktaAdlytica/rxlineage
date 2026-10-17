@@ -3,3 +3,8 @@ dist/
 .sites-runtime/
 .DS_Store
 *.log
+
+.vercel/
+.env
+.env.*
+!.env.example

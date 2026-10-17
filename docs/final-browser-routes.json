@@ -1,0 +1,250 @@
+[
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/",
+    "h1": 1,
+    "overflow": false,
+    "path": "/",
+    "title": "RxLineage — Evidence for pharmacist-led review"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/problem",
+    "h1": 1,
+    "overflow": false,
+    "path": "/problem",
+    "title": "Problem — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/solutions",
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions",
+    "title": "Solutions — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/solutions/admission",
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions/admission",
+    "title": "Admission — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/solutions/discharge",
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions/discharge",
+    "title": "Discharge — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/solutions/transitions",
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions/transitions",
+    "title": "Transitions — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/products",
+    "h1": 1,
+    "overflow": false,
+    "path": "/products",
+    "title": "Proposed modules — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/products/source-comparison",
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/source-comparison",
+    "title": "Source Comparison — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/products/review-queue",
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/review-queue",
+    "title": "Review Queue — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/products/issue-review",
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/issue-review",
+    "title": "Issue Review — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/products/clarification-drafts",
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/clarification-drafts",
+    "title": "Clarification Drafts — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/products/audit-reports",
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/audit-reports",
+    "title": "Audit Reports — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/platform",
+    "h1": 1,
+    "overflow": false,
+    "path": "/platform",
+    "title": "Proposed platform — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/evidence",
+    "h1": 1,
+    "overflow": false,
+    "path": "/evidence",
+    "title": "Evidence — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/evaluation",
+    "h1": 1,
+    "overflow": false,
+    "path": "/evaluation",
+    "title": "Evaluation — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/pricing",
+    "h1": 1,
+    "overflow": false,
+    "path": "/pricing",
+    "title": "Hypothetical pricing — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/request-demo",
+    "h1": 1,
+    "overflow": false,
+    "path": "/request-demo",
+    "title": "Guided demo request — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/request-pilot",
+    "h1": 1,
+    "overflow": false,
+    "path": "/request-pilot",
+    "title": "Scoped pilot inquiry — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/demo",
+    "h1": 1,
+    "overflow": false,
+    "path": "/demo",
+    "title": "Synthetic demo — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/trust",
+    "h1": 1,
+    "overflow": false,
+    "path": "/trust",
+    "title": "Governance — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/resources",
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources",
+    "title": "Resources — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/resources/reconciliation",
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources/reconciliation",
+    "title": "Reconciliation guide — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/resources/uncertainty",
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources/uncertainty",
+    "title": "Uncertainty guide — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/resources/evaluation-method",
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources/evaluation-method",
+    "title": "Evaluation method — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/about",
+    "h1": 1,
+    "overflow": false,
+    "path": "/about",
+    "title": "About — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/contact",
+    "h1": 1,
+    "overflow": false,
+    "path": "/contact",
+    "title": "Contact — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/sign-in",
+    "h1": 1,
+    "overflow": false,
+    "path": "/sign-in",
+    "title": "Concept access — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/legal/privacy",
+    "h1": 1,
+    "overflow": false,
+    "path": "/legal/privacy",
+    "title": "Privacy — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/legal/terms",
+    "h1": 1,
+    "overflow": false,
+    "path": "/legal/terms",
+    "title": "Terms — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/accessibility",
+    "h1": 1,
+    "overflow": false,
+    "path": "/accessibility",
+    "title": "Accessibility — RxLineage"
+  },
+  {
+    "broken": 0,
+    "canonical": "https://rxlineage.artfullarch32.chatgpt.site/404",
+    "h1": 1,
+    "overflow": false,
+    "path": "/404",
+    "title": "Page not found — RxLineage"
+  }
+]

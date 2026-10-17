@@ -4,9 +4,16 @@ import { readFileSync, writeFileSync, mkdirSync, copyFileSync } from "node:fs";
 import { App } from "../src/App";
 import { pages } from "../src/content";
 const template = readFileSync("dist/index.html", "utf8");
-const origin = (
-  process.env.SITE_ORIGIN || "https://rxlineage.artfullarch32.chatgpt.site"
-).replace(/\/$/, "");
+// Vercel supplies its production domain at build time, including previews.
+// An explicit approved custom domain always takes precedence.
+const origin = new URL(
+  process.env.SITE_ORIGIN ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "https://rxlineage.artfullarch32.chatgpt.site"),
+).origin;
 const descriptions: Record<string, string> = {
   home: "A proposed source-attributed medication-history workflow for pharmacist review at admission and discharge. Explore the synthetic concept.",
   pricing:
@@ -43,6 +50,9 @@ for (const p of pages) {
     const dir = "dist" + (p.route === "/" ? "" : p.route);
     mkdirSync(dir, { recursive: true });
     writeFileSync(dir + "/index.html", html);
+    // Clean-URL hosts resolve /about to about.html. Retain directory exports
+    // for hosts that serve /about/ from about/index.html.
+    if (p.route !== "/") writeFileSync("dist" + p.route + ".html", html);
   }
 }
 writeFileSync(

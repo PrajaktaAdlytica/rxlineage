@@ -11,6 +11,16 @@ for (const p of pages) {
   assert(existsSync(f), "Missing route " + p.route);
   if (!existsSync(f)) continue;
   const html = readFileSync(f, "utf8");
+  if (p.route !== "/") {
+    const flat = "dist" + p.route + ".html";
+    assert(existsSync(flat), "Missing clean-URL export " + p.route);
+    if (existsSync(flat))
+      assert(
+        readFileSync(flat, "utf8") === html,
+        "Clean-URL export differs " + p.route,
+      );
+  }
+
   assert(
     (html.match(/<h1[ >]/g) || []).length === 1,
     "One H1 required " + p.route,

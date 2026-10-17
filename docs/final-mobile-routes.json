@@ -1,0 +1,188 @@
+[
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/problem"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions/admission"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions/discharge"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/solutions/transitions"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/products"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/source-comparison"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/review-queue"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/issue-review"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/clarification-drafts"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/products/audit-reports"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/platform"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/evidence"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/evaluation"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/pricing"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/request-demo"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/request-pilot"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/demo"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/trust"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources/reconciliation"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources/uncertainty"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/resources/evaluation-method"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/about"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/contact"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/sign-in"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/legal/privacy"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/legal/terms"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/accessibility"
+  },
+  {
+    "broken": 0,
+    "h1": 1,
+    "overflow": false,
+    "path": "/404"
+  }
+]
