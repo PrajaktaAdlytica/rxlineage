@@ -1,17 +1,15 @@
-# RxLineage — cinematic intro-to-hero handoff
+# RxLineage — cursor-driven ink repair
 
-The approved 7.2-second Source Reveal and sharp inline vector identity are preserved. Its final pose now holds for 400 ms, then travels into the hero over 3.2 seconds. A finite requestAnimationFrame sequence uses smootherstep easing, with zero velocity and acceleration at both ends, rather than the browser's brief default smooth scroll.
+Cursor events already reached the simulation, but the pointer velocity impulse was being multiplied by the 1/60-second solver step as if it were an ambient acceleration. The correction converts the stroke velocity into the force expected by the integrator, restoring the full bounded impulse each fixed step. The existing velocity cap, smoothing, pressure projection and material-coordinate transport are retained.
 
-The original ink canvas stays mounted across the entire opening. Scroll progress gradually fades the intro identity, brings in the product scene, and quiets the ink over the full journey instead of darkening it early. The same background remains visible at 18% opacity beneath the settled hero. No artwork, new section backgrounds, rings, logo paths, product copy or approved evidence chapter were changed.
-
-Native wheel, touch, pointer and navigation-key input cancel the automatic travel immediately. Resize, hidden tabs, pause, unmount and replay also clean up the transition. A reader who already skipped beyond the intro retains their place. Keyboard focus moves to the hero only after the automatic journey completes. Reduced-motion presentations expose the complete hero without its entrance fade and do not mount the autoplay player.
+Pointer moves are captured on the shared opening's parent before descendant handlers can stop propagation. Coordinates are checked against the actual canvas viewport; moving outside or onto links/buttons clears the pointer. Mouse and pen require no button press. Touch remains available for native page scrolling.
 
 ## Verification
 
-A deterministic timing/interaction harness verified the initial 400 ms hold, gradual midpoint, 3.2-second travel, sticky-header destination, focus only at completion, wheel cancellation without further scrolling, and complete listener/frame cleanup.
+Real browser pointer strokes increased the live canvas sample count from 0 to 64 and reported smoothed pointer velocity above 300 cells/second. Additional pointer moves between native click locations increased samples to 66 without a held drag. Intro and hero both accepted input through the same canvas. Visual inspection after strokes showed displaced lavender ink folds. These observations confirm input and live rendering; they are not a physical-device benchmark.
 
-Browser production preview: desktop 1280×720 and phone 390×844 reached frame 215, handoff progress 1.000 and entered state, with hero focused at Y=89 and Y=75 respectively. A desktop intermediate observation measured progress 0.526, scrollY=395 and heroY=414. Native upward scroll interrupted that travel; replay then completed correctly. One shared ink canvas stayed mounted. Phone document width did not overflow. Production browser error log was empty.
+Pause set runtime playing=false, cleared pointerActive and froze ink time at 86.817. Browser error log was empty. Root and video TypeScript, production build and 31-route checks passed: 1,077 internal references, 1,253 asset references, five modules and nine synthetic fixtures, with no failures.
 
-Root and video TypeScript, build and existing route/reference/fixture checks pass: 31 routes, 1,077 internal references, 1,253 asset references, five modules and nine synthetic fixtures; no check failures. Current captures are in `qa/intro-v7/`; previous QA is retained in `docs/intro-v7/previous-vector-handoff-qa.md`.
+The approved artwork, palette, sharp inline SVG identity, 400 ms final hold, 3.2-second interruptible hero handoff and single shared ink background are retained. Studio composition was open before changes; deterministic playback has no cursor input and retains the original unforced animation. Physical pen/touch hardware, screen readers, forced GPU loss and OS motion emulation were not exercised.
 
-The simulation/artwork and Remotion timeline were not modified. Physical-device frame rates, touch hardware, screen-reader operation, OS preference emulation and forced GPU loss were not exercised. Pause/still/reduced-motion code paths remain intact.
+Previous QA is in `docs/intro-v8/previous-cinematic-handoff-qa.md`. Current visual capture: `qa/intro-v8/cursor-stir.jpg`.

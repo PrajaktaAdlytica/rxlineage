@@ -800,6 +800,7 @@ export function createInkTank(
       p.vx += (((dx * simW) / dt) * 1.8 - p.vx) * k;
       p.vy += (((dy * simH) / dt) * 1.8 - p.vy) * k;
       const speed = Math.hypot(p.vx, p.vy);
+      canvas.dataset.pointerSpeed = speed.toFixed(1);
       if (speed > 1) {
         const n = Math.min(
           6,
@@ -810,7 +811,12 @@ export function createInkTank(
           const f = (i + 1) / n,
             slot = (6 + i) * 4;
           sp.set([p.lastX + dx * f, p.lastY + dy * f, 0.055, 0.08 / n], slot);
-          sf.set([(p.vx * limit) / n, (p.vy * limit) / n, 0.04 / n, 0], slot);
+          // These strokes carry velocity impulses. Convert to force for the
+          // fixed-step integrator, which applies u_dt in FORCE_SRC.
+          sf.set(
+            [(p.vx * limit) / (n * dt), (p.vy * limit) / (n * dt), 0.04 / n, 0],
+            slot,
+          );
         }
       }
       p.lastX = p.px;
@@ -895,6 +901,7 @@ export function createInkTank(
       render(simTime * 30);
     },
     pointer(x: number, y: number) {
+      canvas.dataset.pointerActive = "true";
       const px = Math.max(0, Math.min(1, x)),
         py = 1 - Math.max(0, Math.min(1, y));
       if (!pointer)
@@ -905,6 +912,7 @@ export function createInkTank(
       }
     },
     leave() {
+      canvas.dataset.pointerActive = "false";
       pointer = null;
     },
     destroy() {

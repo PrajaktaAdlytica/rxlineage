@@ -117,6 +117,15 @@ function FluidInk({
         return;
       }
       const box = el.getBoundingClientRect();
+      if (
+        e.clientX < box.left ||
+        e.clientX > box.right ||
+        e.clientY < box.top ||
+        e.clientY > box.bottom
+      ) {
+        tank.current?.leave();
+        return;
+      }
       tank.current?.pointer(
         (e.clientX - box.left) / box.width,
         (e.clientY - box.top) / box.height,
@@ -126,11 +135,14 @@ function FluidInk({
       );
     };
     const leave = () => tank.current?.leave();
-    stage.addEventListener("pointermove", move, { passive: true });
+    stage.addEventListener("pointermove", move, {
+      passive: true,
+      capture: true,
+    });
     stage.addEventListener("pointerleave", leave, { passive: true });
     stage.addEventListener("pointercancel", leave, { passive: true });
     return () => {
-      stage.removeEventListener("pointermove", move);
+      stage.removeEventListener("pointermove", move, true);
       stage.removeEventListener("pointerleave", leave);
       stage.removeEventListener("pointercancel", leave);
     };
