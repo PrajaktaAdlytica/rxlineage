@@ -1,18 +1,17 @@
-# RxLineage — sharp vector identity and automatic hero entry
+# RxLineage — cinematic intro-to-hero handoff
 
-The full-screen Source Reveal keeps its approved 216-frame, 30 fps sequence, moving ink artwork, colors and continuous intro/hero background.
+The approved 7.2-second Source Reveal and sharp inline vector identity are preserved. Its final pose now holds for 400 ms, then travels into the hero over 3.2 seconds. A finite requestAnimationFrame sequence uses smootherstep easing, with zero velocity and acceleration at both ends, rather than the browser's brief default smooth scroll.
 
-The folio and outlined wordmark now render as three inline SVG paths rather than CSS-scaled image layers. SVG clip rectangles and group transforms preserve the reveal timing. Logo and headline blur filters are removed. A source comparison verified all three path geometries exactly match the approved original logo. Rendered logo groups report filter `none`.
+The original ink canvas stays mounted across the entire opening. Scroll progress gradually fades the intro identity, brings in the product scene, and quiets the ink over the full journey instead of darkening it early. The same background remains visible at 18% opacity beneath the settled hero. No artwork, new section backgrounds, rings, logo paths, product copy or approved evidence chapter were changed.
 
-At the end of playback, the page smoothly enters and focuses `home-hero` once. Measured sticky navigation offsets are respected: hero Y=89 at 1280×720 and Y=75 at 390×844. One shared ink canvas remains during the handoff. If a reader already skipped or scrolled beyond the intro, completion leaves their place alone. Replay permits a fresh handoff; Pause stops the timeline and delays entry until playback resumes. Still/reduced-motion presentations do not mount the player and cannot auto-advance.
+Native wheel, touch, pointer and navigation-key input cancel the automatic travel immediately. Resize, hidden tabs, pause, unmount and replay also clean up the transition. A reader who already skipped beyond the intro retains their place. Keyboard focus moves to the hero only after the automatic journey completes. Reduced-motion presentations expose the complete hero without its entrance fade and do not mount the autoplay player.
 
 ## Verification
 
-- Remotion Studio frames 70 and 185 visually checked: sharp symbol and complete identity; current error overlay null. Actual final-frame capture: `qa/intro-v6/vector-lockup-studio.jpg`.
-- Website first playback automatically finished at frame 215, set handoff to entered, focused the hero and settled below navigation on desktop and phone.
-- Pause held frame 2 and scroll position across observations; resuming completed the automatic handoff.
-- Replay restarted the timeline. Early Skip focused the hero; completion reported skipped without returning to the intro or changing the reader's scroll position.
-- Production preview hydrated successfully on desktop and phone. At 390×844, document width does not overflow; inline SVG paths remain present. Actual phone capture: `qa/intro-v6/mobile-handoff.jpg`.
-- Root and video TypeScript, production build and existing checks pass: 31 routes, 1,077 internal references, 1,253 asset references, five modules and nine synthetic fixtures; no check failures.
+A deterministic timing/interaction harness verified the initial 400 ms hold, gradual midpoint, 3.2-second travel, sticky-header destination, focus only at completion, wheel cancellation without further scrolling, and complete listener/frame cleanup.
 
-The approved evidence chapter, synthetic product boundaries, Skip and global motion controls are preserved. Reduced-motion code was preserved and inspected, but OS preference emulation, physical device frame rates, screen-reader operation and forced GPU loss were not exercised in this revision. Previous sequence QA is preserved in `docs/intro-v6/previous-source-reveal-qa.md`.
+Browser production preview: desktop 1280×720 and phone 390×844 reached frame 215, handoff progress 1.000 and entered state, with hero focused at Y=89 and Y=75 respectively. A desktop intermediate observation measured progress 0.526, scrollY=395 and heroY=414. Native upward scroll interrupted that travel; replay then completed correctly. One shared ink canvas stayed mounted. Phone document width did not overflow. Production browser error log was empty.
+
+Root and video TypeScript, build and existing route/reference/fixture checks pass: 31 routes, 1,077 internal references, 1,253 asset references, five modules and nine synthetic fixtures; no check failures. Current captures are in `qa/intro-v7/`; previous QA is retained in `docs/intro-v7/previous-vector-handoff-qa.md`.
+
+The simulation/artwork and Remotion timeline were not modified. Physical-device frame rates, touch hardware, screen-reader operation, OS preference emulation and forced GPU loss were not exercised. Pause/still/reduced-motion code paths remain intact.

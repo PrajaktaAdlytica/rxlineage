@@ -25,12 +25,23 @@ export function OpeningAtmosphere({
       );
       // Clear the reading lane as the real workflow arrives. This is a temporal
       // dissolve of the same scene, not a gradient band between sections.
-      const t = Math.max(0, Math.min(1, (progress - 0.05) / 0.75));
-      const eased = t * t * (3 - 2 * t);
-      el.style.setProperty("--opening-ink-opacity", String(1 - eased * 0.88));
+      const smooth = (start: number, end: number) => {
+        const t = Math.max(0, Math.min(1, (progress - start) / (end - start)));
+        return t ** 3 * (t * (t * 6 - 15) + 10);
+      };
+      // Keep the same ink visible until the hero has settled. The identity
+      // clears first; the product scene enters through the remaining ink.
+      el.style.setProperty(
+        "--opening-ink-opacity",
+        String(1 - smooth(0.08, 1) * 0.82),
+      );
       main.style.setProperty(
         "--intro-copy-opacity",
-        String(1 - Math.min(1, progress / 0.7)),
+        String(1 - smooth(0.02, 0.65)),
+      );
+      main.style.setProperty(
+        "--opening-hero-opacity",
+        String(smooth(0.2, 0.92)),
       );
     };
     const schedule = () => {
@@ -48,6 +59,7 @@ export function OpeningAtmosphere({
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       main.style.removeProperty("--intro-copy-opacity");
+      main.style.removeProperty("--opening-hero-opacity");
     };
   }, []);
   return (

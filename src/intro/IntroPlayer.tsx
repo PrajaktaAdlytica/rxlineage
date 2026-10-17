@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Player, type PlayerRef } from "@remotion/player";
 import { InkToFolio } from "./InkToFolio";
+import { startHeroHandoff } from "./hero-handoff";
 export default function IntroPlayer({
   mobile,
   paused,
@@ -106,9 +107,7 @@ export default function IntroPlayer({
       if (root.current) root.current.dataset.introHandoff = "skipped";
       return;
     }
-    if (root.current) root.current.dataset.introHandoff = "entered";
-    hero.focus({ preventScroll: true });
-    hero.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (root.current) return startHeroHandoff(root.current, hero);
   }, [ended, paused, manualPause, visible]);
   const ambientActive = !paused && visible && !manualPause;
   return (

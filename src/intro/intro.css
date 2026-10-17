@@ -420,3 +420,13 @@ main .rx-intro {
     visibility: visible;
   }
 }
+
+/* The product scene emerges through the retained ink rather than cutting in. */
+.site[data-has-intro="true"] #home-hero .hero-grid {
+  opacity: var(--opening-hero-opacity, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .site[data-has-intro="true"] #home-hero .hero-grid {
+    opacity: 1;
+  }
+}
