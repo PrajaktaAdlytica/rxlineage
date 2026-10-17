@@ -1,0 +1,272 @@
+/* One finite film before the hero. No scroll locking or section fades. */
+main .rx-intro {
+  position: relative;
+  isolation: isolate;
+  background: #281d34;
+  color: #f4f1ea;
+  padding: 0;
+  overflow: hidden;
+}
+.rx-intro .intro-film {
+  position: relative;
+  aspect-ratio: 12/5;
+  width: 100%;
+}
+.intro-still,
+.intro-runtime,
+.intro-canvas {
+  position: absolute;
+  inset: 0;
+}
+.intro-still {
+  background: #281d34;
+}
+.intro-backup {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px;
+  z-index: 0;
+}
+.intro-backup img {
+  width: 25.5%;
+  height: auto;
+}
+.intro-backup p {
+  font: 400 clamp(28px, 4.06vw, 78px)/1.03
+    var(--font-display, "Newsreader", Georgia, serif);
+  letter-spacing: -0.025em;
+  margin: 2.34vw 0 0;
+  color: #f4f1ea;
+}
+.intro-backup em {
+  color: #c3a18b;
+}
+.intro-backup span {
+  font:
+    400 clamp(9px, 0.89vw, 17px)/1.5 "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.15em;
+  color: #c5b8cd;
+  margin-top: 1.67vw;
+}
+.intro-still picture {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.intro-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.intro-runtime {
+  z-index: 2;
+}
+.intro-canvas {
+  pointer-events: none;
+}
+.intro-skip,
+.intro-continue,
+.intro-controls {
+  position: absolute;
+  z-index: 3;
+  color: #f4f1ea;
+}
+.intro-skip {
+  top: 27px;
+  right: 5%;
+  display: inline-flex;
+  gap: 18px;
+  align-items: center;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 8px 0;
+  text-decoration: none;
+  border-bottom: 1px solid #f4f1ea4d;
+}
+.intro-skip span,
+.intro-continue span {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+.intro-skip:hover span {
+  transform: translate(3px, -3px);
+}
+.intro-skip:focus-visible,
+.intro-continue:focus-visible,
+.intro-controls button:focus-visible {
+  outline: 2px solid #c3a18b;
+  outline-offset: 7px;
+}
+.intro-continue {
+  bottom: 27px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  text-decoration: none;
+  padding: 8px;
+  white-space: nowrap;
+}
+.intro-continue:hover span {
+  transform: translateY(4px);
+}
+.intro-controls {
+  bottom: 22px;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.intro-controls button {
+  border: 1px solid #c5b8cd66;
+  border-radius: 2px;
+  background: #281d3466;
+  color: #f4f1ea;
+  padding: 9px 13px;
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.intro-controls button:hover {
+  background: #f4f1ea;
+  color: #281d34;
+}
+.intro-controls button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.intro-time {
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+  color: #c5b8cd;
+  min-width: 57px;
+}
+.intro-static-note {
+  position: absolute;
+  bottom: 26px;
+  right: 5%;
+  font-size: 12px;
+  color: #c5b8cd;
+}
+#home-hero {
+  scroll-margin-top: 0;
+}
+@media (max-width: 900px) {
+  .intro-time {
+    display: none;
+  }
+  .intro-skip {
+    top: 16px;
+  }
+  .intro-continue {
+    bottom: 20px;
+    font-size: 13px;
+  }
+  .intro-controls {
+    bottom: 18px;
+  }
+  .intro-backup {
+    padding: 30px;
+  }
+}
+@media (max-width: 600px) {
+  .rx-intro .intro-film {
+    aspect-ratio: 6/7;
+  }
+  .intro-backup {
+    padding: 50px 28px;
+  }
+  .intro-backup img {
+    width: 64%;
+  }
+  .intro-backup p {
+    font-size: 36px;
+    margin: 24px 0 0;
+    max-width: 300px;
+  }
+  .intro-backup span {
+    font-size: 9px;
+    margin-top: 18px;
+  }
+  .intro-continue {
+    left: 24px;
+    transform: none;
+    bottom: 18px;
+    font-size: 12px;
+    gap: 12px;
+  }
+  .intro-skip {
+    right: 24px;
+    top: 15px;
+    font-size: 13px;
+  }
+  .intro-controls {
+    right: 24px;
+    bottom: 18px;
+  }
+  .intro-controls button {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .intro-static-note {
+    right: 24px;
+    bottom: 64px;
+    font-size: 10px;
+  }
+  #home-hero {
+    scroll-margin-top: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-skip span,
+  .intro-continue span,
+  .intro-controls button {
+    transition: none;
+  }
+}
+.rx-intro .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+/* Controls retain contrast over either ink, with comfortable touch targets. */
+.intro-controls {
+  background: #281d34;
+  border: 1px solid #b9aaca80;
+  border-radius: 2px;
+  gap: 12px;
+}
+.intro-controls button {
+  background: transparent;
+  border: 0;
+  min-height: 44px;
+}
+.intro-time {
+  padding-right: 12px;
+}
+.intro-skip,
+.intro-continue {
+  min-height: 44px;
+  box-sizing: border-box;
+}

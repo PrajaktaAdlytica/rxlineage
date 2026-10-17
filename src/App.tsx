@@ -43,6 +43,11 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
           duration: 1,
           stagger: 0.1,
           ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".home-hero",
+            start: "top 75%",
+            once: true,
+          },
         });
       } else if (main.current?.querySelector(".hero-visual")) {
         gsap.from(".hero-visual", {

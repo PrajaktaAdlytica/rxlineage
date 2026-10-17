@@ -19,6 +19,7 @@ export function HeroEvidenceScene() {
         duration: 1.1,
         delay: 0.25,
         ease: "power3.out",
+        scrollTrigger: { trigger: root.current, start: "top 85%", once: true },
       });
       gsap.from(".opening-receipt", {
         y: 18,
@@ -26,6 +27,7 @@ export function HeroEvidenceScene() {
         duration: 1,
         delay: 0.8,
         ease: "power3.out",
+        scrollTrigger: { trigger: root.current, start: "top 85%", once: true },
       });
       const story = gsap.timeline({
         scrollTrigger: {

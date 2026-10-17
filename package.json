@@ -10,9 +10,12 @@
     "check": "tsx scripts/check.ts"
   },
   "dependencies": {
+    "@remotion/fonts": "4.0.536",
+    "@remotion/player": "4.0.536",
     "gsap": "^3.13.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "remotion": "4.0.536"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

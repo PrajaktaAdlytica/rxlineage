@@ -18,6 +18,7 @@ import { stopRule, sources } from "./content";
 import { ApprovedChapterBackdrop } from "./ApprovedChapterBackdrop";
 import { HeroEvidenceScene } from "./HeroEvidenceScene";
 import { DraftReveal } from "./DraftReveal";
+import { Intro } from "./intro/Intro";
 import { MotionContext } from "./motion-context";
 export function SourceFolios() {
   return (
@@ -444,7 +445,13 @@ function CaseFan() {
 export function Home() {
   return (
     <>
-      <section className="home-hero section" data-tone="paper">
+      <Intro />
+      <section
+        id="home-hero"
+        tabIndex={-1}
+        className="home-hero section"
+        data-tone="paper"
+      >
         <div className="container hero-grid">
           <div className="hero-copy">
             <Eyebrow>
