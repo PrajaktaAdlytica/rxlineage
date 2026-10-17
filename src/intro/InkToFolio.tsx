@@ -11,6 +11,7 @@ import {
 import { createPortal } from "react-dom";
 import { loadFont } from "@remotion/fonts";
 import { createInkTank } from "./ink-tank";
+import { IntroLogo } from "./IntroLogo";
 if (typeof window !== "undefined")
   void Promise.all([
     loadFont({
@@ -183,8 +184,6 @@ export function InkToFolio({
   const noteReveal = reveal(5.15, 5.75);
   const logoWidth = mobile ? 720 : 650;
   const logoHeight = (logoWidth * 100) / 323;
-  const symbolCenter = (logoWidth * 49.04) / 323;
-  const symbolOffset = (logoWidth / 2 - symbolCenter) * (1 - lockup);
   const prefixStyle = {
     display: "inline-block",
     translate: `0 ${(1 - prefixReveal) * 18}px`,
@@ -226,56 +225,12 @@ export function InkToFolio({
             translate: `0 ${(1 - lockup) * (mobile ? 185 : 90)}px`,
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              transformOrigin: `${symbolCenter}px 50%`,
-              translate: `${symbolOffset}px 0`,
-              scale: 1 + (1 - lockup) * 0.65,
-            }}
-          >
-            <Img
-              data-reveal-part="limestone"
-              src={staticFile(
-                "brand/assets/logo/rxlineage-intro-limestone.svg",
-              )}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                opacity: leftReveal,
-                clipPath: `inset(${(1 - leftReveal) * 100}% 0 0 0)`,
-                filter: `blur(${(1 - leftReveal) * 3}px)`,
-              }}
-            />
-            <Img
-              data-reveal-part="lavender"
-              src={staticFile("brand/assets/logo/rxlineage-intro-lavender.svg")}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                opacity: rightReveal,
-                clipPath: `inset(0 0 ${(1 - rightReveal) * 100}% 0)`,
-                filter: `blur(${(1 - rightReveal) * 3}px)`,
-              }}
-            />
-          </div>
-          <Img
-            data-reveal-part="wordmark"
-            src={staticFile("brand/assets/logo/rxlineage-intro-wordmark.svg")}
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              opacity: wordmarkReveal,
-              clipPath: `inset(0 ${(1 - wordmarkReveal) * 69.58}% 0 0)`,
-              translate: `0 ${(1 - wordmarkReveal) * 8}px`,
-            }}
+          <IntroLogo
+            width={logoWidth}
+            leftReveal={leftReveal}
+            rightReveal={rightReveal}
+            lockup={lockup}
+            wordmarkReveal={wordmarkReveal}
           />
         </div>
         <p
@@ -304,7 +259,6 @@ export function InkToFolio({
               display: "inline-block",
               opacity: sourceReveal,
               translate: `0 ${(1 - sourceReveal) * 15}px`,
-              filter: `blur(${(1 - sourceReveal) * 4}px)`,
             }}
           >
             source.

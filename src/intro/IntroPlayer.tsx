@@ -12,6 +12,7 @@ export default function IntroPlayer({
 }) {
   const ref = useRef<PlayerRef>(null);
   const root = useRef<HTMLDivElement>(null);
+  const handoffDone = useRef(false);
   const [playing, setPlaying] = useState(false),
     [ended, setEnded] = useState(false),
     [frame, setFrame] = useState(0);
@@ -40,6 +41,7 @@ export default function IntroPlayer({
     return () => ro.disconnect();
   }, [mobile]);
   useEffect(() => {
+    handoffDone.current = false;
     setEnded(false);
     setManualPause(false);
     setFrame(0);
@@ -91,6 +93,23 @@ export default function IntroPlayer({
     if (paused || !visible || manualPause || ended) ref.current?.pause();
     else void ref.current?.play();
   }, [paused, visible, manualPause, ended, mobile]);
+  useEffect(() => {
+    if (!ended || paused || manualPause || !visible || handoffDone.current)
+      return;
+    handoffDone.current = true;
+    const intro = root.current?.closest(".rx-intro");
+    const hero = document.getElementById("home-hero");
+    if (!intro || !hero) return;
+    const box = intro.getBoundingClientRect();
+    // A reader who already left the intro keeps their place.
+    if (box.bottom <= 0 || box.top >= window.innerHeight) {
+      if (root.current) root.current.dataset.introHandoff = "skipped";
+      return;
+    }
+    if (root.current) root.current.dataset.introHandoff = "entered";
+    hero.focus({ preventScroll: true });
+    hero.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [ended, paused, manualPause, visible]);
   const ambientActive = !paused && visible && !manualPause;
   return (
     <div
@@ -145,6 +164,7 @@ export default function IntroPlayer({
             aria-label="Replay intro"
             title="Replay intro"
             onClick={() => {
+              handoffDone.current = false;
               ref.current?.seekTo(0);
               setEnded(false);
               setManualPause(false);
