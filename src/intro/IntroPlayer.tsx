@@ -46,7 +46,11 @@ export default function IntroPlayer({
     const el = root.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) =>
+        setVisible(
+          entry.intersectionRatio >= 0.15 &&
+            document.visibilityState === "visible",
+        ),
       { threshold: 0.15, rootMargin: "-90px 0px 0px 0px" },
     );
     observer.observe(el);
@@ -85,11 +89,13 @@ export default function IntroPlayer({
     if (paused || !visible || manualPause || ended) ref.current?.pause();
     else void ref.current?.play();
   }, [paused, visible, manualPause, ended, mobile]);
+  const ambientActive = !paused && visible && !manualPause;
   return (
     <div
       className="intro-runtime"
       ref={root}
-      data-playing={playing}
+      data-playing={ambientActive}
+      data-timeline-playing={playing}
       data-frame={frame}
     >
       <div className="intro-canvas" aria-hidden="true">
@@ -97,7 +103,7 @@ export default function IntroPlayer({
           key={mobile ? "mobile" : "desktop"}
           ref={ref}
           component={InkToFolio}
-          inputProps={{ mobile }}
+          inputProps={{ mobile, realtime: true, active: ambientActive }}
           durationInFrames={180}
           fps={30}
           compositionWidth={dimensions.width}
@@ -117,21 +123,31 @@ export default function IntroPlayer({
         <button
           type="button"
           disabled={paused}
-          onClick={() => {
-            if (ended) {
+          onClick={() => setManualPause(!manualPause)}
+          aria-label={
+            ambientActive ? "Pause intro motion" : "Play intro motion"
+          }
+        >
+          {ambientActive ? "Pause" : "Play"}{" "}
+          <span aria-hidden="true">{ambientActive ? "Ⅱ" : "▷"}</span>
+        </button>
+        {ended && (
+          <button
+            type="button"
+            className="intro-replay"
+            aria-label="Replay intro"
+            title="Replay intro"
+            onClick={() => {
               ref.current?.seekTo(0);
               setEnded(false);
               setManualPause(false);
-            } else setManualPause(!manualPause);
-          }}
-          aria-label={
-            ended ? "Replay intro" : playing ? "Pause intro" : "Play intro"
-          }
-        >
-          {ended ? "Replay" : playing ? "Pause" : "Play"}{" "}
-          <span aria-hidden="true">{ended ? "↻" : playing ? "Ⅱ" : "▷"}</span>
-        </button>
+            }}
+          >
+            <span aria-hidden="true">↻</span>
+          </button>
+        )}
       </div>
+      <span className="intro-stir-hint">Move to stir the ink</span>
     </div>
   );
 }

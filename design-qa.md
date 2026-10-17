@@ -1,44 +1,21 @@
-# RxLineage — full-screen Ink to Folio revision
+# RxLineage — interactive Ink to Folio revision
 
-**Source visual truth:** `../RxLineage-Intro-Directions/direction-01-ink-to-folio.png`, 1487×1058. The top film region (32,86)–(1455,622) is the selected Option 1. The user's latest instructions override its short landscape presentation: increase the intro to full viewport height and remove navigation from the intro.
+The user accepted Option 1's artwork and full-screen composition, then requested visible continuous ink movement, cursor interaction from their DyeWhorl component, and logo appearing before text. The accepted landscape/portrait artwork, logo geometry, brand colors, navigation placement and rest of the site are preserved.
 
-**Implementation evidence:** actual browser screenshots in `qa/intro-v2/desktop.jpg` (1440×1000), `tablet.jpg` (775×804), `mobile.jpg` (390×844), and `still.jpg` (1440×1000). Local URL: homepage on the Vite server. Shared composition verified in Remotion Studio with no error overlay. Studio masters are now 1920×1080 and 1080×1920; website composition height follows the actual stage ratio.
+## Motion and interaction
 
-## Comparison evidence and normalization
+- Logo is hidden at frame zero. It reveals from 0.25–1.4 seconds; headline follows at 1.65–2.85; research-stage note follows at 3.05–3.8. Actual Studio captures: `qa/intro-v3/timeline-{0,30,70,120}.jpg`. Studio has no error overlay.
+- The six-second identity timeline ends without looping the words. Website fluid continues independently at a capped 30 updates/second, with fixed simulation steps. Persistent side emitters, projected velocity, and an advected bounded displacement field transport the accepted ink artwork. This is 2D fluid-driven artwork, not a volumetric 3D simulation or MP4.
+- Real native cursor drag through the left ink registered nine pointer samples. Mouse/pen movement needs no click; velocity-smoothed and spatially subsampled strokes inject momentum into the fluid. No cursor-following decorative ring is used. `moving-a.jpg` / `moving-b.jpg` capture different settled-timeline ink states.
+- Pause/Play remains available after the timeline ends; Replay separately restarts the identity entrance. Paused fluid simulation time stayed exactly 11.067 across separate reads. Matching mobile paused captures are retained. Offscreen time stayed exactly 16.317 across separate reads, with motion inactive.
+- Pointer listeners are passive, never capture the pointer, and ignore touch to preserve native mobile scrolling. Physical touch hardware and pen input were not exercised.
 
-Opened source and implementation together in `qa/intro-v2/reference-comparison.jpg`. The reference film crop is scaled proportionally to 1440×542; the implementation remains its full 1440×1000. Taller composition is intentional, following the user's request, not a normalization error. All browser screenshots have matching CSS/pixel size at density 1. The selected storyboard is not cropped into a shipped background.
+## Responsive and visual checks
 
-Focused typography and mark comparison: `qa/intro-v2/identity-comparison.jpg`, with source and rendered details together at equal pixel widths. Actual source SVG geometry is retained, with a lavender right folio to match the selected reference. Native Newsreader text remains editable and sharp. The generated storyboard's approximate mark is not treated as a replacement for the real logo geometry.
+Browser viewports: 1440×1000, 775×804 and 390×844. Intro remains one full viewport; phone stage measured 844px, header begins at 844px, document width equals 390px. Current tablet/phone captures are in `qa/intro-v3/`. Small concept-note text has a dark backing on portrait layouts so moving ivory ink cannot reduce its contrast. The interaction hint is hidden on portrait/coarse-pointer layouts to avoid overlap with continuation controls.
 
-Motion evidence: `frame-000.jpg` and `frame-090.jpg` are actual Studio canvas-region captures at 787×442. The identity is present at frame zero; the headline and note settle in while distinct ink plumes develop around the center. The artwork retains fine translucent wisps and rounded volume.
+Native mobile Skip moves focus to `home-hero`, with header at Y=0 and hero at Y=75 after the smooth scroll settles. Offscreen ink pauses. No navigation was reintroduced over the intro. No new decorative lines, section shading, tilted elements, clinical actions or product claims were added. Reference/artwork provenance remains in `docs/intro-v2/artwork.md`; the previous full-screen assessment is retained in `docs/intro-v3/previous-fullscreen-qa.md`.
 
-## Findings, fixes and comparison history
+## Checks and limits
 
-- [P1, fixed] Previous display ramp flattened the reference into marbled color fields. Replaced that display treatment with original generated landscape and portrait ink plates, preserving dimensional folds and fine wisps. The supplied DyeWhorl pressure/velocity/advection pipeline now drives restrained movement of that detailed art. New source/implementation comparison is in `reference-comparison.jpg`.
-- [P1, fixed] Previous 2.4:1 strip and visible navigation undercut the opening. Intro now measures exactly one viewport: 1000px, 804px and 844px at the tested sizes. Navigation begins at those exact Y positions and is outside the initial viewport. The header then sticks normally below the film; other routes keep their existing header at Y=0.
-- [P2, fixed] Phone text and continuation control approached bright ink. Moved the portrait identity slightly right into the quiet lane and gave continuation controls an opaque plum surface. `mobile.jpg` verifies legibility and comfortable targets.
-- [P2, fixed] Header relocation required corrected native anchor offsets and a way to resume from the globally paused still. Measured header height against existing scroll padding; native Skip puts the header at Y=0, hero at Y=89 desktop / Y=75 phone, with keyboard focus on `home-hero`. The static intro provides an Enable motion control when OS preferences permit it.
-- The superseded assessment is retained in `docs/intro-v2/superseded-intro-qa.md`; it is explicitly not the current acceptance result.
-- No remaining actionable P0/P1/P2 issues in tested states.
-
-## Required fidelity surfaces
-
-- **Fonts/type:** original SVG wordmark; local Newsreader regular/italic and IBM Plex Mono. Reference hierarchy, warm italic emphasis, line spacing and letter spacing are retained. Mobile uses an intentional two-line headline. Small research-stage disclosure remains readable in the dark center.
-- **Spacing/layout:** full-screen, uninterrupted opening with large edge plumes and clear center; no nav, floating site controls or letterboxing inside the stage. Navigation starts below it. Native scrolling stays available.
-- **Colors/tokens:** deep plum, lavender #B9AACA, limestone #F4F1EA, copper emphasis. The art has natural lighting rather than artificial bands between page sections. No new section gradients, rings or tilted cards.
-- **Images/assets:** original high-detail generated artwork in two aspect ratios, optimized to approximately 216KB/241KB WebP. No fake interface image or rasterized typography. Background motion uses 2D flow to advect dimensional artwork; it is not presented as a volumetric 3D simulation. Original assets and exact prompts are saved in `docs/intro-v2/assets/`.
-- **Copy/content:** selected headline “Every history has a source.” and explicit “RESEARCH-STAGE CONCEPT.” Existing canonical H1, five module descriptions, synthetic demonstrations, limitations and pilot prerequisites remain intact.
-
-## Verification
-
-- Three viewport screenshots verify full intro height, zero horizontal overflow, no broken loaded images and no navigation over the opening.
-- Replay, Play and Pause exercised. Manual Pause held at frame 5 across separate observations. Six-second playback holds its last frame without looping.
-- Skip via click and Enter moves keyboard focus to the live hero. During active playback, leaving the intro paused it at frame 13 before its endpoint.
-- Global Pause selects the same static implementation used by prefers-reduced-motion, without a Player or WebGL canvas. Static view and inline resumption were tested. OS preference itself was not changed or emulated.
-- Product Source Comparison page checked on phone: no intro, header at Y=0, no overflow.
-- Console errors checked in the final local run: none. Studio error overlay: none.
-- Root and video TypeScript checks pass. Production build and existing 31-route/reference/fixture checks pass. Final packaging repeats the build against the exact published source.
-
-**Limits:** not an MP4 export; this remains an embedded Remotion composition. No forced auto-scroll. Physical device performance, screen-reader behavior, OS preference emulation and forced GPU loss were not exercised. Runtime has static/artwork and component error fallbacks.
-
-final result: passed
+Root production build and video TypeScript pass. Existing checks cover 31 routes, 1,077 internal references, 1,254 asset references, all five modules and nine synthetic fixtures without failures. Local browser error log: empty. Studio error overlay: none. Reduced-motion/global-pause still selection and no-GPU fallback from the prior revision are retained. OS preference emulation, screen-reader behavior, physical-device performance and forced GPU loss are not tested in this revision.

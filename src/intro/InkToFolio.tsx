@@ -28,11 +28,19 @@ if (typeof window !== "undefined")
       url: staticFile("brand/assets/fonts/IBMPlexMono-Regular.woff2"),
     }),
   ]);
-function FluidInk() {
+function FluidInk({
+  realtime,
+  active,
+}: {
+  realtime: boolean;
+  active: boolean;
+}) {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
   const canvas = useRef<HTMLCanvasElement>(null),
     tank = useRef<ReturnType<typeof createInkTank>>(null);
+  const activeRef = useRef(active);
+  activeRef.current = active;
   const latestFrame = useRef(frame);
   latestFrame.current = frame;
   const [painted, setPainted] = useState(false);
@@ -74,8 +82,55 @@ function FluidInk() {
     };
   }, [width, height, src]);
   useLayoutEffect(() => {
-    tank.current?.draw(frame);
-  }, [frame, width, height]);
+    if (!realtime) tank.current?.draw(frame);
+  }, [frame, width, height, realtime]);
+  useLayoutEffect(() => {
+    if (!realtime || !active || !painted) return;
+    let request = 0,
+      last = 0;
+    const tick = (now: number) => {
+      if (!last) last = now;
+      const dt = (now - last) / 1000;
+      if (dt >= 1 / 30) {
+        tank.current?.tick(Math.min(0.05, dt));
+        last = now;
+      }
+      request = requestAnimationFrame(tick);
+    };
+    request = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(request);
+  }, [realtime, active, painted]);
+  useLayoutEffect(() => {
+    if (!realtime) return;
+    const el = canvas.current,
+      stage = el?.closest<HTMLElement>(".rx-intro");
+    if (!el || !stage) return;
+    const move = (e: PointerEvent) => {
+      // Native touch scrolling takes priority; mouse and pen need no click.
+      if (!activeRef.current || e.pointerType === "touch") return;
+      if ((e.target as Element).closest("a,button")) {
+        tank.current?.leave();
+        return;
+      }
+      const box = stage.getBoundingClientRect();
+      tank.current?.pointer(
+        (e.clientX - box.left) / box.width,
+        (e.clientY - box.top) / box.height,
+      );
+      el.dataset.pointerSamples = String(
+        Number(el.dataset.pointerSamples || 0) + 1,
+      );
+    };
+    const leave = () => tank.current?.leave();
+    stage.addEventListener("pointermove", move, { passive: true });
+    stage.addEventListener("pointerleave", leave, { passive: true });
+    stage.addEventListener("pointercancel", leave, { passive: true });
+    return () => {
+      stage.removeEventListener("pointermove", move);
+      stage.removeEventListener("pointerleave", leave);
+      stage.removeEventListener("pointercancel", leave);
+    };
+  }, [realtime]);
   return (
     <AbsoluteFill>
       <Img
@@ -96,20 +151,29 @@ function FluidInk() {
     </AbsoluteFill>
   );
 }
-export type IntroProps = { mobile: boolean };
-export function InkToFolio({ mobile = false }: IntroProps) {
+export type IntroProps = {
+  mobile: boolean;
+  realtime?: boolean;
+  active?: boolean;
+};
+export function InkToFolio({
+  mobile = false,
+  realtime = false,
+  active = true,
+}: IntroProps) {
   const frame = useCurrentFrame();
-  const { width, height } = useVideoConfig();
-  const logoReveal = interpolate(frame, [0, 20], [0, 1], {
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
-  const titleReveal = interpolate(frame, [4, 30], [0, 1], {
+  const { width, height, fps } = useVideoConfig();
+  const logoReveal = interpolate(frame, [0.25 * fps, 1.4 * fps], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.out(Easing.cubic),
   });
-  const noteReveal = interpolate(frame, [14, 40], [0, 1], {
+  const titleReveal = interpolate(frame, [1.65 * fps, 2.85 * fps], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  });
+  const noteReveal = interpolate(frame, [3.05 * fps, 3.8 * fps], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -117,7 +181,7 @@ export function InkToFolio({ mobile = false }: IntroProps) {
     <AbsoluteFill
       style={{ background: "#211a29", color: "#f4f1ea", overflow: "hidden" }}
     >
-      <FluidInk />
+      <FluidInk realtime={realtime} active={active} />
       <AbsoluteFill
         style={{
           justifyContent: "center",
@@ -132,9 +196,11 @@ export function InkToFolio({ mobile = false }: IntroProps) {
             "brand/assets/logo/rxlineage-horizontal-reverse-accent.svg",
           )}
           style={{
+            opacity: logoReveal,
+            clipPath: `inset(0 ${(1 - logoReveal) * 100}% 0 0)`,
             width: mobile ? 720 : 650,
             height: "auto",
-            transform: `translateY(${(1 - logoReveal) * 6}px)`,
+            transform: `translateY(${(1 - logoReveal) * 20}px)`,
           }}
         />
         <p
@@ -147,8 +213,9 @@ export function InkToFolio({ mobile = false }: IntroProps) {
             textAlign: "center",
             maxWidth: mobile ? 860 : 1220,
             margin: mobile ? "42px 0 0" : "24px 0 0",
+            textShadow: "0 2px 14px #211a29",
             opacity: titleReveal,
-            transform: `translateY(${(1 - titleReveal) * 14}px)`,
+            transform: `translateY(${(1 - titleReveal) * 32}px)`,
           }}
         >
           Every history
@@ -162,6 +229,9 @@ export function InkToFolio({ mobile = false }: IntroProps) {
             letterSpacing: ".14em",
             marginTop: mobile ? 50 : 44,
             color: "#c5b8cd",
+            background: mobile ? "#211a29e8" : undefined,
+            padding: mobile ? "10px 14px" : undefined,
+            textShadow: "0 1px 6px #211a29",
             opacity: noteReveal,
           }}
         >
