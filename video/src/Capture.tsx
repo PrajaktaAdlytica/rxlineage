@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import { Player } from "@remotion/player";
 import { InkToFolio } from "../../src/intro/InkToFolio";
 const mobile =
-  new URLSearchParams(location.search).has("mobile") || innerWidth <= 600;
+  new URLSearchParams(location.search).has("mobile") ||
+  innerHeight > innerWidth;
 createRoot(document.getElementById("root")!).render(
   <Player
     component={InkToFolio}
@@ -11,7 +12,9 @@ createRoot(document.getElementById("root")!).render(
     durationInFrames={180}
     initialFrame={90}
     compositionWidth={mobile ? 1080 : 1920}
-    compositionHeight={mobile ? 1260 : 800}
+    compositionHeight={Math.round(
+      ((mobile ? 1080 : 1920) * innerHeight) / innerWidth,
+    )}
     fps={30}
     controls={false}
     clickToPlay={false}

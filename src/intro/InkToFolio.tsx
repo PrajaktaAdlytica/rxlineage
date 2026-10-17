@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import {
   AbsoluteFill,
   Img,
@@ -10,8 +10,7 @@ import {
 } from "remotion";
 import { loadFont } from "@remotion/fonts";
 import { createInkTank } from "./ink-tank";
-
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined")
   void Promise.all([
     loadFont({
       family: "Rx Newsreader",
@@ -29,116 +28,141 @@ if (typeof window !== "undefined") {
       url: staticFile("brand/assets/fonts/IBMPlexMono-Regular.woff2"),
     }),
   ]);
-}
-function FluidInk({ onUnavailable }: { onUnavailable: () => void }) {
+function FluidInk() {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
-  const canvas = useRef<HTMLCanvasElement>(null);
-  const tank = useRef<ReturnType<typeof createInkTank>>(null);
+  const canvas = useRef<HTMLCanvasElement>(null),
+    tank = useRef<ReturnType<typeof createInkTank>>(null);
+  const latestFrame = useRef(frame);
+  latestFrame.current = frame;
+  const [painted, setPainted] = useState(false);
+  const src = staticFile(
+    height / width > 1.35
+      ? "media/ink-to-folio-portrait-v2.webp"
+      : "media/ink-to-folio-landscape-v2.webp",
+  );
   useLayoutEffect(() => {
-    if (!canvas.current) return;
-    try {
-      tank.current = createInkTank(canvas.current, width, height);
-    } catch {
-      onUnavailable();
-      return;
-    }
-    if (!tank.current) onUnavailable();
+    const el = canvas.current;
+    if (!el) return;
+    let alive = true;
+    setPainted(false);
+    const image = new Image();
+    image.onload = () => {
+      if (!alive) return;
+      try {
+        tank.current = createInkTank(el, width, height, image);
+        tank.current?.draw(latestFrame.current);
+        setPainted(Boolean(tank.current));
+      } catch {
+        setPainted(false);
+      }
+    };
+    image.src = src;
     const lost = (event: Event) => {
       event.preventDefault();
-      onUnavailable();
+      setPainted(false);
+      tank.current?.destroy();
+      tank.current = null;
     };
-    const el = canvas.current;
     el.addEventListener("webglcontextlost", lost);
     return () => {
+      alive = false;
+      image.onload = null;
       el.removeEventListener("webglcontextlost", lost);
       tank.current?.destroy();
       tank.current = null;
     };
-  }, [width, height, onUnavailable]);
+  }, [width, height, src]);
   useLayoutEffect(() => {
     tank.current?.draw(frame);
   }, [frame, width, height]);
   return (
-    <canvas
-      ref={canvas}
-      aria-hidden="true"
-      style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-    />
+    <AbsoluteFill>
+      <Img
+        src={src}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+      <canvas
+        ref={canvas}
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          opacity: painted ? 1 : 0,
+        }}
+      />
+    </AbsoluteFill>
   );
 }
 export type IntroProps = { mobile: boolean };
 export function InkToFolio({ mobile = false }: IntroProps) {
   const frame = useCurrentFrame();
-  const [unavailable, setUnavailable] = useState(false);
-  const fail = useCallback(() => setUnavailable(true), []);
-  const reveal = interpolate(frame, [0, 26], [0, 1], {
+  const { width, height } = useVideoConfig();
+  const logoReveal = interpolate(frame, [0, 20], [0, 1], {
     extrapolateRight: "clamp",
     easing: Easing.out(Easing.cubic),
   });
-  // Each source remains distinct; no clinical outcome is animated.
-  if (unavailable)
-    return (
-      <AbsoluteFill style={{ background: "#281d34" }}>
-        <Img
-          src={staticFile(
-            mobile
-              ? "media/intro-ink-mobile.webp"
-              : "media/intro-ink-desktop.webp",
-          )}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-      </AbsoluteFill>
-    );
+  const titleReveal = interpolate(frame, [4, 30], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  });
+  const noteReveal = interpolate(frame, [14, 40], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   return (
     <AbsoluteFill
-      style={{ background: "#281d34", color: "#f4f1ea", overflow: "hidden" }}
+      style={{ background: "#211a29", color: "#f4f1ea", overflow: "hidden" }}
     >
-      <div style={{ position: "absolute", inset: 0, opacity: 1 }}>
-        <FluidInk onUnavailable={fail} />
-      </div>
+      <FluidInk />
       <AbsoluteFill
         style={{
-          alignItems: "center",
           justifyContent: "center",
-          padding: mobile ? "100px 80px" : "60px 200px",
+          alignItems: "center",
           boxSizing: "border-box",
+          padding: mobile ? "120px 75px" : "100px 120px",
+          transform: `translate(${mobile ? width * 0.075 : 0}px,${height * (mobile ? -0.015 : 0.025)}px)`,
         }}
       >
         <Img
-          src={staticFile("brand/assets/logo/rxlineage-horizontal-reverse.svg")}
+          src={staticFile(
+            "brand/assets/logo/rxlineage-horizontal-reverse-accent.svg",
+          )}
           style={{
-            width: mobile ? 590 : 560,
+            width: mobile ? 720 : 650,
             height: "auto",
-            transform: `translateY(${(1 - reveal) * 6}px)`,
+            transform: `translateY(${(1 - logoReveal) * 6}px)`,
           }}
         />
         <p
           style={{
             fontFamily: "Rx Newsreader, Georgia, serif",
-            fontSize: mobile ? 94 : 78,
-            lineHeight: 1.03,
+            fontSize: mobile ? 100 : 80,
+            lineHeight: 1.06,
             letterSpacing: "-.025em",
-            textAlign: "center",
             fontWeight: 400,
-            margin: mobile ? "64px 0 0" : "45px 0 0",
-            maxWidth: mobile ? 800 : 1200,
-            opacity: reveal,
-            transform: `translateY(${(1 - reveal) * 18}px)`,
+            textAlign: "center",
+            maxWidth: mobile ? 860 : 1220,
+            margin: mobile ? "42px 0 0" : "24px 0 0",
+            opacity: titleReveal,
+            transform: `translateY(${(1 - titleReveal) * 14}px)`,
           }}
         >
           Every history
           <br style={{ display: mobile ? "initial" : "none" }} /> has a{" "}
-          <em style={{ color: "#c3a18b", fontWeight: 400 }}>source.</em>
+          <em style={{ color: "#c4a28c", fontWeight: 400 }}>source.</em>
         </p>
         <span
           style={{
             fontFamily: "Rx Mono, monospace",
-            fontSize: mobile ? 25 : 17,
-            letterSpacing: ".15em",
-            marginTop: mobile ? 46 : 32,
+            fontSize: mobile ? 30 : 18,
+            letterSpacing: ".14em",
+            marginTop: mobile ? 50 : 44,
             color: "#c5b8cd",
-            opacity: reveal,
+            opacity: noteReveal,
           }}
         >
           RESEARCH-STAGE CONCEPT

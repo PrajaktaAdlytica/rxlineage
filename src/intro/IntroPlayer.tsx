@@ -15,6 +15,28 @@ export default function IntroPlayer({
     [frame, setFrame] = useState(0);
   const [manualPause, setManualPause] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [dimensions, setDimensions] = useState({
+    width: mobile ? 1080 : 1920,
+    height: mobile ? 1920 : 1080,
+  });
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const size = () => {
+      const box = el.getBoundingClientRect();
+      if (box.width > 0 && box.height > 0) {
+        const width = mobile ? 1080 : 1920;
+        setDimensions({
+          width,
+          height: Math.round((width * box.height) / box.width),
+        });
+      }
+    };
+    size();
+    const ro = new ResizeObserver(size);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [mobile]);
   useEffect(() => {
     setEnded(false);
     setManualPause(false);
@@ -78,8 +100,8 @@ export default function IntroPlayer({
           inputProps={{ mobile }}
           durationInFrames={180}
           fps={30}
-          compositionWidth={mobile ? 1080 : 1920}
-          compositionHeight={mobile ? 1260 : 800}
+          compositionWidth={dimensions.width}
+          compositionHeight={dimensions.height}
           controls={false}
           initiallyMuted
           numberOfSharedAudioTags={0}
@@ -109,9 +131,6 @@ export default function IntroPlayer({
           {ended ? "Replay" : playing ? "Pause" : "Play"}{" "}
           <span aria-hidden="true">{ended ? "↻" : playing ? "Ⅱ" : "▷"}</span>
         </button>
-        <span className="intro-time" aria-hidden="true">
-          {Math.min(frame / 30, 6).toFixed(1)} / 6.0
-        </span>
       </div>
     </div>
   );

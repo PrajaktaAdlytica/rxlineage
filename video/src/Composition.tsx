@@ -6,7 +6,7 @@ export const MyComposition = () => (
       id="InkToFolio"
       component={InkToFolio}
       width={1920}
-      height={800}
+      height={1080}
       fps={30}
       durationInFrames={180}
       defaultProps={{ mobile: false }}
@@ -15,7 +15,7 @@ export const MyComposition = () => (
       id="InkToFolioMobile"
       component={InkToFolio}
       width={1080}
-      height={1260}
+      height={1920}
       fps={30}
       durationInFrames={180}
       defaultProps={{ mobile: true }}

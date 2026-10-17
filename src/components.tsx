@@ -271,7 +271,7 @@ export function Header({
   };
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip-link" href={path === "/" ? "#home-hero" : "#main"}>
         Skip to content
       </a>
       <header

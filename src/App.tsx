@@ -209,10 +209,26 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
     document.addEventListener("visibilitychange", visibility);
     return () => document.removeEventListener("visibilitychange", visibility);
   }, []);
+  const navigation = (
+    <Header
+      path={path}
+      motionPaused={motionPaused}
+      onMotion={() => {
+        if (preference) setPreference(false);
+        setPaused(!motionPaused);
+      }}
+    />
+  );
   const known = pages.some((p) => p.route === path);
   let content: React.ReactNode =
     path === "/" ? (
-      <Home />
+      <Home
+        navigation={navigation}
+        onResumeMotion={() => {
+          setPreference(false);
+          setPaused(false);
+        }}
+      />
     ) : path === "/demo" ? (
       <Demo />
     ) : path === "/request-pilot" ? (
@@ -230,15 +246,11 @@ export function App({ initialPath = "/" }: { initialPath?: string }) {
     );
   return (
     <MotionContext.Provider value={motionPaused}>
-      <div className={"site " + (motionPaused ? "motion-paused" : "")}>
-        <Header
-          path={path}
-          motionPaused={motionPaused}
-          onMotion={() => {
-            if (preference) setPreference(false);
-            setPaused(!motionPaused);
-          }}
-        />
+      <div
+        className={"site " + (motionPaused ? "motion-paused" : "")}
+        data-has-intro={path === "/" ? "true" : undefined}
+      >
+        {path !== "/" && navigation}
         <main
           id="main"
           ref={main}

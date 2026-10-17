@@ -442,10 +442,17 @@ function CaseFan() {
     </section>
   );
 }
-export function Home() {
+export function Home({
+  navigation,
+  onResumeMotion,
+}: {
+  navigation?: React.ReactNode;
+  onResumeMotion?: () => void;
+}) {
   return (
     <>
-      <Intro />
+      <Intro onResumeMotion={onResumeMotion} />
+      {navigation}
       <section
         id="home-hero"
         tabIndex={-1}

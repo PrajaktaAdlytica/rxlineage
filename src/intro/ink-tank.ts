@@ -276,25 +276,37 @@ void main() {
 }`;
 
 // Display-resolution pass. The only thing that runs per screen pixel.
+// The supplied fluid simulation now transports a photographed/rendered ink
+// plate. Its volume and translucency survive instead of becoming a flat ramp.
 const RENDER_SRC = `#version 300 es
 precision highp float;
 in vec2 v_uv; out vec4 fragColor;
 uniform sampler2D u_dye;
-uniform vec2 u_dyeTexel;
-void main() {
- vec2 d = texture(u_dye,v_uv).xy;
- vec3 bg=vec3(0.15686,0.11373,0.20392);
- float right=clamp(d.y/max(d.x,0.0001),0.,1.);
- vec3 mid=mix(vec3(.40,.31,.49),vec3(.57,.44,.36),right);
- vec3 light=mix(vec3(.7255,.6667,.7922),vec3(.9569,.9451,.9176),right);
- float cov=pow(1.-exp(-d.x*2.8),1.12);
- // The two sources stop short of the brand's central reading space.
- float corridor=smoothstep(.16,.38,abs(v_uv.x-.5));
- cov*=corridor;
- vec3 col=mix(bg,mid,smoothstep(.01,.40,cov));
- col=mix(col,light,smoothstep(.26,.94,cov));
- float n=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453);
- fragColor=vec4(col+(n-.5)*.003,1.);
+uniform sampler2D u_vel;
+uniform sampler2D u_plate;
+uniform vec2 u_simTexel;
+uniform float u_aspect;
+uniform float u_plateAspect;
+uniform float u_frame;
+void main(){
+ float t=u_frame/30.;
+ vec2 uv=v_uv;
+ float side=smoothstep(.10,.42,abs(uv.x-.5));
+ // Distinct edge plumes open toward the original central identity lane.
+ float entry=(1.-smoothstep(0.,2.2,t))*.045;
+ float left=1.-smoothstep(.25,.48,uv.x);
+ float right=smoothstep(.52,.75,uv.x);
+ uv.x+=(left-right)*(.035+entry);
+ // Real projected fluid velocity from DyeWhorl advects the delicate ink.
+ vec2 flow=texture(u_vel,v_uv).xy*u_simTexel;
+ uv-=clamp(flow,vec2(-.08),vec2(.08))*.07*side;
+ // Slow secondary curl gives wisps local depth without moving the identity.
+ uv.x+=sin(v_uv.y*9.+t*.44)*.0045*side;
+ uv.y+=sin(v_uv.x*11.-t*.35)*.0055*side;
+ if(u_aspect>u_plateAspect) uv.y=(uv.y-.5)*u_plateAspect/u_aspect+.5;
+ else uv.x=(uv.x-.5)*u_aspect/u_plateAspect+.5;
+ vec3 col=texture(u_plate,clamp(uv,vec2(.001),vec2(.999))).rgb;
+ fragColor=vec4(col,1.);
 }`;
 
 type RGB = [number, number, number];
@@ -555,6 +567,7 @@ export function createInkTank(
   canvas: HTMLCanvasElement,
   width: number,
   height: number,
+  plate: HTMLImageElement,
 ) {
   const solver = new Solver(canvas);
   if (!solver.init()) {
@@ -587,9 +600,9 @@ export function createInkTank(
   const cssW = width,
     cssH = height;
   const portrait = height > width;
-  const simW = portrait ? 144 : 256,
+  const simW = portrait ? 128 : 208,
     simH = Math.max(96, Math.round((simW * height) / width));
-  const dyeW = portrait ? 576 : 1024;
+  const dyeW = portrait ? 288 : 512;
   let simTime = 0;
   let velocity: Double | null = null,
     dye: Double | null = null,
@@ -628,7 +641,7 @@ export function createInkTank(
   const step = (dt: number) => {
     if (!velocity || !dye || !pressure || !divergence || !dyeTmpA || !dyeTmpB)
       return;
-    const t = { jacobi: 10, correct: 1 };
+    const t = { jacobi: 8, correct: 1 };
     const simTexel = velocity.read.texel;
     const aspect = cssW / Math.max(1, cssH);
 
@@ -744,11 +757,30 @@ export function createInkTank(
     sources();
     step(1 / 60);
   };
-  const render = () => {
-    if (!dye) return;
+  const plateTexture = gl.createTexture();
+  if (!plateTexture) {
+    solver.destroy();
+    return null;
+  }
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, plateTexture);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, plate);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+  const render = (frame: number) => {
+    if (!dye || !velocity) return;
     solver.use(pRender);
     solver.tex("u_dye", 0, dye.read.tex);
-    solver.v2("u_dyeTexel", ...dye.read.texel);
+    solver.tex("u_vel", 1, velocity.read.tex);
+    solver.tex("u_plate", 2, plateTexture);
+    solver.v2("u_simTexel", 1 / simW, 1 / simH);
+    solver.f("u_aspect", width / height);
+    solver.f("u_plateAspect", plate.naturalWidth / plate.naturalHeight);
+    solver.f("u_frame", frame);
     solver.blit(null);
   };
   canvas.width = Math.min(width, portrait ? 720 : 1440);
@@ -761,15 +793,16 @@ export function createInkTank(
         allocate();
         current = -1;
       }
-      if (current < 0) for (let i = 0; i < 150; i++) advance();
+      if (current < 0) for (let i = 0; i < 60; i++) advance();
       for (let i = current + 1; i <= frame; i++) {
         advance();
         advance();
       }
       current = frame;
-      render();
+      render(frame);
     },
     destroy() {
+      gl.deleteTexture(plateTexture);
       solver.destroy();
     },
   };
