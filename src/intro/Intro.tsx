@@ -68,6 +68,10 @@ export function Intro({
     const header = site.querySelector<HTMLElement>(".site-header");
     const measure = () => {
       if (header) {
+        site.style.setProperty(
+          "--opening-header-height",
+          `${header.getBoundingClientRect().height}px`,
+        );
         const padding =
           parseFloat(
             getComputedStyle(document.documentElement).scrollPaddingTop,
@@ -84,6 +88,7 @@ export function Intro({
     return () => {
       sizeObserver.disconnect();
       site.style.removeProperty("--intro-skip-margin");
+      site.style.removeProperty("--opening-header-height");
       observer.disconnect();
       delete site.dataset.introVisible;
     };

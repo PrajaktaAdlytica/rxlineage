@@ -13,6 +13,8 @@ export function OpeningAtmosphere({
     const intro = main?.querySelector<HTMLElement>(".rx-intro");
     const hero = main?.querySelector<HTMLElement>("#home-hero");
     if (!el || !main || !intro || !hero) return;
+    const site = main.closest<HTMLElement>(".site");
+    if (site) site.dataset.openingNav = "managed";
     let request = 0;
     const update = () => {
       request = 0;
@@ -43,6 +45,13 @@ export function OpeningAtmosphere({
         "--opening-hero-opacity",
         String(smooth(0.2, 0.92)),
       );
+      // The navigation is already docked at the top. Reveal it only as the
+      // hero arrives, instead of carrying a horizontal bar across the ink.
+      site?.style.setProperty("--opening-nav-opacity", String(smooth(0.78, 1)));
+      site?.style.setProperty(
+        "--opening-nav-visibility",
+        progress > 0.78 ? "visible" : "hidden",
+      );
     };
     const schedule = () => {
       if (!request) request = requestAnimationFrame(update);
@@ -60,6 +69,9 @@ export function OpeningAtmosphere({
       window.removeEventListener("resize", schedule);
       main.style.removeProperty("--intro-copy-opacity");
       main.style.removeProperty("--opening-hero-opacity");
+      site?.style.removeProperty("--opening-nav-opacity");
+      site?.style.removeProperty("--opening-nav-visibility");
+      if (site) delete site.dataset.openingNav;
     };
   }, []);
   return (

@@ -1,15 +1,15 @@
-# RxLineage — cursor-driven ink repair
+# RxLineage — anchored navigation entrance
 
-Cursor events already reached the simulation, but the pointer velocity impulse was being multiplied by the 1/60-second solver step as if it were an ambient acceleration. The correction converts the stroke velocity into the force expected by the integrator, restoring the full bounded impulse each fixed step. The existing velocity cap, smoothing, pressure projection and material-coordinate transport are retained.
+The homepage header now stays fixed at the viewport's top edge. A measured layout slot preserves its normal footprint between the intro and hero. Its opacity rises only over the last portion of the opening scroll, so a horizontal bar no longer travels through the ink scene. Hidden navigation is removed from visual and keyboard interaction through visibility:hidden until its entrance begins. The bar remains full width, flush to the edges, with no floating shadow or rounded container.
 
-Pointer moves are captured on the shared opening's parent before descendant handlers can stop propagation. Coordinates are checked against the actual canvas viewport; moving outside or onto links/buttons clears the pointer. Mouse and pen require no button press. Touch remains available for native page scrolling.
+The enhancement is applied after JavaScript initializes the opening. Without it, the header retains its normal sticky layout. Other pages retain their existing navigation behavior.
 
 ## Verification
 
-Real browser pointer strokes increased the live canvas sample count from 0 to 64 and reported smoothed pointer velocity above 300 cells/second. Additional pointer moves between native click locations increased samples to 66 without a held drag. Intro and hero both accepted input through the same canvas. Visual inspection after strokes showed displaced lavender ink folds. These observations confirm input and live rendering; they are not a physical-device benchmark.
+Desktop 1280×720: initial header top=0, height=89, position=fixed and visibility=hidden; hero document offset=809. After arrival, header top=0, opacity=1 and hero top=89. Products menu opened with all five modules present.
 
-Pause set runtime playing=false, cleared pointerActive and froze ink time at 86.817. Browser error log was empty. Root and video TypeScript, production build and 31-route checks passed: 1,077 internal references, 1,253 asset references, five modules and nine synthetic fixtures, with no failures.
+Phone 390×844 production preview: during automatic travel at progress 0.333, scrollY=176.5, header top=0, opacity=0 and height=75. The header was absent from the accessibility tree during that hidden interval. After arrival, header top=0, opacity=1 and hero top=75. Mobile menu opened and closed; no horizontal overflow or browser errors. Actual capture: `qa/intro-v9/mobile-navigation.jpg`.
 
-The approved artwork, palette, sharp inline SVG identity, 400 ms final hold, 3.2-second interruptible hero handoff and single shared ink background are retained. Studio composition was open before changes; deterministic playback has no cursor input and retains the original unforced animation. Physical pen/touch hardware, screen readers, forced GPU loss and OS motion emulation were not exercised.
+TypeScript, production build and 31-route checks passed, including 1,077 internal references, 1,253 asset references, five modules and nine synthetic fixtures. Physical-device behavior, screen-reader operation and forced loading failures were not exercised.
 
-Previous QA is in `docs/intro-v8/previous-cinematic-handoff-qa.md`. Current visual capture: `qa/intro-v8/cursor-stir.jpg`.
+The ink response, sharp vector identity, 400 ms hold, 3.2-second interruptible handoff, shared background, product content and approved evidence chapter are preserved. Previous QA is retained in `docs/intro-v9/previous-cursor-qa.md`.

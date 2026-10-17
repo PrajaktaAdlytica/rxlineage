@@ -457,7 +457,7 @@ export function Home({
     <>
       <OpeningAtmosphere onTarget={setBackdropTarget} />
       <Intro onResumeMotion={onResumeMotion} backdropTarget={backdropTarget} />
-      {navigation}
+      <div className="home-navigation">{navigation}</div>
       <section
         id="home-hero"
         tabIndex={-1}

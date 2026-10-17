@@ -430,3 +430,22 @@ main .rx-intro {
     opacity: 1;
   }
 }
+
+/* Reserve the header's normal footprint, while its visible bar stays docked. */
+.home-navigation {
+  display: contents;
+}
+.site[data-opening-nav="managed"] .home-navigation {
+  display: block;
+  height: var(--opening-header-height, 89px);
+}
+.site[data-opening-nav="managed"] .home-navigation .site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  opacity: var(--opening-nav-opacity, 0);
+  visibility: var(--opening-nav-visibility, hidden);
+}
