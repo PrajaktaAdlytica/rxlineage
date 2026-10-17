@@ -310,7 +310,8 @@ vec3 sampleInk(vec2 uv){
  return texture(u_plate,clamp(uv,vec2(.001),vec2(.999))).rgb;
 }
 void main(){
- float t=u_frame/30.;
+ // The entrance shares the warmed fluid clock, avoiding a first-tick jump.
+ float t=u_flowTime;
  vec2 uv=v_uv;
  float side=smoothstep(.12,.42,abs(uv.x-.5));
  float entry=(1.-smoothstep(0.,2.2,t))*.025;
