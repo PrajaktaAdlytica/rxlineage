@@ -9,12 +9,15 @@ import React, {
 import { MotionContext } from "../motion-context";
 const IntroPlayer = lazy(() => import("./IntroPlayer"));
 class IntroBoundary extends React.Component<
-  { children: React.ReactNode },
+  { children: React.ReactNode; onFailure?: () => void },
   { failed: boolean }
 > {
   state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
+  }
+  componentDidCatch() {
+    this.props.onFailure?.();
   }
   render() {
     return this.state.failed ? null : this.props.children;
@@ -30,6 +33,7 @@ export function Intro({
   const paused = useContext(MotionContext);
   const stage = useRef<HTMLElement>(null);
   const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [reduced, setReduced] = useState(true);
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
@@ -85,7 +89,17 @@ export function Intro({
     };
   }, []);
   return (
-    <section ref={stage} className="rx-intro" aria-labelledby="intro-title">
+    <section
+      ref={stage}
+      className="rx-intro"
+      aria-labelledby="intro-title"
+      data-intro-mode={
+        paused || (ready && reduced) || failed ? "still" : "motion"
+      }
+    >
+      <noscript>
+        <style>{".rx-intro .intro-backup{visibility:visible!important}"}</style>
+      </noscript>
       <h2 id="intro-title" className="sr-only">
         Every history has a source. RxLineage research-stage concept.
       </h2>
@@ -103,8 +117,8 @@ export function Intro({
             <span>RESEARCH-STAGE CONCEPT</span>
           </div>
         </div>
-        {ready && !reduced && !paused && (
-          <IntroBoundary>
+        {ready && !reduced && !paused && !failed && (
+          <IntroBoundary onFailure={() => setFailed(true)}>
             <Suspense fallback={null}>
               <IntroPlayer
                 mobile={mobile}

@@ -9,8 +9,8 @@ createRoot(document.getElementById("root")!).render(
   <Player
     component={InkToFolio}
     inputProps={{ mobile }}
-    durationInFrames={180}
-    initialFrame={90}
+    durationInFrames={216}
+    initialFrame={185}
     compositionWidth={mobile ? 1080 : 1920}
     compositionHeight={Math.round(
       ((mobile ? 1080 : 1920) * innerHeight) / innerWidth,

@@ -111,7 +111,7 @@ export default function IntroPlayer({
             active: ambientActive,
             backdropTarget,
           }}
-          durationInFrames={180}
+          durationInFrames={216}
           fps={30}
           compositionWidth={dimensions.width}
           compositionHeight={dimensions.height}

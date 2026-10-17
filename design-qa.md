@@ -1,29 +1,28 @@
-# RxLineage — fluid motion and continuous opening
+# RxLineage — The Source Reveal
 
-Request: make the ink more natural like the supplied DyeWhorl component and remove the abrupt intro-to-hero background change. Accepted Option 1 artwork, palette, logo-first entrance, full-height intro and approved chapter remain intact.
+The user approved the proposed dramatic symbol-first opening. This revision implements that sequence over the accepted moving ink scene. Fluid solver, artwork, palette, continuous intro/hero surface and existing site content remain unchanged.
 
-## Motion changes
+## Sequence
 
-Removed the display shader's standing sine waves, hard displacement clamp and instantaneous velocity distortion. Two staggered material-coordinate fields now transport the detailed artwork under the projected fluid velocity. Each field renews at zero visual weight, with a smooth blend between them. Softer source forces, lower vorticity/buoyancy, more desktop pressure iterations and smoothed pointer position/velocity reduce pinching and elastic-looking movement. A fixed-step accumulator handles frame timing; browser drawing targets 60 Hz, rather than assuming a measured device frame rate.
+216 frames at 30 fps (7.2 seconds), followed by held identity and continuing ambient ink:
 
-This is 2D fluid-driven transport of the accepted illustrated artwork, not volumetric simulation or an MP4. Studio remains deterministic and frame-driven. Original source illustrations and prompts remain in `docs/intro-v2/`.
+- 0–1.2s: anticipation; ink alone.
+- 1.2–1.95s: limestone folio reveals upward; 1.65–2.5s: lavender half joins with its own reveal.
+- 2.5–3.4s: enlarged centered symbol settles into the existing horizontal lockup. No rotation.
+- 2.55–3.5s: wordmark resolves beside the symbol.
+- 3.5–4.2s: “Every history has a” enters; 4.55–5s: copper italic “source.” follows after a deliberate pause.
+- 5.15–5.75s: research-stage note appears; remaining time holds the complete identity.
 
-## One scene across intro and hero
+The logo layers are derived directly from the original SVG. An XML comparison confirms all three original path attribute sets are preserved exactly. No brand geometry, icon or favicon was replaced.
 
-`OpeningAtmosphere.tsx` supplies one sticky viewport surface spanning the intro, navigation and hero. The same WebGL canvas is portaled into it; it is not replaced at the section boundary. Scroll gradually quiets the ink behind the reading content and fades the intro identity. The hero is transparent over the same #211A29 plum base. Home navigation now has a translucent plum surface and the existing reverse brand SVG, removing the cream interruption. Other pages keep their established header.
+## Verification
 
-No section-edge gradients, decorative lines, tilted elements, forced scrolling or clinical state changes were introduced. The scene ends with the hero and does not extend across the approved chapter.
+Actual Studio frame captures in `qa/intro-v5/`: 24 (anticipation), 48 (first half), 70 (folio), 102 (brand), 130 (prefix), 150 (headline), 185 (hold). At frame 130, rendered prefix opacity is 1 and source opacity is 0. Portrait symbol/hold captures are also included. Studio error overlay: none. A three-panel contact sheet in delivery outputs uses those actual captures.
 
-## Browser evidence
+Website checks: 1440×1000 and 390×844; final logo/headline composition matches the accepted pose. Phone stage is 844px, document width 390px, and broken completed images count is zero. Replay returned to frame 0 with every identity layer at opacity 0. At the end, identity holds at frame 215 while ink continues. Pause kept reported fluid time at 61.833 across reads.
 
-Actual screenshots: `qa/intro-v4/desktop.jpg`, `transition.jpg`, `hero.jpg`, `mobile.jpg`, `mobile-transition.jpg`, `mobile-still-hero.jpg`, `tablet.jpg`. Desktop 1440×1000, tablet 775×804, phone 390×844.
+Skip focused `home-hero`, positioned at Y=75 on phone; one shared ink canvas remains. Global Pause removed Player and canvas, set intro mode to still, and displayed the complete fallback identity. Loading mode hides the fallback text to preserve anticipation; reduced-motion, error and no-script paths retain the still identity. Forced load failures and OS preference emulation were not exercised.
 
-- Desktop: exactly one canvas, ten native cursor samples; observed ink motion past 30 seconds. At scroll Y=500 the same canvas remains at viewport Y=0 with artwork opacity 0.42976. At Y=1000 hero begins at Y=89, same fluid remains active with opacity 0.12. The hero has no opaque section background.
-- Phone: 390px document width, 844px stage and canvas. At Y=422 the same canvas stays at Y=0. At Y=844 hero begins at Y=75, ink still active. No horizontal overflow. Header starts below the intro.
-- Native phone menu click preserved scroll Y=834 and header Y=10; menu contents remain readable. Desktop product dropdown checked. Automation locator clicks can center a below-fold header, so native coordinates were used to verify the actual menu behavior.
-- Manual Pause froze fluid simulation time at 15.750 across separate reads. After the shared scene left the viewport, motion was inactive at time 15.783. Global Pause removed both Player and canvas while retaining the portrait artwork, plum base and correct scroll opacity. Native scrolling remains available.
-- Studio error overlay: none. Local browser error log: empty. Root/video TypeScript and production build pass. Existing checks pass across 31 routes, 1,077 internal references, 1,253 asset references and nine synthetic fixtures.
+A separate Vite production preview served the prerendered output and hydrated successfully. Browser error log: empty. Root and video TypeScript, production build and existing route/reference/fixture checks pass. Current checks cover 31 routes, 1,077 internal references, 1,253 asset references and nine synthetic fixtures. Final packaging rebuilds the exact published source.
 
-## Limits
-
-Physical-device frame rate, pen/touch hardware, screen-reader operation, OS reduced-motion emulation and forced GPU loss were not exercised. Existing reduced-motion and error fallbacks are retained. Final source is rebuilt and packaged before publication. Remaining product copy, five offers, synthetic evidence states and research-stage boundaries are unchanged.
+The approved chapter, five offers, synthetic demo boundaries, full-screen intro, skip/pause controls, native scrolling and shared background are preserved. Physical-device frame rates, screen-reader operation, pen/touch hardware and forced GPU loss are not tested.

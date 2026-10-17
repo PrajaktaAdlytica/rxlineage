@@ -168,20 +168,27 @@ export function InkToFolio({
 }: IntroProps) {
   const frame = useCurrentFrame();
   const { width, height, fps } = useVideoConfig();
-  const logoReveal = interpolate(frame, [0.25 * fps, 1.4 * fps], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
-  const titleReveal = interpolate(frame, [1.65 * fps, 2.85 * fps], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.cubic),
-  });
-  const noteReveal = interpolate(frame, [3.05 * fps, 3.8 * fps], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const reveal = (start: number, end: number) =>
+    interpolate(frame, [start * fps, end * fps], [0, 1], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.bezier(0.22, 1, 0.36, 1),
+    });
+  const leftReveal = reveal(1.2, 1.95);
+  const rightReveal = reveal(1.65, 2.5);
+  const lockup = reveal(2.5, 3.4);
+  const wordmarkReveal = reveal(2.55, 3.5);
+  const prefixReveal = reveal(3.5, 4.2);
+  const sourceReveal = reveal(4.55, 5.0);
+  const noteReveal = reveal(5.15, 5.75);
+  const logoWidth = mobile ? 720 : 650;
+  const logoHeight = (logoWidth * 100) / 323;
+  const symbolCenter = (logoWidth * 49.04) / 323;
+  const symbolOffset = (logoWidth / 2 - symbolCenter) * (1 - lockup);
+  const prefixStyle = {
+    display: "inline-block",
+    translate: `0 ${(1 - prefixReveal) * 18}px`,
+  };
   return (
     <AbsoluteFill
       style={{
@@ -209,18 +216,68 @@ export function InkToFolio({
           transform: `translate(${mobile ? width * 0.075 : 0}px,${height * (mobile ? -0.015 : 0.025)}px)`,
         }}
       >
-        <Img
-          src={staticFile(
-            "brand/assets/logo/rxlineage-horizontal-reverse-accent.svg",
-          )}
+        <div
+          className="intro-logo-lockup"
           style={{
-            opacity: logoReveal,
-            clipPath: `inset(0 ${(1 - logoReveal) * 100}% 0 0)`,
-            width: mobile ? 720 : 650,
-            height: "auto",
-            transform: `translateY(${(1 - logoReveal) * 20}px)`,
+            position: "relative",
+            width: logoWidth,
+            height: logoHeight,
+            flexShrink: 0,
+            translate: `0 ${(1 - lockup) * (mobile ? 185 : 90)}px`,
           }}
-        />
+        >
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              transformOrigin: `${symbolCenter}px 50%`,
+              translate: `${symbolOffset}px 0`,
+              scale: 1 + (1 - lockup) * 0.65,
+            }}
+          >
+            <Img
+              data-reveal-part="limestone"
+              src={staticFile(
+                "brand/assets/logo/rxlineage-intro-limestone.svg",
+              )}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                opacity: leftReveal,
+                clipPath: `inset(${(1 - leftReveal) * 100}% 0 0 0)`,
+                filter: `blur(${(1 - leftReveal) * 3}px)`,
+              }}
+            />
+            <Img
+              data-reveal-part="lavender"
+              src={staticFile("brand/assets/logo/rxlineage-intro-lavender.svg")}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                opacity: rightReveal,
+                clipPath: `inset(0 0 ${(1 - rightReveal) * 100}% 0)`,
+                filter: `blur(${(1 - rightReveal) * 3}px)`,
+              }}
+            />
+          </div>
+          <Img
+            data-reveal-part="wordmark"
+            src={staticFile("brand/assets/logo/rxlineage-intro-wordmark.svg")}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              opacity: wordmarkReveal,
+              clipPath: `inset(0 ${(1 - wordmarkReveal) * 69.58}% 0 0)`,
+              translate: `0 ${(1 - wordmarkReveal) * 8}px`,
+            }}
+          />
+        </div>
         <p
           style={{
             fontFamily: "Rx Newsreader, Georgia, serif",
@@ -232,13 +289,26 @@ export function InkToFolio({
             maxWidth: mobile ? 860 : 1220,
             margin: mobile ? "42px 0 0" : "24px 0 0",
             textShadow: "0 2px 14px #211a29",
-            opacity: titleReveal,
-            transform: `translateY(${(1 - titleReveal) * 32}px)`,
           }}
         >
-          Every history
-          <br style={{ display: mobile ? "initial" : "none" }} /> has a{" "}
-          <em style={{ color: "#c4a28c", fontWeight: 400 }}>source.</em>
+          <span data-reveal-part="prefix" style={{ opacity: prefixReveal }}>
+            <span style={prefixStyle}>Every history</span>
+            <br style={{ display: mobile ? "initial" : "none" }} />{" "}
+            <span style={prefixStyle}>has a</span>
+          </span>{" "}
+          <em
+            data-reveal-part="source"
+            style={{
+              color: "#c4a28c",
+              fontWeight: 400,
+              display: "inline-block",
+              opacity: sourceReveal,
+              translate: `0 ${(1 - sourceReveal) * 15}px`,
+              filter: `blur(${(1 - sourceReveal) * 4}px)`,
+            }}
+          >
+            source.
+          </em>
         </p>
         <span
           style={{

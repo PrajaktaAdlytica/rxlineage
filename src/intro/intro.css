@@ -409,3 +409,14 @@ main .rx-intro {
   user-select: none;
   -webkit-user-select: none;
 }
+
+/* Preserve the opening anticipation while code/fonts load; still/error modes
+   retain the complete identity. No duplicate lettering behind live layers. */
+.rx-intro[data-intro-mode="motion"] .intro-backup {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rx-intro[data-intro-mode="motion"] .intro-backup {
+    visibility: visible;
+  }
+}
