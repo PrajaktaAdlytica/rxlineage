@@ -624,21 +624,18 @@ main {
   justify-content: center;
 }
 .funding-announcement {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  padding: 12px 24px;
-  background: var(--lavender, #e4ddeb);
-  color: var(--plum, #352c40);
-  text-align: center;
-  font-size: 14px;
+  display: grid;
+  gap: 2px;
+  border-left: 2px solid var(--copper, #b28d76);
+  padding: 1px 0 1px 12px;
+  margin: 0 0 22px;
+  color: var(--paper, #f6f0e7);
+  font-size: 13px;
+  line-height: 1.45;
 }
-.funding-announcement > span:first-child {
-  font: 11px/1.4 "IBM Plex Mono", monospace;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.funding-announcement > span {
+  color: #d1c4dc;
+  font-size: 12px;
 }
 .funding-announcement strong {
   font-weight: 600;

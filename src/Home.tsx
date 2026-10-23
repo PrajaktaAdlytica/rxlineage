@@ -458,11 +458,6 @@ export function Home({
       <OpeningAtmosphere onTarget={setBackdropTarget} />
       <Intro onResumeMotion={onResumeMotion} backdropTarget={backdropTarget} />
       <div className="home-navigation">{navigation}</div>
-      <aside className="funding-announcement" aria-label="Funding announcement">
-        <span>Company announcement</span>
-        <strong>RxLineage funding announcement</strong>
-        <span>Venture partner and funding amount to be announced.</span>
-      </aside>
       <section
         id="home-hero"
         tabIndex={-1}
@@ -471,6 +466,10 @@ export function Home({
       >
         <div className="container hero-grid">
           <div className="hero-copy">
+            <aside className="funding-announcement" aria-label="Funding announcement">
+              <strong>RxLineage has secured venture funding.</strong>
+              <span>Venture partner and funding amount to be announced.</span>
+            </aside>
             <Eyebrow>
               For pharmacist-led review / Research-stage concept
             </Eyebrow>
