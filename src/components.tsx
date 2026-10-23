@@ -818,6 +818,11 @@ export function Footer() {
             </div>
           ))}
         </div>
+        <address className="footer-address">
+          12 Truong Cong Dinh<br />
+          Ward 13, Tan Binh District<br />
+          Ho Chi Minh City 790094, Vietnam
+        </address>
         <div className="footer-bottom">
           <p>© 2026 RxLineage · Research-stage concept</p>
           <div>

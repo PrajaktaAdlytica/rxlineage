@@ -458,6 +458,11 @@ export function Home({
       <OpeningAtmosphere onTarget={setBackdropTarget} />
       <Intro onResumeMotion={onResumeMotion} backdropTarget={backdropTarget} />
       <div className="home-navigation">{navigation}</div>
+      <aside className="funding-announcement" aria-label="Funding announcement">
+        <span>Company announcement</span>
+        <strong>RxLineage funding announcement</strong>
+        <span>Venture partner and funding amount to be announced.</span>
+      </aside>
       <section
         id="home-hero"
         tabIndex={-1}

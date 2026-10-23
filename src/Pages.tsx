@@ -1341,6 +1341,18 @@ function About() {
           ))}
         </div>
       </section>
+      <section className="section" data-tone="mist">
+        <div className="container">
+          <Eyebrow>Company details</Eyebrow>
+          <address>
+            RxLineage<br />
+            12 Truong Cong Dinh<br />
+            Ward 13, Tan Binh District<br />
+            Ho Chi Minh City 790094<br />
+            Vietnam
+          </address>
+        </div>
+      </section>
       <section className="section dark-section" data-tone="dark">
         <div className="container split">
           <div>
